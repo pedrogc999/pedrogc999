@@ -26,11 +26,10 @@ El concepto central, según el encargo: **el preparador no te da una lista infin
    - **Re-planificación viva** — el botón *"Tuve una semana floja"* recoloca el plan con animación y la voz de Faro (Doc 06 §5.3): el bloque en curso se alarga y el colchón de recta final se ajusta, pero **el examen no se mueve**. Sin culpa, cero rojos.
    - **Carga semanal vs. tu disponibilidad** — una banda muestra las horas planificadas por semana frente a tu tope real; las semanas cargadas se avisan en ámbar templado *antes* de que rompan el plan (Doc 06 §5.3, "avisar de riesgos a tiempo").
 3. **Los tres horizontes** — Tres tarjetas (corto / medio / largo plazo), cada una con su línea de horizonte, sus ítems con estado de dominio sutil (*En camino · A repasar · Dominado*) y su progreso sereno. La luz es más cercana en "corto" y más lejana en "largo".
-4. **La Travesía (ruta)** — La ruta poética Hoy → simulacro → recta final → Puerto (Doc 08 §7, "Mapa de la Travesía"), como cierre sereno del bloque de planificación.
-5. **El Hoy** — Una sola decisión, una sola acción primaria (el botón "de la luz"), con la sesión flexible del día (Doc 06 §5.2).
-6. **Check-in emocional** — "¿Cómo llegas hoy?": un gesto que adapta la sesión y responde con la voz de Faro (Doc 05 §4). **Interactivo.**
-7. **¿Voy bien? — el seguimiento honesto** — La respuesta a la pregunta crónica del opositor (Doc 10 F-TRA-3), con cuatro métricas de valor: **dominio por bloque**, **proyección a examen** (gauge de cobertura prevista + confianza calibrada), **repaso espaciado de la semana** (qué vuelve y retención) y **constancia** (heatmap sereno que no castiga los huecos).
-8. **Hitos + Una palabra de Faro** — Línea de tiempo sin culpa (cero rojo de tareas vencidas) y el panel de acompañamiento con control de intensidad (Doc 05 §3.3).
+4. **El Hoy** — Una sola decisión, una sola acción primaria (el botón "de la luz"), con la sesión flexible del día (Doc 06 §5.2).
+5. **Check-in emocional** — "¿Cómo llegas hoy?": un gesto que adapta la sesión y responde con la voz de Faro (Doc 05 §4). **Interactivo.**
+6. **¿Voy bien? — el seguimiento honesto** — La respuesta a la pregunta crónica del opositor (Doc 10 F-TRA-3), con cuatro métricas de valor: **dominio por bloque**, **proyección a examen** (gauge de cobertura prevista + confianza calibrada), **repaso espaciado de la semana** (qué vuelve y retención) y **constancia** (heatmap sereno que no castiga los huecos).
+7. **Hitos + Una palabra de Faro** — Línea de tiempo sin culpa (cero rojo de tareas vencidas) y el panel de acompañamiento con control de intensidad (Doc 05 §3.3).
 
 ## Tour guiado por la app
 

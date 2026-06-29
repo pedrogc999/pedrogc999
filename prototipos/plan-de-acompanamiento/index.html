@@ -714,56 +714,6 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
         </div>
       </article>
     </div>
-
-    <!-- LA TRAVESÍA (ruta) -->
-    <div class="voyage reveal" style="margin-top:22px">
-      <div class="vhead">
-        <div>
-          <h3>La Travesía</h3>
-          <p>Tu ruta completa hacia el Puerto. La luz marca dónde estás hoy.</p>
-        </div>
-        <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Vas a tiempo, con colchón</span>
-      </div>
-      <svg class="route" viewBox="0 0 1080 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ruta de la travesía">
-        <defs>
-          <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#74C49A"/><stop offset=".45" stop-color="#F2B65A"/>
-            <stop offset=".55" stop-color="#6BC4D6"/><stop offset="1" stop-color="#9aa9ff"/>
-          </linearGradient>
-          <linearGradient id="rgdone" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#74C49A"/><stop offset="1" stop-color="#F2B65A"/>
-          </linearGradient>
-          <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
-        </defs>
-        <!-- path base -->
-        <path d="M40 70 C 220 20, 300 110, 480 70 S 760 20, 1040 56" fill="none" stroke="var(--hairline-2)" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
-        <!-- recorrido hecho -->
-        <path d="M40 70 C 220 20, 300 110, 470 71" fill="none" stroke="url(#rgdone)" stroke-width="3.5" stroke-linecap="round"/>
-        <!-- nodos -->
-        <g font-family="Inter, sans-serif">
-          <!-- inicio -->
-          <circle cx="40" cy="70" r="7" fill="#74C49A"/>
-          <!-- hito hecho -->
-          <circle cx="250" cy="52" r="6" fill="#74C49A"/>
-          <!-- HOY -->
-          <circle cx="470" cy="71" r="13" fill="rgba(242,182,90,.18)"/>
-          <circle cx="470" cy="71" r="7" fill="#F2B65A"/>
-          <!-- simulacro -->
-          <circle cx="680" cy="50" r="6" fill="none" stroke="#6BC4D6" stroke-width="2.5"/>
-          <!-- recta final -->
-          <circle cx="870" cy="44" r="6" fill="none" stroke="#9aa9ff" stroke-width="2.5"/>
-          <!-- puerto -->
-          <circle cx="1040" cy="56" r="9" fill="none" stroke="#9aa9ff" stroke-width="3"/>
-          <circle cx="1040" cy="56" r="3" fill="#9aa9ff"/>
-        </g>
-      </svg>
-      <div class="route lbl">
-        <span><b>Hoy</b>Tema 14 · semana 4</span>
-        <span style="text-align:center"><b>1.er simulacro</b>3 mar</span>
-        <span style="text-align:center"><b>Recta final</b>15 dic</span>
-        <span style="text-align:right"><b>El Puerto</b>7 feb · examen</span>
-      </div>
-    </div>
   </div>
 </section>
 
