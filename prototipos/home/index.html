@@ -251,55 +251,57 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
 .carousel.paused .slide-art *{ animation-play-state:paused !important; }
 @media (max-width:760px){ .slide{ grid-template-columns:1fr; gap:22px; padding:24px; } .slide-art{ order:-1; height:250px; } .car-tab .cl{ font-size:13px; } }
 
-/* art · planificación */
-.art-plan{ width:78%; position:relative; }
-.art-plan .ap-row{ display:flex; align-items:center; gap:10px; margin:11px 0; }
-.art-plan .ap-lab{ width:40px; height:8px; border-radius:4px; background:var(--surface-2); flex:0 0 40px; }
-.art-plan .ap-bar{ height:16px; border-radius:6px; transform-origin:left center; }
-.ap-bar.b1{ width:58%; background:linear-gradient(90deg,#5bb88a,#74c49a); animation:apgrow 6s ease both; }
-.ap-bar.b2{ width:80%; background:linear-gradient(90deg,var(--light),var(--light-warm)); animation:apgrow 6s ease .25s both; }
-.ap-bar.b3{ width:46%; background:rgba(154,169,255,.55); animation:apshift 6s ease both; }
-.ap-bar.b4{ width:38%; background:var(--surface-2); border:1px dashed var(--hairline-2); animation:apgrow 6s ease .5s both; }
-@keyframes apgrow{ 0%{ transform:scaleX(0);} 14%{ transform:scaleX(1);} 88%{ transform:scaleX(1);} 100%{ transform:scaleX(0);} }
-@keyframes apshift{ 0%{ transform:scaleX(0);} 14%{ transform:scaleX(1) translateX(0);} 44%{ transform:scaleX(1) translateX(0);} 58%,88%{ transform:scaleX(1) translateX(26px);} 100%{ transform:scaleX(0) translateX(26px);} }
-.art-plan .ap-hoy{ position:absolute; left:36%; top:-6px; bottom:24px; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 10px var(--light-glow); }
-.art-plan .ap-hoy::before{ content:"Hoy"; position:absolute; top:-16px; left:-11px; font-size:9px; font-weight:700; color:#1a1206; background:var(--light); padding:2px 6px; border-radius:5px; }
-.art-plan .ap-tag{ position:absolute; right:0; bottom:-34px; font-size:11px; font-weight:600; color:var(--guide); background:var(--guide-soft); border:1px solid var(--hairline); padding:5px 11px; border-radius:999px; animation:appop 6s ease both; }
-@keyframes appop{ 0%,45%{ opacity:0; transform:translateY(6px);} 60%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
-
-/* art · temario */
-.art-tem{ width:82%; }
-.art-tem .at-text{ font-size:15.5px; line-height:1.75; color:var(--ink-soft); }
-.at-mark{ background:linear-gradient(transparent 58%, var(--light-glow) 0); background-size:0% 100%; background-repeat:no-repeat; padding:0 1px; border-radius:2px; animation:atmark 6s ease both; }
-@keyframes atmark{ 0%,12%{ background-size:0% 100%;} 30%,88%{ background-size:100% 100%;} 100%{ background-size:0% 100%;} }
-.at-src{ display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; color:var(--guide); background:var(--guide-soft); border-radius:7px; padding:4px 9px; margin-top:14px; animation:atpop 6s ease both; }
-@keyframes atpop{ 0%,30%{ opacity:0; transform:scale(.9);} 44%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
-.at-nodes{ display:flex; align-items:center; gap:9px; margin-top:20px; }
-.at-nodes i{ width:52px; height:32px; border-radius:8px; background:var(--surface-2); border:1px solid var(--hairline-2); position:relative; animation:atnode 6s ease both; }
-.at-nodes i:nth-child(2){ animation-delay:.18s; } .at-nodes i:nth-child(3){ animation-delay:.36s; }
-.at-nodes i:not(:last-child)::after{ content:"→"; position:absolute; right:-12px; top:50%; transform:translateY(-50%); color:var(--ink-faint); font-size:12px; }
-@keyframes atnode{ 0%,34%{ opacity:0; transform:translateY(6px);} 48%,88%{ opacity:1; transform:none;} 100%{ opacity:0;} }
-
-/* art · test */
-.art-test{ width:84%; }
-.aq-q{ font-size:14.5px; font-weight:600; color:var(--ink); margin-bottom:12px; }
-.aq-o{ font-size:13.5px; color:var(--ink-soft); padding:11px 13px; border-radius:10px; border:1px solid var(--hairline-2); background:var(--surface-2); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-.aq-ok{ animation:aqok 6s ease both; } .aq-ok svg{ margin-left:auto; color:var(--ok); animation:aqcheck 6s ease both; }
-@keyframes aqok{ 0%,30%{ border-color:var(--hairline-2); background:var(--surface-2); color:var(--ink-soft);} 42%,90%{ border-color:var(--ok); background:var(--ok-soft); color:var(--ink);} 100%{ border-color:var(--hairline-2); background:var(--surface-2); color:var(--ink-soft);} }
-@keyframes aqcheck{ 0%,38%{ opacity:0; transform:scale(.4);} 50%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
-.aq-fb{ font-size:12.5px; color:var(--guide); background:var(--guide-soft); border-radius:10px; overflow:hidden; animation:aqfb 6s ease both; }
-@keyframes aqfb{ 0%,52%{ opacity:0; max-height:0; padding:0 13px;} 64%,90%{ opacity:1; max-height:60px; padding:11px 13px;} 100%{ opacity:0; max-height:0; padding:0 13px;} }
-
-/* art · acompañamiento */
-.art-aco{ width:82%; position:relative; }
-.aa-moods{ display:flex; gap:14px; justify-content:center; margin-bottom:16px; }
-.aa-moods span{ font-size:25px; opacity:.45; }
-.aa-sel{ animation:aasel 6s ease both; }
-@keyframes aasel{ 0%,16%{ opacity:.45; transform:scale(1);} 30%,90%{ opacity:1; transform:scale(1.25);} 100%{ opacity:.45; transform:scale(1);} }
-.aa-bubble{ font-family:var(--serif); font-size:15px; line-height:1.5; color:var(--ink); background:var(--surface-2); border:1px solid var(--hairline); border-radius:16px; border-bottom-left-radius:5px; padding:14px 16px; animation:aabub 6s ease both; }
-@keyframes aabub{ 0%,30%{ opacity:0; transform:translateY(10px);} 46%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
-.aa-glow{ position:absolute; inset:-24px; border-radius:50%; background:radial-gradient(circle at 50% 65%, var(--light-glow), transparent 60%); pointer-events:none; z-index:0; animation:aaglow 6s ease both; }
-@keyframes aaglow{ 0%,42%{ opacity:0;} 62%{ opacity:.5;} 82%,100%{ opacity:0;} }
+/* arts · maquetas fieles */
+/* GANTT */
+.m-gantt{ display:grid; grid-template-columns:62px 1fr; column-gap:8px; width:92%; max-width:440px; }
+.m-gantt .mg-labels{ display:flex; flex-direction:column; }
+.m-gantt .mg-labels .h{ height:20px; } .m-gantt .mg-labels .l{ height:24px; display:flex; align-items:center; font-size:9.5px; color:var(--ink-soft); white-space:nowrap; }
+.m-gantt .mg-area{ position:relative; }
+.m-gantt .mg-months{ height:20px; display:grid; grid-template-columns:repeat(8,1fr); }
+.m-gantt .mg-months span{ font-size:8px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); border-left:1px solid var(--hairline); padding-left:3px; display:flex; align-items:center; }
+.m-gantt .mg-grid{ position:absolute; left:0; right:0; top:20px; bottom:0; background:repeating-linear-gradient(to right,var(--hairline) 0 1px,transparent 1px 12.5%); opacity:.5; }
+.m-gantt .mg-rows{ position:relative; height:144px; }
+.m-gantt .mg-bar{ position:absolute; height:13px; border-radius:5px; display:flex; align-items:center; padding:0 6px; font-size:8px; font-weight:700; overflow:hidden; white-space:nowrap; }
+.mg-bar.done{ background:rgba(116,196,154,.2); border:1px solid rgba(116,196,154,.4); color:#9fe0bd; }
+.mg-bar.curr{ background:linear-gradient(90deg,var(--light),var(--light-warm)); color:#1a1206; }
+.mg-bar.plan{ background:var(--surface-2); border:1px dashed var(--hairline-2); color:var(--ink-soft); }
+.mg-bar.final{ background:rgba(154,169,255,.25); border:1px solid rgba(154,169,255,.45); color:#cdd4ff; }
+.m-gantt .mg-rep{ position:absolute; height:6px; border-radius:3px; background:repeating-linear-gradient(90deg,var(--guide) 0 6px,transparent 6px 11px); opacity:.6; }
+.m-gantt .mg-dia{ position:absolute; width:10px; height:10px; transform:rotate(45deg); border-radius:2px; background:var(--guide); }
+.m-gantt .mg-now{ position:absolute; top:20px; bottom:0; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 8px var(--light-glow); z-index:2; }
+.m-gantt .mg-now::before{ content:"Hoy"; position:absolute; top:-1px; left:50%; transform:translateX(-50%); font-size:8px; font-weight:700; color:#1a1206; background:var(--light); padding:1px 5px; border-radius:4px; }
+/* TEMARIO + BOE */
+.m-tem{ display:grid; grid-template-columns:auto auto 1fr; align-items:center; gap:9px; width:96%; max-width:450px; }
+.m-boe .doc{ width:84px; border:1px solid var(--hairline-2); border-radius:9px; background:var(--surface-2); padding:9px; }
+.m-boe .seal{ display:inline-block; font-size:8px; font-weight:800; letter-spacing:.06em; color:#c0506a; background:rgba(192,80,106,.12); border:1px solid rgba(192,80,106,.3); border-radius:4px; padding:1px 5px; }
+.m-boe .dl{ height:4px; border-radius:2px; background:var(--hairline-2); margin-top:6px; } .m-boe .dl.s{ width:65%; }
+.m-boe .cap{ font-size:8.5px; text-align:center; color:var(--ink-faint); margin-top:7px; }
+.m-arrow{ color:var(--ink-faint); display:flex; align-items:center; }
+.m-blocks{ display:flex; flex-direction:column; gap:7px; min-width:0; }
+.m-block{ border:1px solid var(--hairline); border-radius:9px; background:var(--surface-2); padding:7px 9px; }
+.m-block .bt{ font-size:9.5px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.m-block .temas{ display:flex; gap:3px; margin-top:5px; }
+.m-block .t{ width:15px; height:15px; border-radius:4px; background:var(--deep-3); font-size:7px; font-weight:700; display:grid; place-items:center; color:var(--ink-soft); }
+html[data-theme="light"] .m-block .t{ background:#eef1f6; }
+.m-block .t.dom{ background:rgba(116,196,154,.25); color:var(--ok); } .m-block .t.cur{ background:linear-gradient(180deg,var(--light),var(--light-warm)); color:#1a1206; }
+/* TEST */
+.m-test{ width:90%; max-width:400px; }
+.m-test .mt-q{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:10px; line-height:1.35; }
+.m-test .mt-o{ font-size:12px; color:var(--ink-soft); padding:9px 11px; border-radius:9px; border:1px solid var(--hairline-2); background:var(--surface-2); margin-bottom:7px; display:flex; align-items:center; gap:8px; }
+.m-test .mt-o .kk{ width:18px; height:18px; border-radius:5px; background:var(--deep-3); font-size:9px; font-weight:700; display:grid; place-items:center; color:var(--ink-faint); flex:0 0 18px; }
+html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
+.m-test .mt-o.ok{ border-color:var(--ok); background:var(--ok-soft); color:var(--ink); }
+.m-test .mt-o.ok .kk{ background:var(--ok); color:#0b1322; } .m-test .mt-o.ok .ck{ margin-left:auto; color:var(--ok); }
+.m-test .mt-fb{ font-size:11px; color:var(--guide); background:var(--guide-soft); border-radius:9px; padding:9px 11px; margin-top:4px; line-height:1.4; }
+.m-test .mt-fb b{ color:var(--ink); }
+/* ACOMPAÑAMIENTO */
+.m-aco{ width:92%; max-width:410px; display:flex; flex-direction:column; gap:9px; }
+.m-aco .who{ display:flex; align-items:center; gap:7px; font-size:10px; color:var(--ink-faint); font-weight:600; text-transform:uppercase; letter-spacing:.05em; }
+.m-aco .who b{ color:var(--light); }
+.aco-b{ font-family:var(--serif); font-size:13px; line-height:1.45; color:var(--ink); background:var(--surface-2); border:1px solid var(--hairline); border-radius:14px; border-bottom-left-radius:4px; padding:11px 13px; }
+.aco-b .tag{ display:block; font-family:var(--sans); font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
+.aco-b.hard .tag{ color:var(--care); } .aco-b.motiv .tag{ color:var(--ok); }
+.aco-b .hl{ color:var(--light); }
 
 .reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
@@ -422,13 +424,21 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
             <p>Tu Travesía se calcula con tu temario, tu fecha y tus horas reales. ¿Una semana floja? Se reorganiza sola, sin tareas en rojo ni culpa.</p>
             <a class="lnk" href="../plan-de-acompanamiento/index.html">Ver el plan en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="art-plan">
-            <div class="ap-hoy"></div>
-            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b1"></span></div>
-            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b2"></span></div>
-            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b3"></span></div>
-            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b4"></span></div>
-            <span class="ap-tag">↻ Recolocado · vas a tiempo</span>
+          <div class="slide-art"><div class="m-gantt">
+            <div class="mg-labels"><div class="h"></div><div class="l">Bloque I</div><div class="l">Bloque II</div><div class="l">Bloque III</div><div class="l">Repaso</div><div class="l">Simulacros</div><div class="l">Recta final</div></div>
+            <div class="mg-area">
+              <div class="mg-months"><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span></div>
+              <div class="mg-grid"></div>
+              <div class="mg-rows">
+                <div class="mg-bar done" style="top:5px;left:0;width:24%">Dominado</div>
+                <div class="mg-bar curr" style="top:29px;left:12%;width:34%">En curso</div>
+                <div class="mg-bar plan" style="top:53px;left:44%;width:30%">Planificado</div>
+                <div class="mg-rep" style="top:81px;left:8%;width:84%"></div>
+                <div class="mg-dia" style="top:99px;left:30%"></div><div class="mg-dia" style="top:99px;left:56%"></div><div class="mg-dia" style="top:99px;left:80%"></div>
+                <div class="mg-bar final" style="top:125px;left:78%;width:20%">Recta f.</div>
+                <div class="mg-now" style="left:14%"></div>
+              </div>
+            </div>
           </div></div>
         </div>
         <!-- 1 · Temario -->
@@ -439,10 +449,14 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
             <p>Cada artículo con su texto legal y su explicación en cristiano. Subraya, anota y mira el tema entero en modo esquema. Trazable a la fuente.</p>
             <a class="lnk" href="../temario/indice.html">Ver el temario en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="art-tem">
-            <div class="at-text">Las Cortes Generales representan al <span class="at-mark">pueblo español</span> y ejercen la potestad legislativa del Estado.</div>
-            <span class="at-src"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 66 CE</span>
-            <div class="at-nodes"><i></i><i></i><i></i></div>
+          <div class="slide-art"><div class="m-tem">
+            <div class="m-boe"><div class="doc"><span class="seal">BOE</span><div class="dl"></div><div class="dl s"></div><div class="dl"></div><div class="dl s"></div></div><div class="cap">Tu convocatoria</div></div>
+            <div class="m-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="m-blocks">
+              <div class="m-block"><div class="bt">Bloque I · La Constitución</div><div class="temas"><span class="t dom">1</span><span class="t dom">2</span><span class="t dom">3</span><span class="t cur">14</span><span class="t">15</span></div></div>
+              <div class="m-block"><div class="bt">Bloque II · Administración</div><div class="temas"><span class="t">15</span><span class="t">16</span><span class="t">17</span><span class="t">18</span></div></div>
+              <div class="m-block"><div class="bt">Bloque III · Unión Europea</div><div class="temas"><span class="t">23</span><span class="t">24</span><span class="t">25</span></div></div>
+            </div>
           </div></div>
         </div>
         <!-- 2 · Test -->
@@ -453,12 +467,12 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
             <p>Cada pregunta con el porqué de la respuesta y enlace a la fuente. Faro te dice no solo la nota, sino dónde fallas y por qué.</p>
             <a class="lnk" href="../entrenar/index.html">Entrenar en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="art-test">
-            <div class="aq-q">¿Quién puede levantar el veto del Senado?</div>
-            <div class="aq-o">El Senado, es definitivo</div>
-            <div class="aq-o aq-ok">El Congreso<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <div class="aq-o">El Tribunal Constitucional</div>
-            <div class="aq-fb">El porqué · por mayoría absoluta, o simple a los 2 meses (art. 90 CE).</div>
+          <div class="slide-art"><div class="m-test">
+            <div class="mt-q">¿Quién puede levantar el veto del Senado?</div>
+            <div class="mt-o"><span class="kk">A</span>El Senado, es definitivo</div>
+            <div class="mt-o ok"><span class="kk">B</span>El Congreso<svg class="ck" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="mt-o"><span class="kk">C</span>El Tribunal Constitucional</div>
+            <div class="mt-fb"><b>El porqué:</b> por mayoría absoluta, o simple a los 2 meses (art. 90 CE).</div>
           </div></div>
         </div>
         <!-- 3 · Acompañamiento -->
@@ -469,10 +483,10 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
             <p>Faro lee tu estado con cada check-in y responde como un preparador con formación en psicología: te empuja, te frena o te sostiene. Sin culpa.</p>
             <a class="lnk" href="../perfil/index.html">Cómo te cuida <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="art-aco">
-            <div class="aa-glow"></div>
-            <div class="aa-moods"><span>😔</span><span class="aa-sel">🙂</span><span>😊</span></div>
-            <div class="aa-bubble">«Estos días no pudiste, y no pasa nada. Lo he recolocado. Seguimos, a tu ritmo.»</div>
+          <div class="slide-art"><div class="m-aco">
+            <div class="who"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/></svg>Faro · <b>tu preparador</b></div>
+            <div class="aco-b hard"><span class="tag">🫶 Para un día duro</span>«Estos días no pudiste, y no pasa nada. Lo he recolocado. Seguimos, a tu ritmo.»</div>
+            <div class="aco-b motiv"><span class="tag">✨ Para seguir</span>«Hace 3 meses no controlabas esto. <span class="hl">Hoy dominas 14 temas.</span> Eso lo has construido tú.»</div>
           </div></div>
         </div>
       </div>
