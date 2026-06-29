@@ -104,10 +104,14 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .avail .corner{ }
 .avail .dh{ font-size:11px; color:var(--ink-faint); text-align:center; font-weight:600; }
 .avail .rl{ font-size:12px; color:var(--ink-soft); display:flex; align-items:center; }
-.avail .cell{ aspect-ratio:1; border-radius:9px; border:1px solid var(--hairline); background:var(--surface-2); cursor:pointer; transition:.15s; }
+.avail .cell{ aspect-ratio:1; border-radius:9px; border:1px solid var(--hairline); background:var(--surface-2); cursor:pointer; transition:.15s;
+  display:grid; place-items:center; font-size:13px; font-weight:700; color:var(--ink-faint); user-select:none; font-variant-numeric:tabular-nums; }
 .avail .cell:hover{ border-color:var(--light); }
-.avail .cell.on{ background:linear-gradient(180deg,var(--light),var(--light-warm)); border-color:transparent; box-shadow:0 4px 12px -4px var(--light-glow); }
-.avail-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; flex-wrap:wrap; gap:10px; }
+.avail .cell.has{ border-color:transparent; }
+.availbar{ height:8px; border-radius:999px; background:var(--surface-2); border:1px solid var(--hairline); overflow:hidden; margin-top:16px; }
+.availbar > i{ display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--light),var(--light-warm)); transition:width .3s ease; }
+.availbar.full > i{ background:linear-gradient(90deg,var(--care),#f0c98a); }
+.avail-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:14px; flex-wrap:wrap; gap:10px; }
 .avail-foot .tot{ font-size:14px; color:var(--ink-soft); } .avail-foot .tot b{ font-family:var(--serif); font-size:20px; color:var(--ink); }
 .avail-foot .note{ font-size:12.5px; color:var(--ink-faint); }
 
@@ -251,19 +255,11 @@ html[data-theme="light"] .toast{ background:#fff; }
   <div class="wrap">
     <div class="card reveal">
       <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Tu tiempo real</h3><span class="editable-note">toca para editar</span></div>
-      <p class="desc">Cuándo puedes estudiar de verdad, no en un mundo ideal. El plan se construye sobre esto. Toca las franjas para ajustarlas.</p>
-      <div class="avail" id="avail">
-        <div class="corner"></div>
-        <div class="dh">L</div><div class="dh">M</div><div class="dh">X</div><div class="dh">J</div><div class="dh">V</div><div class="dh">S</div><div class="dh">D</div>
-        <div class="rl">Mañana</div>
-        <div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell on" data-h="2.5"></div><div class="cell on" data-h="2.5"></div>
-        <div class="rl">Tarde</div>
-        <div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell on" data-h="2.5"></div><div class="cell" data-h="2.5"></div>
-        <div class="rl">Noche</div>
-        <div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div>
-      </div>
+      <p class="desc">Cuándo puedes estudiar de verdad, no en un mundo ideal, y <strong>cuántas horas</strong> en cada franja. El plan se construye sobre esto. Toca una casilla para sumar ½ h (vuelve a 0 al pasar de 4 h).</p>
+      <div class="avail" id="avail"></div>
+      <div class="availbar" id="availBar"><i id="availFill"></i></div>
       <div class="avail-foot">
-        <div class="tot"><b id="htot">15,5</b> h disponibles a la semana</div>
+        <div class="tot"><b id="htot">15,5</b> de <b>40</b> h semanales (máximo realista)</div>
         <div class="note">Tus noches entre semana son tu motor. Lo tengo en cuenta.</div>
       </div>
     </div>
@@ -378,18 +374,34 @@ html[data-theme="light"] .toast{ background:#fff; }
     say('En la app abriría el ajuste. Si cambias la fecha o tus horas, recalculo tu Travesía al instante.');
   }); });
 
-  /* disponibilidad semanal */
-  var avail=document.getElementById('avail'), htot=document.getElementById('htot');
-  function recalc(){
-    var tot=0; avail.querySelectorAll('.cell.on').forEach(function(c){ tot+=parseFloat(c.getAttribute('data-h'))||0; });
-    htot.textContent=tot.toFixed(1).replace('.',',');
+  /* disponibilidad semanal · horas por casilla, tope 40 h */
+  var DAYS=['L','M','X','J','V','S','D'], SLOTS=['Mañana','Tarde','Noche'];
+  var MAXCELL=4, STEP=0.5, MAXWEEK=40;
+  var hours=[ [0,0,0,0,0,2.5,2.5], [0,0,0,0,0,2.5,0], [2,2,2,2,0,0,0] ];
+  var avail=document.getElementById('avail'), htot=document.getElementById('htot'),
+      availFill=document.getElementById('availFill'), availBar=document.getElementById('availBar');
+  function fmt(v){ return (v%1) ? v.toFixed(1).replace('.',',') : String(v); }
+  function total(){ var t=0; hours.forEach(function(r){ r.forEach(function(v){ t+=v; }); }); return t; }
+  function paint(c,v){ if(v>0){ var f=0.20+0.80*(v/MAXCELL); c.style.background='rgba(242,182,90,'+f.toFixed(2)+')'; c.style.color=(f>0.5?'#1a1206':'var(--ink)'); }
+    else { c.style.background=''; c.style.color='var(--ink-faint)'; } }
+  function updTotal(){ var t=total(); htot.textContent=fmt(t); availFill.style.width=Math.min(100,t/MAXWEEK*100)+'%'; availBar.classList.toggle('full', t>=MAXWEEK); }
+  function renderAvail(){
+    var h='<div class="corner"></div>'+DAYS.map(function(d){ return '<div class="dh">'+d+'</div>'; }).join('');
+    SLOTS.forEach(function(sl,si){ h+='<div class="rl">'+sl+'</div>';
+      for(var di=0; di<7; di++){ var v=hours[si][di]; h+='<div class="cell'+(v>0?' has':'')+'" data-s="'+si+'" data-d="'+di+'">'+(v>0?fmt(v):'·')+'</div>'; } });
+    avail.innerHTML=h;
+    avail.querySelectorAll('.cell').forEach(function(c){ paint(c, hours[+c.getAttribute('data-s')][+c.getAttribute('data-d')]); });
+    updTotal();
   }
   var availT;
   avail.addEventListener('click',function(e){ var c=e.target.closest('.cell'); if(!c) return;
-    c.classList.toggle('on'); recalc();
-    clearTimeout(availT); availT=setTimeout(function(){ say('He recalculado tu Travesía con tus '+htot.textContent+' h semanales. Ajusto sin romper nada.'); },600);
+    var si=+c.getAttribute('data-s'), di=+c.getAttribute('data-d'), v=hours[si][di];
+    var nv = v>=MAXCELL ? 0 : v+STEP, delta=nv-v;
+    if(delta>0 && total()+delta>MAXWEEK){ say('Tu semana ya suma '+fmt(total())+' h, el máximo realista (40). Quita de otra franja para mover horas.'); return; }
+    hours[si][di]=nv; c.textContent=(nv>0?fmt(nv):'·'); c.classList.toggle('has',nv>0); paint(c,nv); updTotal();
+    clearTimeout(availT); availT=setTimeout(function(){ say('He recalculado tu Travesía con tus '+htot.textContent+' h semanales. Ajusto sin romper nada.'); },700);
   });
-  recalc();
+  renderAvail();
 
   /* tu temario editable */
   var TT=[
