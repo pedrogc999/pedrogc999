@@ -270,6 +270,45 @@ html[data-theme="light"] .toast{ background:#fff; }
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
 .reveal.in{ opacity:1; transform:none; }
 
+/* ---------- vista del tema: Explicación / Esquema ---------- */
+.view-seg{ display:inline-flex; background:var(--surface-2); border:1px solid var(--hairline-2); border-radius:11px; padding:3px; margin-top:22px; }
+.view-seg button{ display:inline-flex; align-items:center; gap:7px; font:600 13.5px var(--sans); color:var(--ink-soft); background:none; border:none; padding:8px 15px; border-radius:8px; cursor:pointer; transition:.18s; }
+.view-seg button.on{ background:var(--deep-2); color:var(--ink); box-shadow:var(--shadow-soft); }
+html[data-theme="light"] .view-seg button.on{ background:#fff; }
+.view-esquema{ display:none; }
+.tema-view.mode-esquema .view-explic{ display:none; }
+.tema-view.mode-esquema .view-esquema{ display:block; animation:fadeUp .4s ease; }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:none;} }
+
+/* explicación de epígrafe */
+.ep-expl{ font-size:calc(var(--read-size) + .5px); line-height:var(--read-leading); color:var(--ink); margin:14px 0 6px; }
+
+/* artículo (explicación a nivel de artículo) */
+.articulo{ border:1px solid var(--hairline); border-radius:var(--r); background:var(--surface-2); padding:18px 20px; margin:20px 0; }
+.art-h{ display:flex; align-items:center; gap:10px; margin-bottom:13px; flex-wrap:wrap; }
+.art-ref{ display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:700; color:var(--guide); background:var(--guide-soft); border:1px solid transparent; border-radius:8px; padding:4px 10px; cursor:pointer; transition:.15s; }
+.art-ref:hover{ border-color:var(--guide); } .art-ref svg{ width:12px; height:12px; }
+.art-title{ font-weight:600; font-size:14.5px; color:var(--ink); }
+.art-dom{ margin-left:auto; font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:999px; letter-spacing:.02em; }
+.art-dom.ok{ color:var(--ok); background:rgba(116,196,154,.14); } .art-dom.mid{ color:var(--care); background:rgba(231,178,107,.15); } .art-dom.low{ color:var(--ink-soft); background:var(--surface); border:1px solid var(--hairline); }
+.art-legal{ font-size:14px; line-height:1.62; color:var(--ink-soft); font-style:italic; border-left:2px solid var(--guide); padding:2px 0 2px 14px; margin:0 0 13px; }
+.art-legal .lg-tag{ display:block; font-style:normal; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:5px; font-weight:700; }
+.art-expl .ax-tag{ display:inline-block; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--light); font-weight:700; }
+.art-expl p{ margin:5px 0 0; }
+
+/* modo esquema del tema */
+.sch-tema{ font-family:var(--serif); font-weight:600; font-size:23px; margin:0 0 20px; display:flex; align-items:center; gap:11px; letter-spacing:-.01em; }
+.sch-tema .st-ic{ color:var(--guide); display:inline-flex; }
+.sch-ep{ margin-bottom:14px; padding:16px 18px; border:1px solid var(--hairline); border-radius:var(--r); background:linear-gradient(180deg,var(--surface),var(--surface-2)); }
+.sch-ep .se-h{ display:flex; align-items:center; gap:12px; font-family:var(--serif); font-weight:600; font-size:17px; }
+.sch-ep .se-num{ width:32px; height:32px; flex:0 0 32px; border-radius:9px; display:grid; place-items:center; font:700 12px var(--sans); background:rgba(242,182,90,.14); color:var(--light); border:1px solid rgba(242,182,90,.28); }
+.sch-art{ display:flex; gap:11px; align-items:flex-start; padding:12px 0 0 44px; font-size:14.5px; }
+.sch-art .sa-ref{ flex:0 0 auto; font-size:12px; font-weight:700; color:var(--guide); background:var(--guide-soft); border-radius:7px; padding:3px 9px; margin-top:1px; cursor:pointer; transition:.15s; }
+.sch-art .sa-ref:hover{ filter:brightness(1.12); }
+.sch-art .sa-idea{ color:var(--ink-soft); line-height:1.5; } .sch-art .sa-idea b{ color:var(--ink); font-weight:600; }
+.view-esquema .esquema{ margin-top:8px; }
+.esquema-cta{ margin-top:22px; }
+
 /* ---------- modo cálido (descanso visual) ---------- */
 html[data-theme="dark"].read-warm{
   --deep:#12120D; --deep-2:#1B1A13; --deep-3:#24221A;
@@ -484,36 +523,65 @@ html[data-theme="light"] .ask{ background:#fff; }
         <div class="row"><b>Tu dominio en este tema</b><span>58% · te resiste el proceso legislativo</span></div>
         <div class="dombar"><i style="width:58%"></i></div>
       </div>
+      <div class="view-seg" id="viewSeg">
+        <button data-view="explic" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h11M4 18h16"/></svg>Explicación</button>
+        <button data-view="esquema"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="14" width="7" height="6" rx="1.5"/><rect x="13" y="14" width="7" height="6" rx="1.5"/></svg>Esquema del tema</button>
+      </div>
     </div>
 
-    <article class="prose" id="reading">
-      <p class="lead">Las Cortes Generales <mark class="hl">representan al pueblo español</mark> y son el órgano que encarna la potestad legislativa del Estado. Entender su composición, sus funciones y, sobre todo, cómo se hace una ley, es la columna vertebral de este bloque.</p>
+    <div class="tema-view" id="temaView">
+    <!-- ===== MODO EXPLICACIÓN (epígrafe → artículos) ===== -->
+    <article class="prose view-explic" id="reading">
+      <p class="lead">Las Cortes Generales <mark class="hl">representan al pueblo español</mark> y encarnan la potestad legislativa del Estado. Lo verás por epígrafes y, dentro de cada uno, <strong>artículo a artículo</strong>: el texto legal y, debajo, mi explicación.</p>
 
       <h2 id="ep1"><span class="ep">14.1</span> Composición y bicameralismo</h2>
-      <p>Las Cortes Generales están formadas por dos cámaras: el <strong>Congreso de los Diputados</strong> y el <strong>Senado</strong> <span class="src" data-art="art. 66 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 66 CE</span>. Son <strong>inviolables</strong> y representan al pueblo español, en quien reside la soberanía nacional.</p>
+      <p class="ep-expl">Las Cortes son un órgano <strong>bicameral</strong>: dos cámaras que comparten la representación del pueblo, pero con distinto peso. Este epígrafe fija qué son y cómo se relacionan.</p>
+
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 66 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 66 CE</span><span class="art-title">Composición e inviolabilidad</span><span class="art-dom mid">A repasar</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«Las Cortes Generales representan al pueblo español y están formadas por el Congreso de los Diputados y el Senado. (…) Las Cortes Generales son inviolables.»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p>En cristiano: <mark class="hl">Cortes = Congreso + Senado</mark>. «Inviolables» significa que no se les puede coaccionar ni entrar por la fuerza: es una garantía de su independencia frente a los otros poderes.</p></div>
+      </div>
 
       <div class="callout cae">
         <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></div>
-        <div><div class="k">Lo que más cae</div><div class="b">El bicameralismo español es <strong>imperfecto</strong>: las dos cámaras no tienen el mismo poder. El <strong>Congreso prevalece</strong> sobre el Senado en la función legislativa y en el control del Gobierno.</div></div>
+        <div><div class="k">Lo que más cae</div><div class="b">El bicameralismo es <strong>imperfecto</strong>: las cámaras no pesan igual. El <strong>Congreso prevalece</strong> en la función legislativa y en el control del Gobierno.</div></div>
       </div>
 
       <h2 id="ep2"><span class="ep">14.2</span> El Congreso de los Diputados</h2>
-      <p>Se compone de un mínimo de 300 y un máximo de 400 diputados —actualmente <strong>350</strong>— elegidos por <mark class="hl">sufragio universal, libre, igual, directo y secreto</mark> <span class="src" data-art="art. 68 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 68 CE</span>. La circunscripción electoral es la <strong>provincia</strong>, y el reparto de escaños sigue un criterio de representación proporcional (regla D'Hondt).</p>
+      <p class="ep-expl">La cámara baja y de mayor peso político: de ella sale la investidura y ante ella responde el Gobierno. Su composición la fija el artículo 68.</p>
+
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 68 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 68 CE</span><span class="art-title">Composición y elección</span><span class="art-dom ok">Dominado</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«El Congreso se compone de un mínimo de 300 y un máximo de 400 Diputados, elegidos por sufragio universal, libre, igual, directo y secreto (…). La circunscripción electoral es la provincia.»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p>Hoy son <strong>350</strong>. Se eligen por <mark class="hl">sufragio universal, libre, igual, directo y secreto</mark>, por <strong>provincia</strong>, con reparto proporcional (regla <strong>D'Hondt</strong>) y mandato de <strong>4 años</strong> —salvo disolución anticipada del Congreso—.</p></div>
+      </div>
 
       <div class="callout concept">
         <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.7V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 2z"/><path d="M9 21h6"/></svg></div>
-        <div><div class="k">Concepto clave</div><div class="b"><strong>Mandato de 4 años.</strong> Los diputados se eligen por cuatro años, pero el mandato termina antes si se disuelve la cámara. El Congreso puede ser disuelto por el Presidente del Gobierno.</div></div>
+        <div><div class="k">Concepto clave</div><div class="b"><strong>Mandato de 4 años.</strong> Termina antes si se disuelve la cámara. La disolución la decide el Presidente del Gobierno.</div></div>
       </div>
 
       <h2 id="ep3"><span class="ep">14.3</span> El Senado</h2>
-      <p>El Senado es la <strong>cámara de representación territorial</strong> <span class="src" data-art="art. 69 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 69 CE</span>. Combina senadores elegidos directamente por circunscripción provincial con senadores designados por las comunidades autónomas, lo que refleja su vocación territorial.</p>
+      <p class="ep-expl">La cámara alta: representa al territorio. Tiene un papel más revisor que decisorio en el día a día legislativo.</p>
+
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 69 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 69 CE</span><span class="art-title">Cámara de representación territorial</span><span class="art-dom mid">A repasar</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«El Senado es la Cámara de representación territorial. En cada provincia se elegirán cuatro Senadores (…); las Comunidades Autónomas designarán además un Senador (…).»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p>Mezcla senadores <strong>elegidos</strong> por provincia y senadores <strong>designados</strong> por las CCAA: por eso es la cámara <mark class="hl">de representación territorial</mark>.</p></div>
+      </div>
 
       <h2 id="ep4"><span class="ep">14.4</span> Funciones de las Cortes</h2>
-      <p>Las Cortes Generales ejercen tres grandes funciones <span class="src" data-art="art. 66.2 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 66.2 CE</span>:</p>
-      <p><strong>1. Potestad legislativa</strong> — aprueban las leyes del Estado. <strong>2. Potestad presupuestaria</strong> — examinan y aprueban los Presupuestos Generales del Estado. <strong>3. Control del Gobierno</strong> — fiscalizan la acción del ejecutivo (preguntas, interpelaciones, moción de censura, cuestión de confianza).</p>
+      <p class="ep-expl">Qué hacen las Cortes, en tres bloques. El artículo 66.2 los resume.</p>
+
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 66.2 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 66.2 CE</span><span class="art-title">Las tres funciones</span><span class="art-dom ok">Dominado</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«Las Cortes Generales ejercen la potestad legislativa del Estado, aprueban sus Presupuestos y controlan la acción del Gobierno (…).»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p><strong>1. Legislativa</strong> — aprueban las leyes. <strong>2. Presupuestaria</strong> — aprueban los Presupuestos Generales. <strong>3. Control del Gobierno</strong> — preguntas, interpelaciones, moción de censura y cuestión de confianza.</p></div>
+      </div>
 
       <h2 id="ep5"><span class="ep">14.5</span> El proceso legislativo</h2>
-      <p>Aquí está el corazón del tema —y lo que más se te resiste—. Una ley ordinaria recorre este camino:</p>
+      <p class="ep-expl">El corazón del tema —y lo que más se te resiste—. Dos artículos lo gobiernan: cómo se aprueba (art. 90) y cómo se sanciona (art. 91). Antes, el mapa de todo el recorrido:</p>
 
       <div class="esquema reveal">
         <div class="es-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>Esquema · cómo nace una ley</div>
@@ -528,7 +596,17 @@ html[data-theme="light"] .ask{ background:#fff; }
         </div>
       </div>
 
-      <p>El paso clave —y la trampa habitual del examen— está en el Senado: si veta el texto (por mayoría absoluta), <mark class="hl">el Congreso puede levantar el veto</mark> ratificando el proyecto por mayoría absoluta, o por mayoría simple transcurridos dos meses <span class="src" data-art="art. 90 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 90 CE</span>. Por eso decimos que el Congreso prevalece. Después, el Rey sanciona la ley en quince días, la promulga y ordena su publicación <span class="src" data-art="art. 91 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 91 CE</span>.</p>
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 90 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 90 CE</span><span class="art-title">Veto del Senado y prevalencia del Congreso</span><span class="art-dom low">Te resiste</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«(…) El Congreso podrá ratificar por mayoría absoluta el texto vetado por el Senado, o por mayoría simple una vez transcurridos dos meses desde la interposición del veto (…).»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p>La trampa del examen: si el Senado veta, <mark class="hl">el Congreso puede levantar el veto</mark> por mayoría absoluta —o simple a los dos meses—. Por eso el Congreso prevalece.</p></div>
+      </div>
+
+      <div class="articulo">
+        <div class="art-h"><span class="art-ref" data-art="art. 91 CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>Art. 91 CE</span><span class="art-title">Sanción, promulgación y publicación</span><span class="art-dom mid">A repasar</span></div>
+        <div class="art-legal"><span class="lg-tag">Texto legal · fuente</span>«El Rey sancionará en el plazo de quince días las leyes aprobadas por las Cortes Generales, y las promulgará y ordenará su inmediata publicación.»</div>
+        <div class="art-expl"><span class="ax-tag">Explicación de Faro</span><p>Es un <strong>acto debido</strong>: el Rey no puede negarse. Sanciona, promulga y ordena publicar en el <strong>BOE</strong>; la ley entra en vigor según su disposición final.</p></div>
+      </div>
 
       <!-- recuerdo activo -->
       <div class="recall" id="recall">
@@ -564,6 +642,51 @@ html[data-theme="light"] .ask{ background:#fff; }
         <a href="#" class="next"><div class="nl">Siguiente →</div><div class="nt">Tema 15 · El Poder Judicial</div></a>
       </nav>
     </article>
+
+    <!-- ===== MODO ESQUEMA DEL TEMA ===== -->
+    <div class="view-esquema">
+      <div class="sch-tema"><span class="st-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="14" width="7" height="6" rx="1.5"/><rect x="13" y="14" width="7" height="6" rx="1.5"/></svg></span>Tema 14, de un vistazo</div>
+
+      <div class="sch-ep">
+        <div class="se-h"><span class="se-num">14.1</span>Composición y bicameralismo</div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 66 CE">art. 66</span><span class="sa-idea"><b>Cortes = Congreso + Senado</b> · inviolables · bicameralismo <b>imperfecto</b> (el Congreso prevalece)</span></div>
+      </div>
+      <div class="sch-ep">
+        <div class="se-h"><span class="se-num">14.2</span>El Congreso de los Diputados</div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 68 CE">art. 68</span><span class="sa-idea"><b>350</b> diputados · <b>provincia</b> · D'Hondt · sufragio universal · mandato <b>4 años</b></span></div>
+      </div>
+      <div class="sch-ep">
+        <div class="se-h"><span class="se-num">14.3</span>El Senado</div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 69 CE">art. 69</span><span class="sa-idea">cámara de <b>representación territorial</b> · electos por provincia + designados por CCAA</span></div>
+      </div>
+      <div class="sch-ep">
+        <div class="se-h"><span class="se-num">14.4</span>Funciones de las Cortes</div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 66.2 CE">art. 66.2</span><span class="sa-idea"><b>legislativa</b> · <b>presupuestaria</b> · <b>control</b> del Gobierno</span></div>
+      </div>
+      <div class="sch-ep">
+        <div class="se-h"><span class="se-num">14.5</span>El proceso legislativo</div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 90 CE">art. 90</span><span class="sa-idea">el Congreso <b>levanta el veto</b> del Senado (may. absoluta, o simple a los 2 meses)</span></div>
+        <div class="sch-art"><span class="sa-ref" data-art="art. 91 CE">art. 91</span><span class="sa-idea">el Rey <b>sanciona</b>, promulga y publica en el <b>BOE</b> (acto debido)</span></div>
+      </div>
+
+      <div class="esquema">
+        <div class="es-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>Cómo nace una ley</div>
+        <div class="flow">
+          <div class="fnode"><div class="fn-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><div class="fn-t">Iniciativa</div><div class="fn-d">Gobierno, Congreso, Senado o popular</div></div>
+          <div class="farrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="fnode key"><div class="fn-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></div><div class="fn-t">Congreso</div><div class="fn-d">Debate y aprobación</div></div>
+          <div class="farrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="fnode"><div class="fn-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></div><div class="fn-t">Senado</div><div class="fn-d">Veto o enmiendas (2 meses)</div></div>
+          <div class="farrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="fnode"><div class="fn-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><div class="fn-t">Sanción y BOE</div><div class="fn-d">El Rey sanciona y se publica</div></div>
+        </div>
+      </div>
+
+      <div class="esquema-cta">
+        <button class="btn-light" id="practiceBtn2" style="width:auto;padding:13px 22px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 3v18M18 3v18M3 8h6M15 8h6M3 16h6M15 16h6"/></svg>Practicar el Tema 14</button>
+      </div>
+    </div>
+    </div><!-- /.tema-view -->
   </main>
 
   <!-- ============ RAIL (derecha) ============ -->
@@ -703,6 +826,7 @@ html[data-theme="light"] .ask{ background:#fff; }
   /* barra de progreso de lectura */
   var readbar=document.getElementById('readbar'), reading=document.getElementById('reading');
   function onScroll(){
+    if(!reading.offsetParent){ readbar.style.width='0'; return; }
     var rect=reading.getBoundingClientRect(), vh=window.innerHeight;
     var total=rect.height - vh + 120, passed=Math.min(Math.max(-rect.top + 120,0), Math.max(total,1));
     readbar.style.width=(passed/Math.max(total,1)*100)+'%';
@@ -809,11 +933,22 @@ html[data-theme="light"] .ask{ background:#fff; }
   document.getElementById('reportBtn').addEventListener('click',function(){ say('Gracias por avisar. Lo reviso y, si toca, lo corrijo. Tu progreso está a salvo.'); });
   document.getElementById('practiceBtn').addEventListener('click',function(){ say('Vamos a practicar el Tema 14 con preguntas reales y feedback del porqué.'); });
 
-  /* enlaces a la fuente */
-  document.querySelectorAll('.src, .srcs li').forEach(function(el){ el.addEventListener('click',function(){
+  /* enlaces a la fuente (artículos, esquema, chips) */
+  document.querySelectorAll('.src, .srcs li, .art-ref, .sa-ref').forEach(function(el){ el.addEventListener('click',function(){
     var art=el.getAttribute('data-art') || (el.textContent||'').trim().split('·')[0].trim();
     say('Fuente: '+art+'. En la app, abre el texto legal exacto del que nace esta explicación.');
   }); });
+
+  /* conmutador Explicación / Esquema del tema */
+  var temaView=document.getElementById('temaView'), viewSeg=document.getElementById('viewSeg');
+  if(viewSeg){ viewSeg.addEventListener('click',function(e){ var btn=e.target.closest('button'); if(!btn) return;
+    var v=btn.getAttribute('data-view');
+    viewSeg.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x===btn); });
+    temaView.classList.toggle('mode-esquema', v==='esquema');
+    var top=temaView.getBoundingClientRect().top + window.pageYOffset - 84;
+    window.scrollTo({ top:Math.max(0,top), behavior:'smooth' });
+  }); }
+  var pb2=document.getElementById('practiceBtn2'); if(pb2) pb2.addEventListener('click',function(){ say('Vamos a practicar el Tema 14 con preguntas reales y feedback del porqué.'); });
 
   /* notas/subrayados (múltiples, editables, con borrar) */
   var notesList=document.getElementById('notesList'), notesEmpty=document.getElementById('notesEmpty'), noteSeq=0;

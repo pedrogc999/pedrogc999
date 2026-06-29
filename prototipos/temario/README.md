@@ -14,9 +14,11 @@ Tres columnas en escritorio (índice · lectura · utilidades); se apilan en tab
 
 **Índice (izq.)** — Navegación tema → epígrafe con **estado de dominio** sutil (verde/ámbar/gris). El tema actual se despliega en sus epígrafes con *scroll-spy* (F-TEM-1).
 
-**Lectura (centro)** — El corazón:
-- **Cabecera del tema** con "de los que más caen", tiempo de lectura, nº de conceptos y tu **dominio** (F-TEM-3).
-- **Prosa cómoda** (medida ~70ch, interlineado 1.75) pensada para horas de lectura (F-TEM-2).
+**Lectura (centro)** — El corazón, con **dos vistas conmutables** (Explicación / Esquema del tema):
+- **Cabecera del tema** con "de los que más caen", tiempo de lectura, tu **dominio** (F-TEM-3) y el conmutador **Explicación ⇄ Esquema**.
+- **Modo Explicación** — estructura real del contenido: cada **epígrafe** abre con su *explicación de epígrafe* y, debajo, sus **artículos**. Cada artículo muestra su **texto legal (fuente)** y, separada, la **explicación de Faro a nivel de artículo**, con su estado de dominio (Doc 07 §2: explicación anclada a la fuente, granular).
+- **Modo Esquema del tema** — el tema entero "de un vistazo": epígrafes → artículos en una línea esencial cada uno + el diagrama del proceso legislativo. Ideal para repaso rápido.
+- **Prosa cómoda** (medida e interlineado ajustables) pensada para horas de lectura (F-TEM-2).
 - **Subrayados** interactivos: selecciona texto y aparece una **barra flotante** (Subrayar · Nota · Preguntar a Faro). Lo subrayado/anotado se guarda en el rail y "se integra al repaso" (F-TEM-5).
 - **Enlaces a la fuente** (`art. 66 CE`…): cada afirmación es **trazable al corpus** (F-TEM-6, Doc 07 §3).
 - **Callouts**: *Concepto clave* y *Lo que más cae* (ámbar templado, nunca rojo).
