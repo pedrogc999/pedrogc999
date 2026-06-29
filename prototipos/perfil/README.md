@@ -23,7 +23,10 @@ La hiperpersonalización solo se cree si es **visible y controlable**. Aquí el 
 8. **Seguridad** — **verificación en 2 pasos** por **email** o **Google Authenticator**, y cambio de contraseña.
 9. **Cómo se ve Faro** — selector de apariencia con **6 temas**: Faro, Papel, Sepia, Pizarra, Bruma y Bosque (se aplican al instante y se recuerdan), más acceso a **la guía de Faro**.
 10. **Privacidad, consentimiento y tus derechos** — **consentimientos** granulares (personalización, Vigía, mejora anónima, novedades), los **6 derechos RGPD** (acceso, rectificación, supresión, portabilidad, oposición, limitación) y ver / exportar / borrar; más la **Bitácora sagrada**, solo tuya (Manifiesto 7, Doc 12 §7).
-11. **¿Qué te parece Faro?** — valoración con **estrellas y comentario**, con la respuesta cuidada de Faro.
+11. **Buzón de sugerencias** — propón ideas por categoría (Estudio / Plan / Acompañamiento / Otra) y sigue su estado (Enviada / En estudio / En camino / Hecho).
+12. **¿Qué te parece Faro?** — valoración con **estrellas y comentario**, con la respuesta cuidada de Faro.
+
+Todo el acceso vive dentro del **icono de usuario** (avatar): un menú desplegable lleva a Tu Faro, Datos y seguridad, Apariencia, Buzón de sugerencias, Valorar Faro, La guía de Faro, Privacidad y datos, y Cerrar sesión.
 
 ## Interacción
 Tema claro/oscuro · porqué editable · rejilla de disponibilidad que recalcula · selector de intensidad · switches de consentimiento/notificaciones/descanso · acciones de privacidad. Todo con la voz de Faro (Doc 09) y `prefers-reduced-motion` respetado.

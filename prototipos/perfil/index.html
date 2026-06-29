@@ -272,6 +272,36 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .linkrow .lm{ flex:1; } .linkrow .lt{ font-size:15px; font-weight:600; } .linkrow .ls{ font-size:12.5px; color:var(--ink-faint); margin-top:2px; }
 .linkrow .arr{ color:var(--ink-faint); }
 
+/* menú del avatar (icono de usuario) */
+.usermenu{ position:relative; }
+.avatar-btn{ cursor:pointer; }
+.menu{ position:absolute; top:48px; right:0; width:264px; background:var(--deep-2); border:1px solid var(--hairline-2); border-radius:16px; box-shadow:var(--shadow-card); padding:8px; opacity:0; transform:translateY(-8px) scale(.98); pointer-events:none; transition:.18s ease; z-index:60; }
+.menu.on{ opacity:1; transform:none; pointer-events:auto; }
+.menu-head{ display:flex; gap:11px; align-items:center; padding:9px 9px 12px; border-bottom:1px solid var(--hairline); margin-bottom:6px; }
+.menu-head .ma{ width:40px; height:40px; flex:0 0 40px; border-radius:50%; display:grid; place-items:center; font-weight:700; font-size:15px; color:#1a1206; background:linear-gradient(180deg,var(--light),var(--light-warm)); }
+.menu-head .mn{ font-size:14px; font-weight:600; color:var(--ink); } .menu-head .me{ font-size:12px; color:var(--ink-faint); margin-top:1px; }
+.menu-item{ display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:10px; font-size:14px; color:var(--ink-soft); cursor:pointer; transition:.15s; }
+.menu-item:hover{ background:var(--surface-2); color:var(--ink); }
+.menu-item svg{ color:var(--ink-faint); flex:0 0 17px; }
+.menu-item:hover svg{ color:var(--light); }
+.menu-item.danger:hover{ color:var(--care); } .menu-item.danger:hover svg{ color:var(--care); }
+.menu-sep{ height:1px; background:var(--hairline); margin:6px 4px; }
+
+/* buzón de sugerencias */
+.suggest-cats{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.suggest-cats button{ font:600 12.5px var(--sans); color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--hairline-2); border-radius:999px; padding:7px 13px; cursor:pointer; transition:.15s; }
+.suggest-cats button.on{ background:var(--light); color:#1a1206; border-color:transparent; }
+.suggest-list{ margin-top:18px; }
+.suggest-lab{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px; }
+.suggest-item{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--hairline); }
+.suggest-item:last-child{ border-bottom:none; }
+.suggest-item .sm{ flex:1; min-width:0; } .suggest-item .st{ font-size:14px; font-weight:500; color:var(--ink); } .suggest-item .sd{ font-size:12px; color:var(--ink-faint); margin-top:2px; }
+.sstatus{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; letter-spacing:.02em; white-space:nowrap; }
+.sstatus.enviada{ color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--hairline); }
+.sstatus.estudio{ color:var(--guide); background:var(--guide-soft); }
+.sstatus.camino{ color:var(--light); background:rgba(242,182,90,.14); }
+.sstatus.hecha{ color:var(--ok); background:var(--ok-soft); }
+
 /* toast */
 .toast{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); z-index:90; opacity:0; pointer-events:none; display:flex; gap:11px; align-items:flex-start; max-width:440px; padding:14px 18px; border-radius:14px; background:var(--deep-2); border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); transition:opacity .3s, transform .3s; }
 .toast.on{ opacity:1; transform:translateX(-50%); pointer-events:auto; } .toast svg{ flex:0 0 18px; margin-top:1px; } .toast .tt{ font-size:14px; color:var(--ink); font-family:var(--serif); line-height:1.45; }
@@ -305,7 +335,21 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
       <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </div>
-    <div class="avatar-btn" title="Lucía">L</div>
+    <div class="usermenu" id="userMenu">
+      <button class="avatar-btn" id="avatarBtn" aria-haspopup="true" aria-expanded="false" title="Tu Faro">L</button>
+      <div class="menu" id="avatarMenu">
+        <div class="menu-head"><div class="ma">L</div><div><div class="mn">Lucía Martín</div><div class="me">lucia.mg@correo.es</div></div></div>
+        <a class="menu-item" data-go="top"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>Tu Faro</a>
+        <a class="menu-item" data-go="cuenta"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Datos y seguridad</a>
+        <a class="menu-item" data-go="apariencia"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.5-1-1.8-1-3a2 2 0 0 1 2-2h1a4 4 0 0 0 4-4 9 9 0 0 0-8-9z"/></svg>Apariencia</a>
+        <a class="menu-item" data-go="buzon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13l3.5 7v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-6z"/></svg>Buzón de sugerencias</a>
+        <a class="menu-item" data-go="valoracion"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg>Valorar Faro</a>
+        <a class="menu-item" id="menuGuide"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h8M8 11h6"/></svg>La guía de Faro</a>
+        <a class="menu-item" data-go="privacidad"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 4.4-3.4 7.6-8 9-4.6-1.4-8-4.6-8-9V7z"/></svg>Privacidad y datos</a>
+        <div class="menu-sep"></div>
+        <a class="menu-item danger" id="menuLogout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>Cerrar sesión</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -346,7 +390,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 </section>
 
 <!-- TUS DATOS + SEGURIDAD -->
-<section>
+<section id="cuenta">
   <div class="wrap">
     <div class="grid2">
       <div class="card reveal">
@@ -456,7 +500,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 </section>
 
 <!-- APARIENCIA -->
-<section>
+<section id="apariencia">
   <div class="wrap">
     <div class="card reveal">
       <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.5-1-1.8-1-3a2 2 0 0 1 2-2h1a4 4 0 0 0 4-4 9 9 0 0 0-8-9z"/></svg>Cómo se ve Faro</h3>
@@ -479,7 +523,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 </section>
 
 <!-- PRIVACIDAD -->
-<section style="padding-bottom:60px">
+<section id="privacidad" style="padding-bottom:60px">
   <div class="wrap">
     <div class="card reveal">
       <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privacidad, consentimiento y tus derechos</h3>
@@ -513,8 +557,32 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
   </div>
 </section>
 
+<!-- BUZÓN DE SUGERENCIAS -->
+<section id="buzon">
+  <div class="wrap">
+    <div class="card reveal">
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13l3.5 7v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-6z"/></svg>Buzón de sugerencias</h3>
+      <p class="desc">¿Echas algo en falta o se te ocurre cómo mejorar? Cuéntamelo. Las leo todas y te digo en qué quedan.</p>
+      <div class="suggest-cats" id="suggestCats">
+        <button data-c="estudio" class="on">Estudio</button>
+        <button data-c="plan">Plan</button>
+        <button data-c="acompanamiento">Acompañamiento</button>
+        <button data-c="otra">Otra</button>
+      </div>
+      <textarea class="ratecomment" id="suggestText" placeholder="Tu idea… cuanto más concreta, mejor."></textarea>
+      <div><button class="rate-send" id="suggestSend"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Enviar sugerencia</button></div>
+      <div class="suggest-list" id="suggestList">
+        <div class="suggest-lab">Tus sugerencias</div>
+        <div class="suggest-item"><div class="sm"><div class="st">Modo repaso por voz para escuchar en el coche</div><div class="sd">Acompañamiento · hace 2 semanas</div></div><span class="sstatus estudio">En estudio</span></div>
+        <div class="suggest-item"><div class="sm"><div class="st">Exportar mis subrayados y notas a PDF</div><div class="sd">Estudio · hace 1 mes</div></div><span class="sstatus camino">En camino</span></div>
+        <div class="suggest-item"><div class="sm"><div class="st">Recordatorio el día antes de los simulacros</div><div class="sd">Plan · hace 2 meses</div></div><span class="sstatus hecha">Hecho</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ¿QUÉ TE PARECE FARO? -->
-<section style="padding-bottom:64px">
+<section id="valoracion" style="padding-bottom:64px">
   <div class="wrap">
     <div class="card amber reveal">
       <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg>¿Qué te parece Faro?</h3>
@@ -699,6 +767,37 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
       say(rateVal>=4?'¡Gracias de verdad! Me alegra ayudarte. Sigo a tu lado.':'Gracias por la sinceridad. Lo tengo en cuenta para cuidarte mejor.');
     });
   }
+
+  /* menú del avatar (icono de usuario) */
+  var avatarBtn=document.getElementById('avatarBtn'), avatarMenu=document.getElementById('avatarMenu');
+  function closeMenu(){ avatarMenu.classList.remove('on'); avatarBtn.setAttribute('aria-expanded','false'); }
+  avatarBtn.addEventListener('click',function(e){ e.stopPropagation(); var open=!avatarMenu.classList.contains('on'); avatarMenu.classList.toggle('on',open); avatarBtn.setAttribute('aria-expanded',open?'true':'false'); });
+  document.addEventListener('click',function(e){ if(!e.target.closest('#userMenu')) closeMenu(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
+  avatarMenu.querySelectorAll('.menu-item[data-go]').forEach(function(it){ it.addEventListener('click',function(){
+    var g=it.getAttribute('data-go'); closeMenu();
+    if(g==='top'){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+    var el=document.getElementById(g); if(el){ var y=el.getBoundingClientRect().top+window.pageYOffset-78; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+  }); });
+  document.getElementById('menuGuide').addEventListener('click',function(){ closeMenu(); say('Abriría la guía de Faro: cómo planifico, cómo te cuido y cómo protejo tus datos.'); });
+  document.getElementById('menuLogout').addEventListener('click',function(){ closeMenu(); say('Sesión cerrada en la app. Aquí seguiré cuando vuelvas.'); });
+
+  /* buzón de sugerencias */
+  var suggestCats=document.getElementById('suggestCats'), curCat='estudio';
+  if(suggestCats){ suggestCats.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    suggestCats.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on',x===b); }); curCat=b.getAttribute('data-c'); }); }
+  var suggestSend=document.getElementById('suggestSend');
+  if(suggestSend){ suggestSend.addEventListener('click',function(){
+    var ta=document.getElementById('suggestText'), txt=(ta.value||'').trim();
+    if(!txt){ say('Escríbeme tu idea, aunque sea en una línea, y la recojo.'); return; }
+    var CN={estudio:'Estudio',plan:'Plan',acompanamiento:'Acompañamiento',otra:'Otra'};
+    var list=document.getElementById('suggestList');
+    var item=document.createElement('div'); item.className='suggest-item';
+    item.innerHTML='<div class="sm"><div class="st">'+txt.slice(0,90).replace(/</g,'&lt;')+'</div><div class="sd">'+CN[curCat]+' · ahora mismo</div></div><span class="sstatus enviada">Enviada</span>';
+    list.insertBefore(item, list.children[1]||null);
+    ta.value='';
+    say('Recibida. Gracias por ayudarme a mejorar Faro; la leo y te cuento en qué queda.');
+  }); }
 
   /* privacidad */
   document.querySelectorAll('[data-priv]').forEach(function(b){ b.addEventListener('click',function(){
