@@ -8,7 +8,12 @@
 |---|---|
 | ![oscuro](preview-dark.png) | ![claro](preview-light.png) |
 
-## Anatomía (Doc 07 + Doc 10 §4)
+## Dos pantallas
+
+- **[`indice.html`](indice.html) · Visión global** — el temario completo: los **4 bloques** y sus **32 temas**, cada uno con su **estado de dominio** (dominado / en camino / a repasar / sin empezar), las "de las que más caen" (★), el progreso por bloque y la cobertura total. Filtros por estado (En curso / A repasar / Pendientes / Dominados). Cada tema abre su lectura.
+- **[`index.html`](index.html) · Lectura de un tema** — el detalle (lo de abajo). Enlaza arriba con "Todo el temario".
+
+## Anatomía de la lectura (Doc 07 + Doc 10 §4)
 
 Tres columnas en escritorio (índice · lectura · utilidades); se apilan en tablet/móvil.
 

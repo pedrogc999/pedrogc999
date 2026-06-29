@@ -91,6 +91,8 @@ html.esquema-active .readbar{ display:none; }
 .col-sticky::-webkit-scrollbar{ width:8px; } .col-sticky::-webkit-scrollbar-thumb{ background:var(--hairline-2); border-radius:8px; }
 
 /* ---------- NAV ÍNDICE ---------- */
+.back-all{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--ink-soft); padding:8px 12px; border-radius:10px; border:1px solid var(--hairline-2); background:var(--surface-2); margin-bottom:14px; transition:.18s; }
+.back-all:hover{ color:var(--ink); border-color:var(--light); } .back-all svg{ color:var(--light); }
 .idx-h{ font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:4px 0 14px; padding-left:4px; }
 .bloque{ margin-bottom:8px; }
 .bloque > .bl-name{ font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); padding:6px 4px; }
@@ -487,6 +489,7 @@ html[data-theme="light"] .ask{ background:#fff; }
 <div class="layout">
   <!-- ============ ÍNDICE (izquierda) ============ -->
   <aside class="col-sticky nav-col">
+    <a href="indice.html" class="back-all"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>Todo el temario</a>
     <div class="idx-h">Temario · Administrativo del Estado</div>
     <div class="bloque">
       <div class="bl-name">Bloque I · Constitución</div>
@@ -763,6 +766,7 @@ html[data-theme="light"] .ask{ background:#fff; }
 <div class="sheet-backdrop" id="backdrop"></div>
 <div class="sheet" id="tocSheet">
   <div class="grip"></div>
+  <a href="indice.html" class="back-all" style="margin-bottom:16px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>Todo el temario</a>
   <h5>Tema 14 · Las Cortes Generales</h5>
   <div class="epis" style="margin-left:0; border:none; padding:0; gap:4px">
     <a class="toc-link" data-go="ep1"><span class="mini-dot"></span>14.1 · Composición y bicameralismo</a>
