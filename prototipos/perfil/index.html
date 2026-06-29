@@ -111,6 +111,25 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .avail-foot .tot{ font-size:14px; color:var(--ink-soft); } .avail-foot .tot b{ font-family:var(--serif); font-size:20px; color:var(--ink); }
 .avail-foot .note{ font-size:12.5px; color:var(--ink-faint); }
 
+/* tu temario editable */
+.ttlist{ max-height:400px; overflow-y:auto; padding-right:6px; margin-top:2px; }
+.ttlist::-webkit-scrollbar{ width:8px; } .ttlist::-webkit-scrollbar-thumb{ background:var(--hairline-2); border-radius:8px; }
+.ttblock{ font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin:16px 0 9px; }
+.ttblock:first-child{ margin-top:2px; }
+.ttrow{ display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:12px; border:1px solid var(--hairline); background:var(--surface-2); margin-bottom:8px; transition:.18s; }
+.ttn{ width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:grid; place-items:center; font-weight:700; font-size:12.5px; background:var(--deep-3); color:var(--ink-soft); border:1px solid var(--hairline); }
+html[data-theme="light"] .ttn{ background:var(--surface); }
+.ttt{ flex:1; min-width:0; font-size:14px; font-weight:500; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tt-select{ font:600 12.5px var(--sans); color:var(--ink); background-color:var(--deep-2); border:1px solid var(--hairline-2); border-radius:9px; padding:7px 28px 7px 11px; cursor:pointer; flex:0 0 auto;
+  appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%239DB0CC' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 9px center; }
+html[data-theme="light"] .tt-select{ background-color:#fff; }
+.ttrow.domino{ border-color:rgba(116,196,154,.3); background:var(--ok-soft); } .ttrow.domino .ttn{ background:var(--ok-soft); color:var(--ok); border-color:transparent; }
+.ttrow.enfasis{ border-color:rgba(242,182,90,.38); background:rgba(242,182,90,.09); } .ttrow.enfasis .ttn{ background:linear-gradient(180deg,var(--light),var(--light-warm)); color:#1a1206; border:none; }
+.ttrow.saltar{ opacity:.5; } .ttrow.saltar .ttt{ text-decoration:line-through; }
+.tt-summary{ display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid var(--hairline); font-size:13px; color:var(--ink-soft); }
+.tt-summary b{ color:var(--ink); }
+@media (max-width:560px){ .ttt{ white-space:normal; } .tt-select{ font-size:11.5px; padding:6px 24px 6px 9px; } }
+
 /* insights (lo que he aprendido) */
 .insights{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
 .insight{ border:1px solid var(--hairline); border-radius:14px; padding:16px; background:var(--surface-2); }
@@ -251,6 +270,18 @@ html[data-theme="light"] .toast{ background:#fff; }
   </div>
 </section>
 
+<!-- TU TEMARIO (editable) -->
+<section>
+  <div class="wrap">
+    <div class="card reveal">
+      <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M9 8h6M9 12h4"/></svg>Tu temario · ajústalo tú</h3><span class="editable-note">tú decides</span></div>
+      <p class="desc">¿Hay temas que ya dominas, que quieres reforzar a fondo o que no entran en tu convocatoria? Dímelo y reorganizo tu plan al instante. Por defecto sigo mi criterio; tú lo afinas.</p>
+      <div class="ttlist" id="ttlist"></div>
+      <div class="tt-summary" id="ttSummary"></div>
+    </div>
+  </div>
+</section>
+
 <!-- LO QUE HE APRENDIDO DE TI -->
 <section>
   <div class="wrap">
@@ -359,6 +390,57 @@ html[data-theme="light"] .toast{ background:#fff; }
     clearTimeout(availT); availT=setTimeout(function(){ say('He recalculado tu Travesía con tus '+htot.textContent+' h semanales. Ajusto sin romper nada.'); },600);
   });
   recalc();
+
+  /* tu temario editable */
+  var TT=[
+    { b:'Bloque I · La Constitución y el Estado', items:[
+      [1,'La Constitución de 1978','domino'],[2,'Derechos fundamentales','domino'],[3,'Garantías de los derechos','domino'],
+      [4,'La reforma constitucional','domino'],[5,'La Corona','domino'],[6,'El Defensor del Pueblo','domino'],
+      [7,'El Tribunal Constitucional','normal'],[8,'Organización territorial','domino'],[9,'Las Comunidades Autónomas','normal'],
+      [10,'La Administración Local','normal'],[11,'Derechos y deberes ciudadanos','domino'],[12,'El Poder Judicial','domino'],
+      [13,'El Gobierno','domino'],[14,'Las Cortes Generales','enfasis'] ] },
+    { b:'Bloque II · La Administración Pública', items:[
+      [15,'La Administración General del Estado','normal'],[16,'Órganos administrativos','normal'],[17,'El acto administrativo','normal'],
+      [18,'El procedimiento administrativo','normal'],[19,'Recursos administrativos','normal'],[20,'La responsabilidad patrimonial','normal'],
+      [21,'Los contratos del sector público','normal'],[22,'Transparencia y protección de datos','normal'] ] },
+    { b:'Bloque III · Unión Europea y políticas públicas', items:[
+      [23,'La Unión Europea: instituciones','normal'],[24,'El derecho de la UE','normal'],[25,'Políticas de igualdad','normal'],
+      [26,'Dependencia y servicios sociales','normal'],[27,'Administración electrónica','normal'],[28,'Atención a la ciudadanía','normal'] ] },
+    { b:'Bloque IV · Gestión de personal y financiera', items:[
+      [29,'El personal al servicio de la Administración','normal'],[30,'Derechos, deberes y régimen disciplinario','normal'],
+      [31,'El presupuesto: principios y ciclo','normal'],[32,'Gestión del gasto público','normal'] ] }
+  ];
+  var OPTS=[['normal','Estudiar (normal)'],['domino','Ya lo domino'],['enfasis','Ponme énfasis'],['saltar','Saltar este tema']];
+  var ttlist=document.getElementById('ttlist'), ttSummary=document.getElementById('ttSummary');
+  var ttState={};
+  function ttRender(){
+    var h='';
+    TT.forEach(function(bl){
+      h+='<div class="ttblock">'+bl.b+'</div>';
+      bl.items.forEach(function(it){
+        var n=it[0]; if(ttState[n]===undefined) ttState[n]=it[2];
+        var st=ttState[n];
+        h+='<div class="ttrow'+(st!=='normal'?' '+st:'')+'" data-n="'+n+'"><div class="ttn">'+n+'</div><div class="ttt">'+it[1]+'</div>'+
+           '<select class="tt-select" data-n="'+n+'">'+OPTS.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===st?' selected':'')+'>'+o[1]+'</option>'; }).join('')+'</select></div>';
+      });
+    });
+    ttlist.innerHTML=h; ttSummary.innerHTML=ttSummaryText();
+  }
+  function ttSummaryText(){
+    var d=0,e=0,s=0; for(var k in ttState){ if(ttState[k]==='domino')d++; else if(ttState[k]==='enfasis')e++; else if(ttState[k]==='saltar')s++; }
+    return '<span><b>'+d+'</b> ya dominas</span><span><b>'+e+'</b> con énfasis</span><span><b>'+s+'</b> saltados</span><span style="margin-left:auto;color:var(--ink-faint)">El plan se ajusta a esto</span>';
+  }
+  ttlist.addEventListener('change',function(e){ var sel=e.target.closest('.tt-select'); if(!sel) return;
+    var n=sel.getAttribute('data-n'), v=sel.value; ttState[n]=v;
+    var row=ttlist.querySelector('.ttrow[data-n="'+n+'"]');
+    row.classList.remove('domino','enfasis','saltar'); if(v!=='normal') row.classList.add(v);
+    ttSummary.innerHTML=ttSummaryText();
+    say(v==='domino'?'Anotado: lo doy por dominado y lo paso a mantenimiento. Gano horas para lo que falta.':
+        v==='enfasis'?'Hecho: le doy más peso y más repaso. Lo llevarás de sobra.':
+        v==='saltar'?'Vale, lo saco de tu plan. Recalculo sin él.':
+        'Lo devuelvo al ritmo normal y reorganizo.');
+  });
+  ttRender();
 
   /* switches */
   document.querySelectorAll('.switch').forEach(function(sw){
