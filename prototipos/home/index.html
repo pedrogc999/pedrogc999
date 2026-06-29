@@ -226,6 +226,81 @@ footer{ border-top:1px solid var(--hairline); padding:46px 0 60px; margin-top:30
 @media (max-width:880px){ .pains,.pillars,.stats,.tcards,.plans{ grid-template-columns:1fr; } .pillars{ grid-template-columns:1fr 1fr; } .stats{ grid-template-columns:1fr 1fr; } .foot-grid{ grid-template-columns:1fr 1fr; } .vigia{ padding:30px; } }
 @media (max-width:560px){ .pillars{ grid-template-columns:1fr; } }
 
+/* ===== carrusel con motion graphics ===== */
+.carousel{ border:1px solid var(--hairline); border-radius:var(--r-xl); background:linear-gradient(180deg,var(--surface),var(--surface-2)); box-shadow:var(--shadow-card); overflow:hidden; margin-top:34px; }
+.car-tabs{ display:flex; gap:2px; padding:8px; border-bottom:1px solid var(--hairline); overflow-x:auto; }
+.car-tab{ position:relative; flex:1; min-width:150px; display:flex; align-items:center; gap:9px; justify-content:center; padding:14px 14px 16px; border:none; background:none; cursor:pointer; color:var(--ink-soft); font:600 14px var(--sans); border-radius:12px; transition:.18s; white-space:nowrap; }
+.car-tab:hover{ color:var(--ink); background:var(--surface-2); } .car-tab.on{ color:var(--ink); background:var(--surface-2); }
+.car-tab .ci{ display:inline-flex; color:var(--ink-faint); } .car-tab.on .ci{ color:var(--light); }
+.car-tab .bar{ position:absolute; left:12px; right:12px; bottom:7px; height:2px; border-radius:2px; }
+.car-tab.on .bar{ background:var(--hairline-2); overflow:hidden; }
+.car-tab.on .bar::after{ content:""; position:absolute; inset:0; width:0; background:linear-gradient(90deg,var(--light),var(--light-warm)); animation:carfill 6s linear forwards; }
+.carousel.paused .car-tab.on .bar::after{ animation-play-state:paused; }
+@keyframes carfill{ to{ width:100%; } }
+.car-stage{ position:relative; }
+.slide{ display:none; grid-template-columns:1fr 1.12fr; gap:32px; align-items:center; padding:40px; }
+.slide.active{ display:grid; animation:slidein .5s ease; }
+@keyframes slidein{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:none;} }
+.slide-copy .k{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--light); }
+.slide-copy h3{ font-family:var(--serif); font-weight:500; font-size:clamp(23px,3vw,33px); letter-spacing:-.015em; margin:12px 0 0; line-height:1.13; }
+.slide-copy p{ font-size:16px; color:var(--ink-soft); margin:14px 0 0; }
+.slide-copy .lnk{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-weight:600; color:var(--light); font-size:15px; }
+.slide-art{ position:relative; height:300px; border-radius:var(--r-lg); border:1px solid var(--hairline); overflow:hidden; display:grid; place-items:center;
+  background:radial-gradient(120% 130% at 80% -20%, rgba(242,182,90,.08), transparent 55%), var(--deep-2); }
+html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80% -20%, rgba(217,138,43,.08), transparent 55%), #fff; }
+.carousel.paused .slide-art *{ animation-play-state:paused !important; }
+@media (max-width:760px){ .slide{ grid-template-columns:1fr; gap:22px; padding:24px; } .slide-art{ order:-1; height:250px; } .car-tab .cl{ font-size:13px; } }
+
+/* art · planificación */
+.art-plan{ width:78%; position:relative; }
+.art-plan .ap-row{ display:flex; align-items:center; gap:10px; margin:11px 0; }
+.art-plan .ap-lab{ width:40px; height:8px; border-radius:4px; background:var(--surface-2); flex:0 0 40px; }
+.art-plan .ap-bar{ height:16px; border-radius:6px; transform-origin:left center; }
+.ap-bar.b1{ width:58%; background:linear-gradient(90deg,#5bb88a,#74c49a); animation:apgrow 6s ease both; }
+.ap-bar.b2{ width:80%; background:linear-gradient(90deg,var(--light),var(--light-warm)); animation:apgrow 6s ease .25s both; }
+.ap-bar.b3{ width:46%; background:rgba(154,169,255,.55); animation:apshift 6s ease both; }
+.ap-bar.b4{ width:38%; background:var(--surface-2); border:1px dashed var(--hairline-2); animation:apgrow 6s ease .5s both; }
+@keyframes apgrow{ 0%{ transform:scaleX(0);} 14%{ transform:scaleX(1);} 88%{ transform:scaleX(1);} 100%{ transform:scaleX(0);} }
+@keyframes apshift{ 0%{ transform:scaleX(0);} 14%{ transform:scaleX(1) translateX(0);} 44%{ transform:scaleX(1) translateX(0);} 58%,88%{ transform:scaleX(1) translateX(26px);} 100%{ transform:scaleX(0) translateX(26px);} }
+.art-plan .ap-hoy{ position:absolute; left:36%; top:-6px; bottom:24px; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 10px var(--light-glow); }
+.art-plan .ap-hoy::before{ content:"Hoy"; position:absolute; top:-16px; left:-11px; font-size:9px; font-weight:700; color:#1a1206; background:var(--light); padding:2px 6px; border-radius:5px; }
+.art-plan .ap-tag{ position:absolute; right:0; bottom:-34px; font-size:11px; font-weight:600; color:var(--guide); background:var(--guide-soft); border:1px solid var(--hairline); padding:5px 11px; border-radius:999px; animation:appop 6s ease both; }
+@keyframes appop{ 0%,45%{ opacity:0; transform:translateY(6px);} 60%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
+
+/* art · temario */
+.art-tem{ width:82%; }
+.art-tem .at-text{ font-size:15.5px; line-height:1.75; color:var(--ink-soft); }
+.at-mark{ background:linear-gradient(transparent 58%, var(--light-glow) 0); background-size:0% 100%; background-repeat:no-repeat; padding:0 1px; border-radius:2px; animation:atmark 6s ease both; }
+@keyframes atmark{ 0%,12%{ background-size:0% 100%;} 30%,88%{ background-size:100% 100%;} 100%{ background-size:0% 100%;} }
+.at-src{ display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; color:var(--guide); background:var(--guide-soft); border-radius:7px; padding:4px 9px; margin-top:14px; animation:atpop 6s ease both; }
+@keyframes atpop{ 0%,30%{ opacity:0; transform:scale(.9);} 44%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
+.at-nodes{ display:flex; align-items:center; gap:9px; margin-top:20px; }
+.at-nodes i{ width:52px; height:32px; border-radius:8px; background:var(--surface-2); border:1px solid var(--hairline-2); position:relative; animation:atnode 6s ease both; }
+.at-nodes i:nth-child(2){ animation-delay:.18s; } .at-nodes i:nth-child(3){ animation-delay:.36s; }
+.at-nodes i:not(:last-child)::after{ content:"→"; position:absolute; right:-12px; top:50%; transform:translateY(-50%); color:var(--ink-faint); font-size:12px; }
+@keyframes atnode{ 0%,34%{ opacity:0; transform:translateY(6px);} 48%,88%{ opacity:1; transform:none;} 100%{ opacity:0;} }
+
+/* art · test */
+.art-test{ width:84%; }
+.aq-q{ font-size:14.5px; font-weight:600; color:var(--ink); margin-bottom:12px; }
+.aq-o{ font-size:13.5px; color:var(--ink-soft); padding:11px 13px; border-radius:10px; border:1px solid var(--hairline-2); background:var(--surface-2); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.aq-ok{ animation:aqok 6s ease both; } .aq-ok svg{ margin-left:auto; color:var(--ok); animation:aqcheck 6s ease both; }
+@keyframes aqok{ 0%,30%{ border-color:var(--hairline-2); background:var(--surface-2); color:var(--ink-soft);} 42%,90%{ border-color:var(--ok); background:var(--ok-soft); color:var(--ink);} 100%{ border-color:var(--hairline-2); background:var(--surface-2); color:var(--ink-soft);} }
+@keyframes aqcheck{ 0%,38%{ opacity:0; transform:scale(.4);} 50%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
+.aq-fb{ font-size:12.5px; color:var(--guide); background:var(--guide-soft); border-radius:10px; overflow:hidden; animation:aqfb 6s ease both; }
+@keyframes aqfb{ 0%,52%{ opacity:0; max-height:0; padding:0 13px;} 64%,90%{ opacity:1; max-height:60px; padding:11px 13px;} 100%{ opacity:0; max-height:0; padding:0 13px;} }
+
+/* art · acompañamiento */
+.art-aco{ width:82%; position:relative; }
+.aa-moods{ display:flex; gap:14px; justify-content:center; margin-bottom:16px; }
+.aa-moods span{ font-size:25px; opacity:.45; }
+.aa-sel{ animation:aasel 6s ease both; }
+@keyframes aasel{ 0%,16%{ opacity:.45; transform:scale(1);} 30%,90%{ opacity:1; transform:scale(1.25);} 100%{ opacity:.45; transform:scale(1);} }
+.aa-bubble{ font-family:var(--serif); font-size:15px; line-height:1.5; color:var(--ink); background:var(--surface-2); border:1px solid var(--hairline); border-radius:16px; border-bottom-left-radius:5px; padding:14px 16px; animation:aabub 6s ease both; }
+@keyframes aabub{ 0%,30%{ opacity:0; transform:translateY(10px);} 46%,90%{ opacity:1; transform:none;} 100%{ opacity:0;} }
+.aa-glow{ position:absolute; inset:-24px; border-radius:50%; background:radial-gradient(circle at 50% 65%, var(--light-glow), transparent 60%); pointer-events:none; z-index:0; animation:aaglow 6s ease both; }
+@keyframes aaglow{ 0%,42%{ opacity:0;} 62%{ opacity:.5;} 82%,100%{ opacity:0;} }
+
 .reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
 </style>
@@ -323,19 +398,84 @@ footer{ border-top:1px solid var(--hairline); padding:46px 0 60px; margin-top:30
   </div>
 </section>
 
-<!-- PILARES -->
+<!-- CARRUSEL EN MOVIMIENTO -->
 <section>
   <div class="wrap">
     <div class="sec-head c reveal">
       <span class="eyebrow c">Cuatro pilares, una sola app</span>
-      <h2 class="sec">Todo lo que necesitas para ganar tu plaza</h2>
-      <p>Adiós a los 7 cuadernos y las 4 apps. Faro integra el método completo en una experiencia serena.</p>
+      <h2 class="sec">Mira cómo te ayuda Faro</h2>
+      <p>Planificación, temario, entrenamiento y el acompañamiento que nadie más tiene —en movimiento—.</p>
     </div>
-    <div class="pillars">
-      <div class="pillar reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></div><h3>Planifica</h3><p>Un plan vivo que se calcula con tu temario, tu fecha y tus horas reales —y se re-planifica solo cuando la vida se cruza, sin culpa—.</p></div>
-      <div class="pillar g reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 8h8M8 12h6"/></svg></div><h3>Enseña</h3><p>Temario que se explica artículo a artículo, con esquemas y la fuente legal. Test y simulacros con el porqué de cada respuesta.</p></div>
-      <div class="pillar o reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div><h3>Mide</h3><p>Seguimiento honesto de tu dominio, tu retención y tu ritmo. Datos que te orientan, nunca que te hunden.</p></div>
-      <div class="pillar v reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div><h3>Acompaña</h3><p>El diferencial: detecta tu bajón y te sostiene. Te empuja cuando puedes más y te cuida cuando no. No estarás solo.</p></div>
+    <div class="carousel reveal" id="carousel">
+      <div class="car-tabs" id="carTabs">
+        <button class="car-tab on" data-i="0"><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></span><span class="cl">Planificación</span><span class="bar"></span></button>
+        <button class="car-tab" data-i="1"><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 8h8M8 12h6"/></svg></span><span class="cl">Temario</span><span class="bar"></span></button>
+        <button class="car-tab" data-i="2"><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="cl">Test</span><span class="bar"></span></button>
+        <button class="car-tab" data-i="3"><span class="ci"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></span><span class="cl">Acompañamiento</span><span class="bar"></span></button>
+      </div>
+      <div class="car-stage">
+        <!-- 0 · Planificación -->
+        <div class="slide active" data-i="0">
+          <div class="slide-copy">
+            <div class="k">Planificación</div>
+            <h3>Un plan vivo que se recoloca cuando la vida se cruza</h3>
+            <p>Tu Travesía se calcula con tu temario, tu fecha y tus horas reales. ¿Una semana floja? Se reorganiza sola, sin tareas en rojo ni culpa.</p>
+            <a class="lnk" href="../plan-de-acompanamiento/index.html">Ver el plan en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="slide-art"><div class="art-plan">
+            <div class="ap-hoy"></div>
+            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b1"></span></div>
+            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b2"></span></div>
+            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b3"></span></div>
+            <div class="ap-row"><span class="ap-lab"></span><span class="ap-bar b4"></span></div>
+            <span class="ap-tag">↻ Recolocado · vas a tiempo</span>
+          </div></div>
+        </div>
+        <!-- 1 · Temario -->
+        <div class="slide" data-i="1">
+          <div class="slide-copy">
+            <div class="k">Temario</div>
+            <h3>Un temario que de verdad enseña, no solo que está completo</h3>
+            <p>Cada artículo con su texto legal y su explicación en cristiano. Subraya, anota y mira el tema entero en modo esquema. Trazable a la fuente.</p>
+            <a class="lnk" href="../temario/indice.html">Ver el temario en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="slide-art"><div class="art-tem">
+            <div class="at-text">Las Cortes Generales representan al <span class="at-mark">pueblo español</span> y ejercen la potestad legislativa del Estado.</div>
+            <span class="at-src"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/></svg>art. 66 CE</span>
+            <div class="at-nodes"><i></i><i></i><i></i></div>
+          </div></div>
+        </div>
+        <!-- 2 · Test -->
+        <div class="slide" data-i="2">
+          <div class="slide-copy">
+            <div class="k">Test y simulacros</div>
+            <h3>Falla gratis hoy para acertar el día que cuenta</h3>
+            <p>Cada pregunta con el porqué de la respuesta y enlace a la fuente. Faro te dice no solo la nota, sino dónde fallas y por qué.</p>
+            <a class="lnk" href="../entrenar/index.html">Entrenar en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="slide-art"><div class="art-test">
+            <div class="aq-q">¿Quién puede levantar el veto del Senado?</div>
+            <div class="aq-o">El Senado, es definitivo</div>
+            <div class="aq-o aq-ok">El Congreso<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="aq-o">El Tribunal Constitucional</div>
+            <div class="aq-fb">El porqué · por mayoría absoluta, o simple a los 2 meses (art. 90 CE).</div>
+          </div></div>
+        </div>
+        <!-- 3 · Acompañamiento -->
+        <div class="slide" data-i="3">
+          <div class="slide-copy">
+            <div class="k">Acompañamiento emocional</div>
+            <h3>El diferencial que nadie más tiene: no te suelta en el bajón</h3>
+            <p>Faro lee tu estado con cada check-in y responde como un preparador con formación en psicología: te empuja, te frena o te sostiene. Sin culpa.</p>
+            <a class="lnk" href="../perfil/index.html">Cómo te cuida <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="slide-art"><div class="art-aco">
+            <div class="aa-glow"></div>
+            <div class="aa-moods"><span>😔</span><span class="aa-sel">🙂</span><span>😊</span></div>
+            <div class="aa-bubble">«Estos días no pudiste, y no pasa nada. Lo he recolocado. Seguimos, a tu ritmo.»</div>
+          </div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -584,6 +724,21 @@ footer{ border-top:1px solid var(--hairline); padding:46px 0 60px; margin-top:30
 
   /* faq */
   document.querySelectorAll('.qitem .qq').forEach(function(q){ q.addEventListener('click',function(){ q.parentNode.classList.toggle('open'); }); });
+
+  /* carrusel con motion graphics */
+  var carousel=document.getElementById('carousel');
+  if(carousel){
+    var slides=carousel.querySelectorAll('.slide'), tabs=carousel.querySelectorAll('.car-tab'), N=slides.length, ci=0, ctimer;
+    function show(i){ ci=(i+N)%N;
+      slides.forEach(function(s,k){ s.classList.toggle('active',k===ci); });
+      tabs.forEach(function(t,k){ t.classList.toggle('on',k===ci); });
+    }
+    function startC(){ clearInterval(ctimer); ctimer=setInterval(function(){ show(ci+1); },6000); }
+    tabs.forEach(function(t){ t.addEventListener('click',function(){ show(+t.getAttribute('data-i')); startC(); }); });
+    carousel.addEventListener('mouseenter',function(){ clearInterval(ctimer); carousel.classList.add('paused'); });
+    carousel.addEventListener('mouseleave',function(){ carousel.classList.remove('paused'); startC(); });
+    show(0); startC();
+  }
 })();
 </script>
 </body>
