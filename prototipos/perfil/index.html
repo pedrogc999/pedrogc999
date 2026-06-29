@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faro · Tu Faro — lo que sé de ti</title>
+<meta name="description" content="Tu perfil en Faro: lo que tu preparador sabe de ti, transparente y editable. Tu porqué, tu tiempo real, lo aprendido, tu estado y cómo quieres que te cuide." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --deep:#0B1322; --deep-2:#131F35; --deep-3:#1B2A46;
+  --hairline:rgba(155,177,204,.14); --hairline-2:rgba(155,177,204,.22);
+  --ink:#EAF1FB; --ink-soft:#9DB0CC; --ink-faint:#6E809E;
+  --light:#F2B65A; --light-warm:#F0A24B; --light-glow:rgba(242,182,90,.35);
+  --guide:#6BC4D6; --guide-soft:rgba(107,196,214,.16);
+  --ok:#74C49A; --ok-soft:rgba(116,196,154,.14); --care:#E7B26B; --care-soft:rgba(231,178,107,.15); --viol:#9aa9ff;
+  --r-sm:12px; --r:16px; --r-lg:22px; --r-xl:30px;
+  --shadow-soft:0 18px 50px -24px rgba(0,0,0,.65); --shadow-card:0 24px 70px -34px rgba(0,0,0,.75);
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --surface:rgba(19,31,53,.72); --surface-2:rgba(27,42,70,.55); --maxw:1080px;
+  --page-grad:radial-gradient(1100px 640px at 82% -8%, rgba(242,182,90,.09), transparent 60%),
+              radial-gradient(820px 560px at 6% 8%, rgba(107,196,214,.07), transparent 55%),
+              linear-gradient(180deg,#0B1322 0%,#0A1120 100%);
+}
+html[data-theme="light"]{
+  --deep:#F4F6FA; --deep-2:#FFFFFF; --deep-3:#FFFFFF;
+  --hairline:rgba(26,34,51,.10); --hairline-2:rgba(26,34,51,.16);
+  --ink:#1A2233; --ink-soft:#56657F; --ink-faint:#8593A8;
+  --light:#D98A2B; --light-warm:#C97A1F; --light-glow:rgba(217,138,43,.22);
+  --guide:#3E97AB; --guide-soft:rgba(62,151,171,.12);
+  --ok:#2F9D6B; --ok-soft:rgba(47,157,107,.12); --care:#B97E2B; --care-soft:rgba(185,126,43,.12); --viol:#6f7ee0;
+  --surface:rgba(255,255,255,.80); --surface-2:rgba(255,255,255,.64);
+  --shadow-soft:0 18px 44px -26px rgba(26,40,70,.30); --shadow-card:0 26px 60px -34px rgba(26,40,70,.34);
+  --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(217,138,43,.10), transparent 58%),
+              radial-gradient(760px 520px at 6% 8%, rgba(62,151,171,.09), transparent 55%),
+              linear-gradient(180deg,#F7F9FC 0%,#EEF2F8 100%);
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; font-family:var(--sans); color:var(--ink); background:var(--deep); background-image:var(--page-grad); background-attachment:fixed; -webkit-font-smoothing:antialiased; line-height:1.55; }
+a{ color:inherit; text-decoration:none; }
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+.eyebrow{ font-size:12px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--light); display:inline-flex; align-items:center; gap:10px; }
+.eyebrow::before{ content:""; width:20px; height:1px; background:var(--light); opacity:.7; }
+
+/* HEADER */
+header.top{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(16px); background:linear-gradient(180deg,rgba(11,19,34,.85),rgba(11,19,34,.5)); border-bottom:1px solid var(--hairline); }
+html[data-theme="light"] header.top{ background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.55)); }
+.top-in{ max-width:var(--maxw); margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:18px; height:64px; }
+.brand{ display:flex; align-items:center; gap:11px; font-weight:600; } .brand .mark{ width:32px; height:32px; }
+.brand b{ font-family:var(--serif); font-size:19px; font-weight:600; } .brand span{ color:var(--light); }
+.top nav{ display:flex; gap:4px; margin-left:12px; }
+.top nav a{ font-size:14px; color:var(--ink-soft); padding:8px 13px; border-radius:10px; font-weight:500; transition:.2s; }
+.top nav a:hover{ color:var(--ink); background:var(--surface-2); }
+.spacer{ flex:1; }
+.chip-exam{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; padding:7px 13px; border-radius:999px; border:1px solid var(--hairline-2); background:var(--surface-2); color:var(--ink-soft); white-space:nowrap; }
+.chip-exam b{ color:var(--ink); }
+.faro-mini{ display:inline-flex; color:var(--ink-soft); } .faro-mini .lamp-glow{ animation:lampPulse 4.6s ease-in-out infinite; }
+@keyframes lampPulse{ 0%,100%{ opacity:.28; } 50%{ opacity:.7; } }
+.avatar-btn{ width:38px; height:38px; flex:0 0 38px; border-radius:50%; display:grid; place-items:center; font-weight:700; font-size:14px; color:#1a1206;
+  background:linear-gradient(180deg,var(--light),var(--light-warm)); border:2px solid transparent; box-shadow:0 0 0 2px var(--light-glow); }
+.theme-toggle{ width:38px; height:38px; display:grid; place-items:center; cursor:pointer; border-radius:11px; border:1px solid var(--hairline-2); background:var(--surface-2); color:var(--ink-soft); transition:.2s; }
+.theme-toggle:hover{ color:var(--ink); border-color:var(--light); }
+.theme-toggle .sun{ display:none; } html[data-theme="light"] .theme-toggle .moon{ display:none; } html[data-theme="light"] .theme-toggle .sun{ display:block; }
+
+section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
+/* HERO PERFIL */
+.phero{ display:flex; gap:22px; align-items:center; padding:28px; border-radius:var(--r-xl); margin-top:16px;
+  background:radial-gradient(130% 150% at 88% -30%, rgba(242,182,90,.13), transparent 55%), linear-gradient(135deg,var(--surface),var(--surface-2));
+  border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); }
+.phero .big-av{ width:84px; height:84px; flex:0 0 84px; border-radius:50%; display:grid; place-items:center; font-family:var(--serif); font-weight:600; font-size:34px; color:#1a1206;
+  background:linear-gradient(180deg,var(--light),var(--light-warm)); box-shadow:0 0 0 5px var(--light-glow); }
+.phero h1{ font-family:var(--serif); font-weight:500; font-size:clamp(26px,3.6vw,38px); letter-spacing:-.01em; margin:0; }
+.phero .sub{ color:var(--ink-soft); font-size:14.5px; margin-top:4px; }
+.phero .line{ margin-top:12px; font-family:var(--serif); font-size:15.5px; color:var(--ink); font-style:italic; max-width:60ch; }
+@media (max-width:680px){ .phero{ flex-direction:column; text-align:center; } .phero .line{ text-align:left; } }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.card{ border-radius:var(--r-lg); border:1px solid var(--hairline); background:linear-gradient(180deg,var(--surface),var(--surface-2)); box-shadow:var(--shadow-soft); padding:24px; }
+.card.amber{ border-color:rgba(242,182,90,.3); background:radial-gradient(120% 130% at 90% -30%, rgba(242,182,90,.10), transparent 55%), linear-gradient(180deg,var(--surface),var(--surface-2)); }
+.card h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 4px; display:flex; align-items:center; gap:10px; }
+.card h3 svg{ color:var(--light); }
+.card .desc{ font-size:13px; color:var(--ink-faint); margin:0 0 18px; line-height:1.5; }
+.editable-note{ font-size:11px; color:var(--ink-faint); display:inline-flex; align-items:center; gap:5px; margin-left:auto; font-weight:500; }
+.row-h{ display:flex; align-items:center; gap:10px; }
+
+/* tu porqué */
+.porque{ font-family:var(--serif); font-size:21px; line-height:1.5; color:var(--ink); border-left:3px solid var(--light); padding:4px 0 4px 18px; outline:none; }
+.porque:empty::before{ content:"Escribe para qué haces esto…"; color:var(--ink-faint); }
+.porque-foot{ display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; color:var(--ink-soft); }
+
+/* campos editables */
+.field{ display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--hairline); }
+.field:last-child{ border-bottom:none; }
+.field .fic{ width:38px; height:38px; flex:0 0 38px; border-radius:11px; display:grid; place-items:center; background:var(--surface-2); border:1px solid var(--hairline); color:var(--guide); }
+.field .fl{ font-size:12.5px; color:var(--ink-faint); } .field .fv{ font-size:15px; font-weight:600; color:var(--ink); margin-top:2px; }
+.field .fedit{ margin-left:auto; font-size:13px; color:var(--light); font-weight:600; cursor:pointer; background:none; border:none; padding:6px 10px; border-radius:8px; }
+.field .fedit:hover{ background:var(--surface-2); }
+
+/* disponibilidad semanal */
+.avail{ display:grid; grid-template-columns:auto repeat(7,1fr); gap:7px; }
+.avail .corner{ }
+.avail .dh{ font-size:11px; color:var(--ink-faint); text-align:center; font-weight:600; }
+.avail .rl{ font-size:12px; color:var(--ink-soft); display:flex; align-items:center; }
+.avail .cell{ aspect-ratio:1; border-radius:9px; border:1px solid var(--hairline); background:var(--surface-2); cursor:pointer; transition:.15s; }
+.avail .cell:hover{ border-color:var(--light); }
+.avail .cell.on{ background:linear-gradient(180deg,var(--light),var(--light-warm)); border-color:transparent; box-shadow:0 4px 12px -4px var(--light-glow); }
+.avail-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; flex-wrap:wrap; gap:10px; }
+.avail-foot .tot{ font-size:14px; color:var(--ink-soft); } .avail-foot .tot b{ font-family:var(--serif); font-size:20px; color:var(--ink); }
+.avail-foot .note{ font-size:12.5px; color:var(--ink-faint); }
+
+/* insights (lo que he aprendido) */
+.insights{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.insight{ border:1px solid var(--hairline); border-radius:14px; padding:16px; background:var(--surface-2); }
+.insight .iic{ width:34px; height:34px; border-radius:10px; display:grid; place-items:center; margin-bottom:10px; background:rgba(107,196,214,.14); color:var(--guide); }
+.insight .iv{ font-family:var(--serif); font-size:22px; font-weight:600; line-height:1; }
+.insight .il{ font-size:12.5px; color:var(--ink-soft); margin-top:6px; line-height:1.4; }
+.insight.warm .iic{ background:rgba(242,182,90,.14); color:var(--light); }
+.insight.care .iic{ background:rgba(231,178,107,.15); color:var(--care); }
+
+/* vigía / estado */
+.moodweek{ display:flex; gap:8px; margin:4px 0 14px; }
+.moodweek .md{ flex:1; text-align:center; }
+.moodweek .dot{ height:34px; border-radius:9px; display:grid; place-items:center; font-size:16px; border:1px solid var(--hairline); }
+.moodweek .dd{ font-size:10.5px; color:var(--ink-faint); margin-top:5px; }
+.statepill{ display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--ok); background:var(--ok-soft); padding:7px 13px; border-radius:999px; }
+.statepill .p{ width:8px; height:8px; border-radius:50%; background:var(--ok); }
+
+/* switch + intensidad */
+.switchrow{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 0; border-bottom:1px solid var(--hairline); }
+.switchrow:last-child{ border-bottom:none; }
+.switchrow .txt{ font-size:14px; color:var(--ink); } .switchrow .txt small{ display:block; color:var(--ink-faint); font-size:12.5px; margin-top:2px; }
+.switch{ width:46px; height:26px; border-radius:999px; background:var(--surface-2); border:1px solid var(--hairline-2); position:relative; cursor:pointer; transition:.2s; flex:0 0 46px; }
+.switch::after{ content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-faint); transition:.25s; }
+.switch.on{ background:var(--light); border-color:transparent; } .switch.on::after{ left:22px; background:#1a1206; }
+.intensity{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.intensity button{ text-align:left; padding:14px 16px; border-radius:13px; border:1px solid var(--hairline-2); background:var(--surface-2); cursor:pointer; transition:.18s; }
+.intensity button:hover{ border-color:var(--light); }
+.intensity button.on{ border-color:var(--light); background:rgba(242,182,90,.10); box-shadow:0 0 0 1px var(--light) inset; }
+.intensity .it{ font-size:14.5px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:8px; }
+.intensity .id{ font-size:12px; color:var(--ink-faint); margin-top:4px; }
+
+/* privacidad */
+.privrow{ display:flex; align-items:center; gap:13px; padding:13px 0; border-bottom:1px solid var(--hairline); }
+.privrow:last-child{ border-bottom:none; }
+.privrow .pic{ width:36px; height:36px; flex:0 0 36px; border-radius:10px; display:grid; place-items:center; background:var(--surface-2); border:1px solid var(--hairline); color:var(--guide); }
+.privrow .pm{ flex:1; } .privrow .pt{ font-size:14px; font-weight:600; } .privrow .ps{ font-size:12.5px; color:var(--ink-faint); margin-top:1px; }
+.privrow button{ font:600 13px var(--sans); color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--hairline-2); padding:8px 13px; border-radius:10px; cursor:pointer; transition:.15s; }
+.privrow button:hover{ color:var(--ink); border-color:var(--light); }
+.privrow button.danger:hover{ border-color:var(--care); color:var(--care); }
+.sacred{ margin-top:16px; padding:14px 16px; border-radius:13px; background:var(--guide-soft); border:1px solid var(--hairline); font-size:13.5px; color:var(--ink); font-family:var(--serif); display:flex; gap:11px; align-items:flex-start; }
+.sacred svg{ color:var(--guide); flex:0 0 auto; margin-top:2px; }
+
+/* toast */
+.toast{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); z-index:90; opacity:0; pointer-events:none; display:flex; gap:11px; align-items:flex-start; max-width:440px; padding:14px 18px; border-radius:14px; background:var(--deep-2); border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); transition:opacity .3s, transform .3s; }
+html[data-theme="light"] .toast{ background:#fff; }
+.toast.on{ opacity:1; transform:translateX(-50%); pointer-events:auto; } .toast svg{ flex:0 0 18px; margin-top:1px; } .toast .tt{ font-size:14px; color:var(--ink); font-family:var(--serif); line-height:1.45; }
+
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
+@media (max-width:820px){ .grid2{ grid-template-columns:1fr; } .insights{ grid-template-columns:1fr 1fr; } .intensity{ grid-template-columns:1fr; } }
+@media (max-width:680px){ .top nav{ display:none; } .chip-exam .lbl{ display:none; } .wrap{ padding:0 16px; } .avail .rl{ font-size:11px; } .insights{ grid-template-columns:1fr; } }
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../plan-de-acompanamiento/index.html">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B65A"/><stop offset="1" stop-color="#F0A24B"/></linearGradient></defs><circle cx="20" cy="20" r="19" stroke="rgba(242,182,90,.25)"/><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="url(#g1)" opacity=".9"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="url(#g1)"/><path d="M22.7 12l7 -3M17.3 12l-7 -3" stroke="#F2B65A" stroke-width="1.4" stroke-linecap="round" opacity=".7"/><circle cx="20" cy="12" r="1.6" fill="#fff"/></svg>
+      <b>Faro<span>.</span></b>
+    </a>
+    <nav>
+      <a href="../plan-de-acompanamiento/index.html">El Hoy</a>
+      <a href="../temario/indice.html">Temario</a>
+      <a href="../entrenar/index.html">Entrenar</a>
+      <a href="../plan-de-acompanamiento/index.html">Mi Travesía</a>
+    </nav>
+    <div class="spacer"></div>
+    <div class="chip-exam">
+      <span class="faro-mini"><svg width="15" height="17" viewBox="0 0 24 28" fill="none"><path d="M9 27 L10.6 13 H13.4 L15 27 Z" fill="currentColor" opacity=".55"/><rect x="9.6" y="13" width="4.8" height="1.6" rx=".8" fill="currentColor" opacity=".7"/><rect x="9.7" y="8.5" width="4.6" height="4.5" rx="1.2" fill="#F2B65A"/><path d="M9.5 8.5 Q12 5.6 14.5 8.5 Z" fill="#F2B65A"/><circle class="lamp-glow" cx="12" cy="10.6" r="3.4" fill="#F2B65A" opacity=".4"/><path d="M12 5V3.4" stroke="#F2B65A" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+      <span class="lbl">El Puerto</span><b>214 días</b>
+    </div>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Cambiar tema" tabindex="0">
+      <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </div>
+    <div class="avatar-btn" title="Lucía">L</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow" style="margin-top:34px">Tu Faro</span>
+    <div class="phero reveal">
+      <div class="big-av">L</div>
+      <div>
+        <h1>Lo que sé de ti, Lucía</h1>
+        <div class="sub">Administrativo del Estado · C1 · examen el 7 de febrero (214 días)</div>
+        <div class="line">«Esto lo construyo contigo, no sobre ti. Aquí ves cómo te conozco y cómo te cuido —y tú mandas: cámbialo cuando quieras.»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TU PORQUÉ + OPOSICIÓN -->
+<section>
+  <div class="wrap">
+    <div class="grid2">
+      <div class="card amber reveal">
+        <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.4-9.5-9A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 9.5 6c-2.5 4.6-9.5 9-9.5 9z"/></svg>Tu porqué</h3><span class="editable-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>editable</span></div>
+        <p class="desc">Con tus palabras del primer día. Te lo recuerdo en los días difíciles.</p>
+        <div class="porque" id="porque" contenteditable="true">Quiero estabilidad para dejar de encadenar contratos temporales y poder, por fin, planear mi vida con calma. Por mí y por mi hija.</div>
+        <div class="porque-foot"><svg width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/></svg>Faro lo guarda y lo usa solo para sostenerte.</div>
+      </div>
+
+      <div class="card reveal">
+        <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg>Tu oposición</h3>
+        <p class="desc">Cambia lo que quieras: recalculo tu Travesía al instante.</p>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></div><div><div class="fl">Cuerpo</div><div class="fv">Administrativo del Estado (C1)</div></div><button class="fedit" data-edit="cuerpo">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><div><div class="fl">Fecha de examen</div><div class="fv">7 de febrero de 2026</div></div><button class="fedit" data-edit="fecha">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div><div><div class="fl">Punto de partida</div><div class="fv">Con base · 14 temas dominados</div></div><button class="fedit" data-edit="nivel">Ajustar</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TU TIEMPO REAL -->
+<section>
+  <div class="wrap">
+    <div class="card reveal">
+      <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Tu tiempo real</h3><span class="editable-note">toca para editar</span></div>
+      <p class="desc">Cuándo puedes estudiar de verdad, no en un mundo ideal. El plan se construye sobre esto. Toca las franjas para ajustarlas.</p>
+      <div class="avail" id="avail">
+        <div class="corner"></div>
+        <div class="dh">L</div><div class="dh">M</div><div class="dh">X</div><div class="dh">J</div><div class="dh">V</div><div class="dh">S</div><div class="dh">D</div>
+        <div class="rl">Mañana</div>
+        <div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell" data-h="1.5"></div><div class="cell on" data-h="2.5"></div><div class="cell on" data-h="2.5"></div>
+        <div class="rl">Tarde</div>
+        <div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell on" data-h="2.5"></div><div class="cell" data-h="2.5"></div>
+        <div class="rl">Noche</div>
+        <div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell on" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div><div class="cell" data-h="2"></div>
+      </div>
+      <div class="avail-foot">
+        <div class="tot"><b id="htot">15,5</b> h disponibles a la semana</div>
+        <div class="note">Tus noches entre semana son tu motor. Lo tengo en cuenta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LO QUE HE APRENDIDO DE TI -->
+<section>
+  <div class="wrap">
+    <div class="card reveal">
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.7V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 2zM9 21h6"/></svg>Lo que he aprendido de ti</h3>
+      <p class="desc">No me lo has dicho: lo he visto en cómo estudias. Esto afina tu plan, tu repaso y tus avisos.</p>
+      <div class="insights">
+        <div class="insight warm"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div><div class="iv">21:00–23:00</div><div class="il">Tu franja más productiva. Te reservo lo difícil para entonces.</div></div>
+        <div class="insight"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="iv">35 min</div><div class="il">Tu sesión media. Diseño los bloques a tu medida, ni largos ni cortos.</div></div>
+        <div class="insight"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-5 4 4 8-8"/></svg></div><div class="iv">86%</div><div class="il">De fidelidad a tu ritmo. Eres constante; cuido que no te quemes.</div></div>
+        <div class="insight care"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></div><div class="iv">Proceso legislativo</div><div class="il">Tu punto flojo ahora. Lo estoy reforzando en tu repaso de la semana.</div></div>
+        <div class="insight"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12a10 10 0 1 0 10-10"/><path d="M12 2v10l7 4"/></svg></div><div class="iv">Despiste</div><div class="il">Tu error más común no es no saber: es el despiste. Lo entrenamos con práctica.</div></div>
+        <div class="insight"><div class="iic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><div class="iv">86%</div><div class="il">Retención media. Espacio tus repasos justo antes de que olvides.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TU ESTADO (VIGÍA) -->
+<section>
+  <div class="wrap">
+    <div class="grid2">
+      <div class="card reveal">
+        <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Cómo te veo últimamente</h3></div>
+        <p class="desc">Tus check-ins de la semana. Atiendo a tu ánimo para adaptar el día, con tu permiso.</p>
+        <div class="moodweek">
+          <div class="md"><div class="dot" style="background:rgba(116,196,154,.16)">🙂</div><div class="dd">Lun</div></div>
+          <div class="md"><div class="dot" style="background:rgba(116,196,154,.16)">😊</div><div class="dd">Mar</div></div>
+          <div class="md"><div class="dot" style="background:rgba(231,178,107,.16)">😐</div><div class="dd">Mié</div></div>
+          <div class="md"><div class="dot" style="background:rgba(231,178,107,.16)">😔</div><div class="dd">Jue</div></div>
+          <div class="md"><div class="dot" style="background:rgba(116,196,154,.16)">🙂</div><div class="dd">Vie</div></div>
+          <div class="md"><div class="dot" style="background:rgba(116,196,154,.16)">😊</div><div class="dd">Sáb</div></div>
+          <div class="md"><div class="dot" style="background:rgba(107,196,214,.16)">🙂</div><div class="dd">Hoy</div></div>
+        </div>
+        <span class="statepill"><span class="p"></span>Estable · con un bache el jueves, ya recuperado</span>
+        <div class="switchrow" style="margin-top:16px"><div class="txt">Atender a mi estado emocional<small>Si lo apagas, dejo de adaptar el día a tu ánimo.</small></div><div class="switch on" data-key="vigia" role="switch" tabindex="0"></div></div>
+      </div>
+
+      <div class="card reveal">
+        <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>Cómo quieres que te cuide</h3>
+        <p class="desc">Tú marcas el tono. Puedes cambiarlo cuando quieras, incluso un solo día.</p>
+        <div class="intensity" id="intensity">
+          <button data-i="cana"><div class="it">💪 Dame más caña</div><div class="id">Te exijo más y celebro menos.</div></button>
+          <button data-i="equilibrio" class="on"><div class="it">⚖️ Equilibrio</div><div class="id">Te empujo y te sostengo a partes iguales.</div></button>
+          <button data-i="cuidame"><div class="it">🫶 Cuídame más</div><div class="id">Priorizo sostenerte sobre exigirte.</div></button>
+          <button data-i="tranqui"><div class="it">🌙 Hoy, déjame</div><div class="id">Bajo el volumen solo por hoy.</div></button>
+        </div>
+        <div class="switchrow" style="margin-top:16px"><div class="txt">Recordatorios suaves<small>Un toque cuando toca, nunca para culpar.</small></div><div class="switch on" data-key="notif" role="switch" tabindex="0"></div></div>
+        <div class="switchrow"><div class="txt">Respetar mi descanso<small>Nada de noche ni en fin de semana si desconecto.</small></div><div class="switch on" data-key="descanso" role="switch" tabindex="0"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACIDAD -->
+<section style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="card reveal">
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Tus datos son tuyos</h3>
+      <p class="desc">Sin letra pequeña. Lo que me confías lo uso solo para enseñarte y cuidarte mejor; nunca se vende.</p>
+      <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="pm"><div class="pt">Ver todo lo que sé de ti</div><div class="ps">Cada dato, de dónde sale y para qué lo uso.</div></div><button data-priv="ver">Ver</button></div>
+      <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4M4 21h16"/></svg></div><div class="pm"><div class="pt">Exportar mis datos</div><div class="ps">Llévate una copia cuando quieras.</div></div><button data-priv="export">Exportar</button></div>
+      <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg></div><div class="pm"><div class="pt">Borrar mi cuenta y mis datos</div><div class="ps">Sin preguntas. Se borra de verdad.</div></div><button class="danger" data-priv="borrar">Borrar</button></div>
+      <div class="sacred">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Tu Cuaderno de Bitácora es solo tuyo. Nadie más lo lee. Nunca. Ni tu preparador humano, ni yo lo comparto, ni se usa para otra cosa que cuidarte.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"><svg viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#6BC4D6"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#6BC4D6"/></svg><div class="tt" id="toastText"></div></div>
+
+<script>
+(function(){
+  var root=document.documentElement, tt=document.getElementById('themeToggle');
+  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} }
+  try{ var s=localStorage.getItem('faro-theme'); if(s) setTheme(s); }catch(e){}
+  function flip(){ setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); }
+  tt.addEventListener('click',flip); tt.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } });
+
+  var toast=document.getElementById('toast'), toastText=document.getElementById('toastText'), toastT;
+  function say(m){ toastText.textContent=m; toast.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(function(){ toast.classList.remove('on'); },3800); }
+
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* tu porqué */
+  var porque=document.getElementById('porque');
+  porque.addEventListener('blur',function(){ say('Guardado. Lo tendré presente cuando flaquees.'); });
+
+  /* campos editables */
+  document.querySelectorAll('.fedit').forEach(function(b){ b.addEventListener('click',function(){
+    say('En la app abriría el ajuste. Si cambias la fecha o tus horas, recalculo tu Travesía al instante.');
+  }); });
+
+  /* disponibilidad semanal */
+  var avail=document.getElementById('avail'), htot=document.getElementById('htot');
+  function recalc(){
+    var tot=0; avail.querySelectorAll('.cell.on').forEach(function(c){ tot+=parseFloat(c.getAttribute('data-h'))||0; });
+    htot.textContent=tot.toFixed(1).replace('.',',');
+  }
+  var availT;
+  avail.addEventListener('click',function(e){ var c=e.target.closest('.cell'); if(!c) return;
+    c.classList.toggle('on'); recalc();
+    clearTimeout(availT); availT=setTimeout(function(){ say('He recalculado tu Travesía con tus '+htot.textContent+' h semanales. Ajusto sin romper nada.'); },600);
+  });
+  recalc();
+
+  /* switches */
+  document.querySelectorAll('.switch').forEach(function(sw){
+    function toggle(){ sw.classList.toggle('on'); var on=sw.classList.contains('on'); var k=sw.getAttribute('data-key');
+      if(k==='vigia') say(on?'Vale. Sigo atenta a tu ánimo para adaptar el día.':'Hecho. Dejo de leer tu estado; tú me dices cómo vas.');
+      else if(k==='notif') say(on?'Te avisaré con tacto, lo justo.':'Sin recordatorios. Cuando quieras volver, aquí estoy.');
+      else if(k==='descanso') say(on?'Respetaré tus noches y fines de semana.':'De acuerdo, podré escribirte también en esos ratos.');
+    }
+    sw.addEventListener('click',toggle);
+    sw.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+
+  /* intensidad */
+  var intensity=document.getElementById('intensity');
+  intensity.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    intensity.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on',x===b); });
+    var i=b.getAttribute('data-i');
+    say(i==='cana'?'Entendido: te aprieto más. Vamos a por todas.':i==='cuidame'?'Cuidarte primero. Vamos a tu ritmo, sin culpa.':i==='tranqui'?'Solo por hoy bajo el volumen. Mañana retomamos suave.':'Equilibrio: te empujo cuando puedes y te sostengo cuando no.');
+  });
+
+  /* privacidad */
+  document.querySelectorAll('[data-priv]').forEach(function(b){ b.addEventListener('click',function(){
+    var p=b.getAttribute('data-priv');
+    say(p==='ver'?'Te mostraría, dato a dato, todo lo que sé y para qué lo uso.':p==='export'?'Prepararía tu copia para descargar. Es tuya.':'Borraría tu cuenta y tus datos de verdad, sin preguntas ni trabas.');
+  }); });
+})();
+</script>
+</body>
+</html>
