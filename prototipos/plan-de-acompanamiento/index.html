@@ -189,7 +189,7 @@ html[data-theme="light"] .theme-toggle .sun{ display:block; }
 .hstat + .hstat{ padding-left:26px; border-left:1px solid var(--hairline); }
 
 /* Escena del faro */
-.scene{ position:relative; height:420px; border-radius:var(--r-xl);
+.scene{ position:relative; height:440px; border-radius:var(--r-xl);
   background:
     radial-gradient(120% 90% at 70% 120%, rgba(107,196,214,.10), transparent 60%),
     linear-gradient(180deg, #0c1626 0%, #0a1322 60%, #0b1626 100%);
@@ -200,16 +200,24 @@ html[data-theme="light"] .scene{
     linear-gradient(180deg,#16243d 0%, #1b2c49 100%);
 }
 .scene .stars{ position:absolute; inset:0; opacity:.6; }
-.scene .beam{ position:absolute; left:60%; top:30%; width:140%; height:130px;
-  transform-origin:left center; pointer-events:none;
-  background:conic-gradient(from -16deg at left center, transparent 0deg, var(--light-glow) 8deg, transparent 17deg);
-  filter:blur(2px); animation:sweep 9s ease-in-out infinite alternate; }
-@keyframes sweep{ from{ transform:rotate(-15deg);} to{ transform:rotate(16deg);} }
-.scene .glow{ position:absolute; left:58%; top:30%; width:120px; height:120px; transform:translate(-50%,-50%);
-  border-radius:50%; background:radial-gradient(circle,var(--light-glow),transparent 70%); animation:pulse 4.5s ease-in-out infinite; }
-@keyframes pulse{ 0%,100%{ opacity:.55; transform:translate(-50%,-50%) scale(1);} 50%{ opacity:1; transform:translate(-50%,-50%) scale(1.18);} }
-.scene .horizon{ position:absolute; left:0; right:0; bottom:96px; height:1px; background:linear-gradient(90deg,transparent,var(--hairline-2),transparent); }
-.scene .lh{ position:absolute; left:54%; bottom:60px; transform:translateX(-50%); }
+/* mar y horizonte */
+.scene .sea{ position:absolute; left:0; right:0; bottom:0; height:118px;
+  background:linear-gradient(180deg, rgba(107,196,214,.06), rgba(11,19,34,0) 75%); }
+.scene .horizon{ position:absolute; left:7%; right:7%; bottom:116px; height:1px;
+  background:linear-gradient(90deg,transparent,var(--hairline-2) 25%,var(--hairline-2) 75%,transparent); }
+/* la lámpara del faro = punto de origen de la luz (beacon) */
+.scene .beacon{ position:absolute; left:50%; top:216px; width:0; height:0; pointer-events:none; }
+.scene .beam{ position:absolute; left:0; top:-70px; width:440px; height:140px; transform-origin:0 50%;
+  background:linear-gradient(90deg, rgba(242,182,90,.42) 0%, rgba(242,182,90,.12) 42%, transparent 80%);
+  clip-path:polygon(0 50%, 100% 0, 100% 100%); filter:blur(3px);
+  animation:sweep 10s ease-in-out infinite alternate; }
+.scene .beam.b2{ top:-56px; height:112px; width:360px; opacity:.45; animation-delay:-5s; }
+@keyframes sweep{ from{ transform:rotate(-32deg);} to{ transform:rotate(18deg);} }
+.scene .glow{ position:absolute; left:0; top:0; width:150px; height:150px; transform:translate(-50%,-50%);
+  border-radius:50%; background:radial-gradient(circle, rgba(242,182,90,.6), var(--light-glow) 32%, transparent 70%);
+  animation:pulse 4.5s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ opacity:.7; transform:translate(-50%,-50%) scale(1);} 50%{ opacity:1; transform:translate(-50%,-50%) scale(1.14);} }
+.scene .lh{ position:absolute; left:50%; bottom:52px; transform:translateX(-50%); }
 .scene .label{ position:absolute; bottom:22px; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); }
 .scene .label b{ color:var(--light); }
 
@@ -452,24 +460,36 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
           <circle cx="60" cy="220" r="1" opacity=".4"/><circle cx="340" cy="210" r="1" opacity=".5"/>
         </g>
       </svg>
-      <div class="beam"></div>
-      <div class="glow"></div>
+      <div class="sea"></div>
       <div class="horizon"></div>
-      <svg class="lh" width="86" height="150" viewBox="0 0 86 150" fill="none">
+      <svg class="lh" width="130" height="210" viewBox="0 0 130 210" fill="none">
         <defs>
-          <linearGradient id="lhb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#21344f"/><stop offset="1" stop-color="#0f1c30"/></linearGradient>
-          <linearGradient id="lht" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2B65A"/><stop offset="1" stop-color="#F0A24B"/></linearGradient>
+          <linearGradient id="lhb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#243a58"/><stop offset=".5" stop-color="#1a2c46"/><stop offset="1" stop-color="#0f1d31"/></linearGradient>
+          <linearGradient id="lht" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CB7C"/><stop offset="1" stop-color="#F0A24B"/></linearGradient>
         </defs>
-        <path d="M30 150 L37 56 H49 L56 150 Z" fill="url(#lhb)" stroke="rgba(155,177,204,.25)"/>
-        <path d="M30 150 L37 56 H49 L56 150 Z" fill="none"/>
-        <rect x="33" y="74" width="20" height="7" fill="#F2B65A" opacity=".22"/>
-        <rect x="33" y="98" width="20" height="7" fill="#F2B65A" opacity=".18"/>
-        <rect x="33" y="122" width="20" height="7" fill="#F2B65A" opacity=".14"/>
-        <rect x="35.5" y="42" width="15" height="15" rx="2.5" fill="url(#lht)"/>
-        <rect x="33" y="56" width="20" height="3" rx="1.5" fill="#2a3d59"/>
-        <path d="M43 35 V42" stroke="#F2B65A" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="43" cy="33" r="2.4" fill="#fff"/>
+        <!-- torre -->
+        <path d="M44 210 L56 54 H74 L86 210 Z" fill="url(#lhb)" stroke="rgba(155,177,204,.28)" stroke-width="1"/>
+        <!-- franjas -->
+        <path d="M53.2 90 H76.8 L77.8 104 H52.2 Z" fill="#0e1b2e" opacity=".55"/>
+        <path d="M49.4 140 H80.6 L81.7 154 H48.3 Z" fill="#0e1b2e" opacity=".55"/>
+        <path d="M45.8 186 H84.2 L85.2 200 H44.8 Z" fill="#0e1b2e" opacity=".55"/>
+        <!-- galería / plataforma -->
+        <rect x="49" y="49" width="32" height="7" rx="2.5" fill="#2c4061"/>
+        <path d="M51 49 L54 40 H76 L79 49 Z" fill="#1c2e49" stroke="rgba(155,177,204,.25)" stroke-width=".8"/>
+        <!-- linterna (lámpara) -->
+        <rect x="55" y="26" width="20" height="16" rx="2.5" fill="url(#lht)"/>
+        <rect x="59.5" y="29.5" width="11" height="9" rx="1.5" fill="#FFF6E4" opacity=".92"/>
+        <!-- cúpula -->
+        <path d="M54 26 Q65 13 76 26 Z" fill="url(#lht)"/>
+        <path d="M65 13 V7" stroke="#F2B65A" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="65" cy="5.5" r="2.6" fill="#fff"/>
       </svg>
+      <!-- la luz: nace de la lámpara (beacon) -->
+      <div class="beacon">
+        <div class="beam"></div>
+        <div class="beam b2"></div>
+        <div class="glow"></div>
+      </div>
       <div class="label">Rumbo a <b>El Puerto</b> · 7 de febrero</div>
     </div>
   </div>
