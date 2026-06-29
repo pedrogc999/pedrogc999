@@ -19,12 +19,22 @@ El concepto central, según el encargo: **el preparador no te da una lista infin
 
 ## Anatomía de la pantalla
 
-1. **Hero "El rumbo"** — Titular editorial + un **mensaje personalizado del preparador** (la presencia de Faro, Doc 09) y la escena del faro con su haz de luz pulsante hacia *El Puerto* (la plaza).
+1. **Hero "El rumbo"** — Titular editorial + un **mensaje personalizado del preparador** (la presencia de Faro, Doc 09) y la escena del faro con su haz de luz pulsante —que nace de la linterna— hacia *El Puerto* (la plaza).
 2. **Los tres horizontes** — El corazón del rediseño. Tres tarjetas (corto / medio / largo plazo), cada una con su línea de horizonte, sus ítems con estado de dominio sutil (*En camino · A repasar · Dominado*) y su progreso sereno. La luz es más cercana en "corto" y más lejana en "largo".
-3. **La Travesía** — La ruta completa Hoy → simulacro → recta final → Puerto, como un camino que avanza hacia el horizonte (Doc 08 §7, "Mapa de la Travesía").
-4. **El Hoy** — Una sola decisión, una sola acción primaria (el botón "de la luz"), con la sesión flexible del día (Doc 06 §5.2).
-5. **Check-in emocional** — "¿Cómo llegas hoy?": un gesto que adapta la sesión y responde con la voz de Faro (Doc 05 §4). **Interactivo.**
-6. **Hitos + Una palabra de Faro** — Línea de tiempo sin culpa (cero rojo de tareas vencidas) y el panel de acompañamiento con control de intensidad (Doc 05 §3.3).
+3. **La Travesía (ruta)** — La ruta poética Hoy → simulacro → recta final → Puerto (Doc 08 §7, "Mapa de la Travesía").
+4. **El Gantt de la Travesía** — La vista de trabajo: bloques del temario, repaso espaciado, simulacros y recta final repartidos **semana a semana** hasta el examen, con la línea de **"Hoy"**. Es el "corto/medio/largo plazo" en una sola foto temporal. Sereno y sin tareas en rojo; se desliza en horizontal en móvil.
+5. **El Hoy** — Una sola decisión, una sola acción primaria (el botón "de la luz"), con la sesión flexible del día (Doc 06 §5.2).
+6. **Check-in emocional** — "¿Cómo llegas hoy?": un gesto que adapta la sesión y responde con la voz de Faro (Doc 05 §4). **Interactivo.**
+7. **¿Voy bien? — el seguimiento honesto** — La respuesta a la pregunta crónica del opositor (Doc 10 F-TRA-3), con cuatro métricas de valor: **dominio por bloque**, **proyección a examen** (gauge de cobertura prevista + confianza calibrada), **repaso espaciado de la semana** (qué vuelve y retención) y **constancia** (heatmap sereno que no castiga los huecos).
+8. **Hitos + Una palabra de Faro** — Línea de tiempo sin culpa (cero rojo de tareas vencidas) y el panel de acompañamiento con control de intensidad (Doc 05 §3.3).
+
+## Tour guiado por la app
+
+El botón **"Faro te enseña tu plan"** (abajo a la derecha) inicia un recorrido con *spotlight*: Faro, con su voz (Doc 09), te presenta cada zona en seis pasos (rumbo → tres horizontes → Gantt → El Hoy → check-in → ¿voy bien?). Navegable con ratón o teclado (← → Esc). Es la traducción del onboarding F-ON ("Encender el faro") a una bienvenida cálida en vez de un formulario.
+
+## Responsive (móvil · tablet · escritorio)
+
+Diseñado **móvil-first** (Doc 08 §9). En móvil el header colapsa a lo esencial, la escena del faro va a pantalla completa, las tarjetas se apilan, el botón principal ocupa el ancho, el Gantt se desliza en horizontal y el tour se adapta al viewport. El tablet usa un punto intermedio (hero y "El Hoy" a una columna). Ver capturas en `preview-*` y en el PR.
 
 ## Cómo respeta el Sistema de Diseño (Doc 08)
 

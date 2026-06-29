@@ -382,6 +382,131 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal.in{ opacity:1; transform:none; }
 
+/* ============================================================
+   GANTT — la Travesía semana a semana
+   ============================================================ */
+.gantt-wrap{ border-radius:var(--r-xl); padding:24px; background:linear-gradient(180deg,var(--surface),var(--surface-2)); border:1px solid var(--hairline); box-shadow:var(--shadow-soft); }
+.gantt-scroll{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+.gantt{ min-width:680px; display:grid; grid-template-columns:172px 1fr; column-gap:16px; }
+.g-labels{ display:flex; flex-direction:column; }
+.g-labels .g-head{ height:30px; }
+.g-labels .row{ height:44px; display:flex; align-items:center; gap:9px; font-size:13.5px; color:var(--ink-soft); }
+.g-labels .row .ic{ width:9px; height:9px; border-radius:3px; flex:0 0 9px; }
+.g-time{ position:relative; }
+.g-months{ height:30px; display:grid; grid-template-columns:repeat(8,1fr); }
+.g-months span{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); padding-left:6px; border-left:1px solid var(--hairline); display:flex; align-items:center; }
+.g-grid{ position:absolute; left:0; right:0; top:30px; bottom:0; background:repeating-linear-gradient(to right, var(--hairline) 0 1px, transparent 1px 12.5%); opacity:.7; pointer-events:none; }
+.g-rows{ position:relative; height:308px; }
+.g-bar{ position:absolute; height:22px; border-radius:8px; display:flex; align-items:center; padding:0 10px; font-size:11.5px; font-weight:600; color:var(--ink); overflow:hidden; white-space:nowrap; }
+.g-bar > span{ position:relative; z-index:1; }
+.g-bar .fill{ position:absolute; left:0; top:0; bottom:0; border-radius:8px; }
+.g-bar.done{ background:rgba(116,196,154,.16); border:1px solid rgba(116,196,154,.3); color:#bfe6d2; }
+.g-bar.done .fill{ width:100%; background:linear-gradient(90deg,rgba(91,184,138,.5),rgba(116,196,154,.35)); }
+.g-bar.curr{ background:rgba(242,182,90,.14); border:1px solid rgba(242,182,90,.4); }
+.g-bar.curr .fill{ background:linear-gradient(90deg,var(--light),var(--light-warm)); }
+.g-bar.plan{ background:var(--surface-2); border:1px dashed var(--hairline-2); color:var(--ink-soft); }
+.g-bar.final{ background:rgba(154,169,255,.16); border:1px solid rgba(154,169,255,.42); color:#cdd4ff; }
+.g-repaso{ position:absolute; height:9px; border-radius:5px; opacity:.55;
+  background:repeating-linear-gradient(90deg, var(--guide) 0 9px, transparent 9px 17px); }
+.g-mile{ position:absolute; width:13px; height:13px; transform:translate(-50%,-50%) rotate(45deg); border-radius:3px; background:var(--guide); box-shadow:0 0 0 4px var(--guide-soft); }
+.g-star{ position:absolute; transform:translate(-50%,-50%); color:var(--light); filter:drop-shadow(0 0 6px var(--light-glow)); }
+.g-now{ position:absolute; top:24px; bottom:0; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 12px var(--light-glow); z-index:2; }
+.g-now::before{ content:"Hoy"; position:absolute; top:-2px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#1a1206; background:var(--light); padding:2px 8px; border-radius:6px; letter-spacing:.03em; }
+.gantt-legend{ display:flex; flex-wrap:wrap; align-items:center; gap:18px; margin-top:18px; padding-top:15px; border-top:1px solid var(--hairline); font-size:12.5px; color:var(--ink-soft); }
+.gantt-legend i{ display:inline-block; width:14px; height:9px; border-radius:3px; margin-right:7px; vertical-align:middle; }
+
+/* ============================================================
+   ¿VOY BIEN? — progreso honesto
+   ============================================================ */
+.grid-progress{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+.metric h4{ font-family:var(--serif); font-weight:600; font-size:18.5px; margin:0 0 5px; }
+.metric .h-sub{ color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; line-height:1.5; }
+.dom-row{ display:flex; align-items:center; gap:13px; margin-bottom:14px; }
+.dom-row .nm{ flex:0 0 130px; font-size:13.5px; }
+.dom-row .tr{ flex:1; height:9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--hairline); overflow:hidden; }
+.dom-row .tr > i{ display:block; height:100%; border-radius:999px; }
+.dom-row .pc{ flex:0 0 38px; text-align:right; font-size:12.5px; color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+.proj{ display:flex; gap:20px; align-items:center; }
+.gauge{ position:relative; width:108px; height:108px; flex:0 0 108px; border-radius:50%; display:grid; place-items:center;
+  background:conic-gradient(var(--light) calc(var(--p,75)*1%), var(--surface-2) 0); }
+.gauge .inner{ width:82px; height:82px; border-radius:50%; background:var(--deep-2); display:grid; place-items:center; text-align:center; border:1px solid var(--hairline); }
+html[data-theme="light"] .gauge .inner{ background:#fff; }
+.gauge .inner b{ font-family:var(--serif); font-size:23px; line-height:1; }
+.gauge .inner small{ display:block; font-size:9.5px; color:var(--ink-faint); margin-top:3px; line-height:1.2; }
+.proj p{ margin:0; font-size:14.5px; color:var(--ink-soft); line-height:1.5; } .proj p b{ color:var(--ink); }
+.forecast{ display:flex; align-items:flex-end; gap:8px; height:66px; }
+.forecast .d{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:7px; }
+.forecast .d i{ width:100%; max-width:26px; min-height:6px; border-radius:5px 5px 2px 2px; background:linear-gradient(180deg,var(--guide),rgba(107,196,214,.25)); }
+.forecast .d span{ font-size:10.5px; color:var(--ink-faint); }
+.heat{ display:grid; grid-template-columns:repeat(20,1fr); gap:5px; }
+.heat i{ aspect-ratio:1; border-radius:3px; background:var(--surface-2); border:1px solid var(--hairline); }
+.heat i.l1{ background:rgba(242,182,90,.28); border-color:transparent; }
+.heat i.l2{ background:rgba(242,182,90,.55); border-color:transparent; }
+.heat i.l3{ background:var(--light); border-color:transparent; }
+.heat i.rest{ background:var(--guide-soft); border-color:transparent; }
+.heat-key{ display:flex; align-items:center; gap:6px; margin-top:14px; font-size:11.5px; color:var(--ink-faint); }
+.heat-key i{ width:11px; height:11px; border-radius:3px; background:var(--surface-2); border:1px solid var(--hairline); }
+.heat-key i.l1{ background:rgba(242,182,90,.28);} .heat-key i.l2{ background:rgba(242,182,90,.55);} .heat-key i.l3{ background:var(--light);} .heat-key i.rest{ background:var(--guide-soft); border-color:transparent; }
+
+/* ============================================================
+   TOUR por la app
+   ============================================================ */
+.tour-fab{ position:fixed; right:22px; bottom:22px; z-index:60; display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--sans); font-weight:600; font-size:14px; color:#1a1206; cursor:pointer; border:none;
+  padding:13px 19px; border-radius:999px; background:linear-gradient(180deg,var(--light),var(--light-warm));
+  box-shadow:0 16px 40px -10px var(--light-glow), inset 0 1px 0 rgba(255,255,255,.4); transition:transform .2s ease; }
+.tour-fab:hover{ transform:translateY(-2px); }
+.tour-overlay{ position:fixed; inset:0; z-index:70; display:none; }
+.tour-overlay.on{ display:block; }
+.tour-hole{ position:absolute; border-radius:18px; box-shadow:0 0 0 9999px rgba(6,11,20,.84); transition:all .45s cubic-bezier(.2,.7,.2,1); pointer-events:none; }
+.tour-pop{ position:absolute; width:340px; max-width:calc(100vw - 32px); background:var(--deep-2); border:1px solid var(--hairline-2); border-radius:var(--r-lg); padding:22px; box-shadow:var(--shadow-card); transition:top .45s cubic-bezier(.2,.7,.2,1), left .45s cubic-bezier(.2,.7,.2,1); }
+.tour-pop .who{ display:flex; align-items:center; gap:9px; font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:600; }
+.tour-pop .who b{ color:var(--light); }
+.tour-pop h5{ font-family:var(--serif); font-weight:600; font-size:19px; margin:11px 0 7px; letter-spacing:-.01em; }
+.tour-pop p{ margin:0; font-size:14px; color:var(--ink-soft); line-height:1.55; }
+.tour-pop .nav{ display:flex; align-items:center; justify-content:space-between; margin-top:20px; }
+.tour-pop .dots{ display:flex; gap:6px; } .tour-pop .dots i{ width:7px; height:7px; border-radius:50%; background:var(--hairline-2); transition:.2s; } .tour-pop .dots i.on{ background:var(--light); transform:scale(1.2); }
+.tour-pop .btns{ display:flex; gap:8px; }
+.tour-pop button{ font-family:var(--sans); font-size:13px; font-weight:600; cursor:pointer; border-radius:10px; padding:9px 15px; border:1px solid var(--hairline-2); background:transparent; color:var(--ink-soft); transition:.2s; }
+.tour-pop button:hover{ color:var(--ink); }
+.tour-pop button.prim{ background:linear-gradient(180deg,var(--light),var(--light-warm)); color:#1a1206; border:none; }
+.tour-pop button.prim:hover{ color:#1a1206; }
+.tour-pop button[hidden]{ display:none; }
+.tour-skip{ position:fixed; top:20px; right:22px; z-index:72; font-size:13px; font-weight:500; color:var(--ink-soft); cursor:pointer; background:rgba(19,31,53,.75); border:1px solid var(--hairline-2); padding:9px 15px; border-radius:999px; backdrop-filter:blur(8px); }
+.tour-skip:hover{ color:var(--ink); }
+
+/* ============================================================
+   RESPONSIVE — tablet y móvil
+   ============================================================ */
+@media (max-width:1024px){            /* tablet */
+  :root{ --maxw:920px; }
+  .hero-grid{ grid-template-columns:1fr; gap:30px; }
+  .scene{ height:340px; order:-1; }
+  .hoy-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:680px){             /* móvil */
+  .wrap{ padding:0 18px; }
+  section{ padding:34px 0; }
+  .hero{ padding:30px 0 6px; }
+  .hero h1{ font-size:clamp(32px,9vw,40px); }
+  .hero .lede{ font-size:16.5px; }
+  .scene{ height:260px; }
+  .coach{ padding:16px; gap:12px; } .coach .avatar{ width:38px; height:38px; flex-basis:38px; }
+  .coach p{ font-size:15px; }
+  .hero-stats{ gap:16px; } .hstat + .hstat{ padding-left:16px; } .hstat .n{ font-size:26px; }
+  .sec-head{ margin-bottom:28px; } .sec-head h2{ font-size:clamp(25px,7vw,32px); } .sec-head p{ font-size:15.5px; }
+  .horizons{ grid-template-columns:1fr; }
+  .hoy{ padding:24px; } .hoy h3{ font-size:24px; }
+  .cta-row{ gap:8px; } .btn-light{ width:100%; justify-content:center; }
+  .moods{ gap:6px; } .mood .m{ font-size:10px; }
+  .grid-progress{ grid-template-columns:1fr; }
+  .proj{ flex-direction:row; }
+  .timeline li{ padding-left:34px; }
+  .tour-fab{ right:14px; bottom:14px; padding:12px 16px; font-size:13px; }
+  .tour-fab .lbl-long{ display:none; }
+  footer .wrap{ flex-direction:column; align-items:flex-start; gap:14px; }
+}
+
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
   .reveal{ opacity:1; transform:none; }
@@ -450,7 +575,7 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
     </div>
 
     <!-- Escena del faro -->
-    <div class="scene reveal" aria-hidden="true">
+    <div class="scene reveal" id="tourFaro" aria-hidden="true">
       <svg class="stars" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice">
         <g fill="#cfe0f5">
           <circle cx="40" cy="60" r="1" opacity=".5"/><circle cx="120" cy="40" r="1.3" opacity=".7"/>
@@ -504,7 +629,7 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
       <p>Un buen preparador no te da una lista infinita: te da el siguiente paso, el rumbo del mes y la foto completa hasta el examen. Faro sostiene los tres a la vez.</p>
     </div>
 
-    <div class="horizons">
+    <div class="horizons" id="tourHorizons">
       <!-- CORTO -->
       <article class="hz corto reveal">
         <div class="hz-top"><span class="tag">Corto plazo</span><span class="range">Esta semana</span></div>
@@ -609,10 +734,65 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
   </div>
 </section>
 
+<!-- ============ GANTT · LA TRAVESÍA SEMANA A SEMANA ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">El plan completo</span>
+      <h2>Tu Travesía, semana a semana</h2>
+      <p>El Gantt de tu preparación: bloques del temario, repaso, simulacros y recta final, repartidos con margen hasta el examen. Sin tareas en rojo — solo el rumbo.</p>
+    </div>
+
+    <div class="gantt-wrap reveal" id="tourGantt">
+      <div class="gantt-scroll">
+        <div class="gantt">
+          <div class="g-labels">
+            <div class="g-head"></div>
+            <div class="row"><span class="ic" style="background:#74c49a"></span>Bloque I · Constitución</div>
+            <div class="row"><span class="ic" style="background:var(--light)"></span>Bloque II · Organización</div>
+            <div class="row"><span class="ic" style="background:#9aa9ff"></span>Bloque III · Unión Europea</div>
+            <div class="row"><span class="ic" style="background:#9aa9ff"></span>Bloque IV · Procedimiento</div>
+            <div class="row"><span class="ic" style="background:var(--guide)"></span>Repaso espaciado</div>
+            <div class="row"><span class="ic" style="background:var(--guide)"></span>Simulacros</div>
+            <div class="row"><span class="ic" style="background:#b9a8ff"></span>Recta final · Examen</div>
+          </div>
+          <div class="g-time">
+            <div class="g-months">
+              <span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span>
+            </div>
+            <div class="g-grid"></div>
+            <div class="g-rows">
+              <div class="g-bar done"  style="top:11px;  left:0;    width:13%"><div class="fill"></div><span>Dominado</span></div>
+              <div class="g-bar curr"  style="top:55px;  left:7%;   width:30%"><div class="fill" style="width:30%"></div><span>En curso</span></div>
+              <div class="g-bar plan"  style="top:99px;  left:35%;  width:26%"><span>Planificado</span></div>
+              <div class="g-bar plan"  style="top:143px; left:58%;  width:26%"><span>Planificado</span></div>
+              <div class="g-repaso"    style="top:194px; left:6%;   width:90%"></div>
+              <div class="g-mile" style="top:242px; left:30%" title="Simulacro de diagnóstico"></div>
+              <div class="g-mile" style="top:242px; left:55%" title="Simulacro 2"></div>
+              <div class="g-mile" style="top:242px; left:78%" title="Simulacro final"></div>
+              <div class="g-bar final" style="top:275px; left:80%;  width:18%"><span>Recta final</span></div>
+              <svg class="g-star" style="top:286px; left:98%" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg>
+              <div class="g-now" style="left:14%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gantt-legend">
+        <span><i style="background:#74c49a"></i>Dominado</span>
+        <span><i style="background:var(--light)"></i>En curso</span>
+        <span><i style="background:var(--surface-2);border:1px dashed var(--hairline-2)"></i>Planificado</span>
+        <span><i style="background:var(--guide)"></i>Repaso / simulacro</span>
+        <span><i style="background:#b9a8ff"></i>Recta final</span>
+        <span style="margin-left:auto;color:var(--ink-faint)">↔ Desliza para ver toda la travesía</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ EL HOY + CHECK-IN ============ -->
 <section>
   <div class="wrap hoy-grid">
-    <div class="hoy reveal">
+    <div class="hoy reveal" id="tourHoy">
       <span class="k">El Hoy · una sola decisión</span>
       <h3>Tema 14 y un repaso corto.<br>Empezamos cuando quieras.</h3>
       <p class="sub">He preparado una sesión a tu medida para esta noche. Empieza fácil con el repaso; si luego tienes cuerpo, seguimos con el tema nuevo.</p>
@@ -630,7 +810,7 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
       </div>
     </div>
 
-    <div class="checkin reveal">
+    <div class="checkin reveal" id="tourCheckin">
       <h4>¿Cómo llegas hoy?</h4>
       <p>Un gesto, 3 segundos. Adapto la sesión a cómo estás, no solo a lo que toca.</p>
       <div class="moods" id="moods">
@@ -643,6 +823,69 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
       <div class="reply" id="reply">
         <span class="b"><svg width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#6BC4D6"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#6BC4D6"/></svg></span>
         <span id="replyText">Bien. Mantenemos el plan de hoy: tema 14 y repaso. A tu ritmo.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ¿VOY BIEN? · PROGRESO HONESTO ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">El seguimiento honesto</span>
+      <h2>¿Voy bien?</h2>
+      <p>La respuesta a la pregunta crónica del opositor, con datos que orientan y nunca culpan.</p>
+    </div>
+
+    <div class="grid-progress" id="tourProgreso">
+      <!-- Dominio por bloque -->
+      <div class="panel metric reveal">
+        <h4>Dominio por bloque</h4>
+        <p class="h-sub">Construido con tu rendimiento real en preguntas y repasos, no con la sensación.</p>
+        <div class="dom-row"><span class="nm">I · Constitución</span><span class="tr"><i style="width:92%;background:linear-gradient(90deg,#5bb88a,#74c49a)"></i></span><span class="pc">92%</span></div>
+        <div class="dom-row"><span class="nm">II · Organización</span><span class="tr"><i style="width:58%;background:linear-gradient(90deg,var(--light),var(--light-warm))"></i></span><span class="pc">58%</span></div>
+        <div class="dom-row"><span class="nm">III · Unión Europea</span><span class="tr"><i style="width:16%;background:linear-gradient(90deg,var(--guide),#8fd4e2)"></i></span><span class="pc">16%</span></div>
+        <div class="dom-row"><span class="nm">IV · Procedimiento</span><span class="tr"><i style="width:4%;background:var(--ink-faint)"></i></span><span class="pc">4%</span></div>
+        <p class="h-sub" style="margin:16px 0 0">En conjunto, <b style="color:var(--ink)">44% del temario</b> con base sólida. Vas a tiempo.</p>
+      </div>
+
+      <!-- Proyección a examen -->
+      <div class="panel metric reveal">
+        <h4>Proyección a examen</h4>
+        <p class="h-sub">A tu ritmo actual, cómo llegas al 7 de febrero.</p>
+        <div class="proj">
+          <div class="gauge" style="--p:84"><div class="inner"><b>84%</b><small>cobertura<br>prevista</small></div></div>
+          <p><b style="color:var(--ok)">Vas a tiempo.</b> Cubres el temario con margen para <b>2 vueltas de repaso</b> antes del examen. Si mantienes tus noches, llegas con la lección aprendida.</p>
+        </div>
+        <p class="h-sub" style="margin:18px 0 0">Confianza calibrada con datos, no con optimismo: ni te inflo ni te hundo.</p>
+      </div>
+
+      <!-- Repaso de la semana -->
+      <div class="panel metric reveal">
+        <h4>Repaso espaciado · esta semana</h4>
+        <p class="h-sub">Lo que vuelve justo antes de que lo olvides. Yo decido qué; tú solo repasas.</p>
+        <div class="forecast">
+          <div class="d"><i style="height:46%"></i><span>L</span></div>
+          <div class="d"><i style="height:68%"></i><span>M</span></div>
+          <div class="d"><i style="height:30%"></i><span>X</span></div>
+          <div class="d"><i style="height:82%"></i><span>J</span></div>
+          <div class="d"><i style="height:54%"></i><span>V</span></div>
+          <div class="d"><i style="height:22%"></i><span>S</span></div>
+          <div class="d"><i style="height:14%"></i><span>D</span></div>
+        </div>
+        <p class="h-sub" style="margin-top:14px"><b style="color:var(--ink)">18 ítems</b> vuelven esta semana · retención media <b style="color:var(--ok)">86%</b></p>
+      </div>
+
+      <!-- Constancia -->
+      <div class="panel metric reveal">
+        <h4>Tu constancia</h4>
+        <p class="h-sub">23 días de rumbo. Los huecos no se castigan: se recolocan y seguimos.</p>
+        <div class="heat">
+          <i class="l3"></i><i class="l2"></i><i class="l3"></i><i class="l1"></i><i class="rest"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l2"></i><i class="rest"></i><i class="l1"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="l3"></i><i class="l1"></i><i class="rest"></i>
+          <i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="rest"></i><i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="l3"></i><i class="rest"></i><i class="l2"></i><i class="l3"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="rest"></i>
+          <i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="rest"></i><i class="l2"></i><i class="l3"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="l1"></i><i class="rest"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="l3"></i><i class="l3"></i><i class="l2"></i><i class="l3"></i>
+        </div>
+        <div class="heat-key"><span>Menos</span><i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><span>Más</span><span style="margin-left:auto"><i class="rest"></i> Descanso</span></div>
       </div>
     </div>
   </div>
@@ -723,6 +966,32 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
   </div>
 </footer>
 
+<!-- ============ TOUR POR LA APP ============ -->
+<button class="tour-fab" id="tourStart" aria-label="Iniciar el tour guiado">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 4.6L18 8l-4.4 1.4L12 14l-1.6-4.6L6 8l4.4-1.4z"/><circle cx="18" cy="17" r="1.6"/><circle cx="6" cy="16" r="1.2"/></svg>
+  <span class="lbl-long">Faro te enseña tu plan</span>
+</button>
+
+<div class="tour-overlay" id="tourOverlay" aria-live="polite">
+  <div class="tour-hole" id="tourHole"></div>
+  <div class="tour-pop" id="tourPop" role="dialog" aria-modal="true">
+    <div class="who">
+      <svg width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/><circle cx="20" cy="12" r="1.5" fill="#fff"/></svg>
+      Faro · <b>tu preparador</b>
+    </div>
+    <h5 id="tourTitle"></h5>
+    <p id="tourText"></p>
+    <div class="nav">
+      <div class="dots" id="tourDots"></div>
+      <div class="btns">
+        <button id="tourPrev">Atrás</button>
+        <button class="prim" id="tourNext">Siguiente</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-skip" id="tourSkip">Saltar tour</div>
+</div>
+
 <script>
 (function(){
   /* ---- Tema claro/oscuro ---- */
@@ -749,6 +1018,70 @@ footer .note b{ color:var(--ink-soft); font-family:var(--serif); }
     entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold:.12 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---- Tour guiado por la app ---- */
+  var steps = [
+    { sel:'#tourFaro', title:'Tu rumbo, siempre a la vista',
+      text:'El faro es tu meta: la plaza. Cada vez que abras Faro sabrás cuánto te queda y que no remas en la oscuridad. Esto lo hacemos juntos.' },
+    { sel:'#tourHorizons', title:'Corto, medio y largo plazo',
+      text:'No te abrumo con todo a la vez. Aquí ves lo de esta semana, el rumbo del mes y la foto completa hasta el examen, sin perder de vista ninguno.' },
+    { sel:'#tourGantt', title:'Tu plan, semana a semana',
+      text:'El Gantt de tu Travesía: bloques, repaso y simulacros repartidos con margen. Si un día la vida se cruza, lo recoloco yo. Nunca verás tareas en rojo.' },
+    { sel:'#tourHoy', title:'Una sola decisión',
+      text:'Cada día te digo qué toca, sin que tengas que pensarlo. Tú solo pulsas «Empezar el Hoy». La página en blanco se acabó.' },
+    { sel:'#tourCheckin', title:'Me importa cómo llegas',
+      text:'Un gesto de 3 segundos y adapto la sesión a tu estado, no solo a lo que toca. El día que llegues hundida, bajo el volumen.' },
+    { sel:'#tourProgreso', title:'Siempre sabrás si vas bien',
+      text:'Dominio, retención y proyección con datos honestos: para orientarte, nunca para culparte. Esa es mi promesa. Buena travesía.' }
+  ];
+  var overlay=document.getElementById('tourOverlay'), hole=document.getElementById('tourHole'),
+      pop=document.getElementById('tourPop'), title=document.getElementById('tourTitle'),
+      text=document.getElementById('tourText'), dots=document.getElementById('tourDots'),
+      prevB=document.getElementById('tourPrev'), nextB=document.getElementById('tourNext'),
+      fab=document.getElementById('tourStart'), skip=document.getElementById('tourSkip');
+  var idx=0;
+
+  dots.innerHTML = steps.map(function(){ return '<i></i>'; }).join('');
+  var dotEls = dots.querySelectorAll('i');
+
+  function place(){
+    var step=steps[idx], el=document.querySelector(step.sel);
+    if(!el) return;
+    var r=el.getBoundingClientRect(), pad=10;
+    hole.style.left=(r.left-pad)+'px'; hole.style.top=(r.top-pad)+'px';
+    hole.style.width=(r.width+pad*2)+'px'; hole.style.height=(r.height+pad*2)+'px';
+    title.textContent=step.title; text.textContent=step.text;
+    dotEls.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
+    prevB.hidden = (idx===0);
+    nextB.textContent = (idx===steps.length-1) ? 'Entendido' : 'Siguiente';
+    // posición del popover: debajo si cabe, si no, encima
+    var pw=pop.offsetWidth||340, ph=pop.offsetHeight||200, vw=window.innerWidth, vh=window.innerHeight;
+    var top = r.bottom+16;
+    if(top+ph > vh-16) top = Math.max(16, r.top-ph-16);
+    if(top+ph > vh-16) top = Math.max(16, (vh-ph)/2);
+    var left = Math.min(Math.max(16, r.left), vw-pw-16);
+    pop.style.top=top+'px'; pop.style.left=left+'px';
+  }
+  function goto(i){
+    idx=Math.max(0, Math.min(steps.length-1, i));
+    var el=document.querySelector(steps[idx].sel);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+    setTimeout(place, 420);
+  }
+  function open(){ overlay.classList.add('on'); fab.style.display='none'; goto(0); }
+  function close(){ overlay.classList.remove('on'); fab.style.display=''; }
+
+  fab.addEventListener('click', open);
+  skip.addEventListener('click', close);
+  prevB.addEventListener('click', function(){ goto(idx-1); });
+  nextB.addEventListener('click', function(){ if(idx===steps.length-1) close(); else goto(idx+1); });
+  window.addEventListener('resize', function(){ if(overlay.classList.contains('on')) place(); });
+  window.addEventListener('keydown', function(e){
+    if(!overlay.classList.contains('on')) return;
+    if(e.key==='Escape') close();
+    else if(e.key==='ArrowRight') nextB.click();
+    else if(e.key==='ArrowLeft' && idx>0) goto(idx-1);
+  });
 })();
 </script>
 </body>
