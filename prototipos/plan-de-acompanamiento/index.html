@@ -153,6 +153,11 @@ html[data-theme="light"] .theme-toggle .sun{ display:block; }
    ============================================================ */
 .hero{ position:relative; padding:64px 0 26px; overflow:hidden; }
 .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:36px; align-items:center; }
+.hero-head{ display:grid; grid-template-columns:1.3fr .9fr; gap:36px; align-items:center; margin-bottom:36px; }
+.hero-head .coach{ margin-top:0; }
+.gantt-title{ margin-bottom:20px; }
+.gantt-title h2{ font-family:var(--serif); font-weight:500; font-size:clamp(24px,3vw,33px); letter-spacing:-.015em; margin:11px 0 0; line-height:1.1; }
+@media (max-width:920px){ .hero-head{ grid-template-columns:1fr; gap:24px; } }
 .hero h1{
   font-family:var(--serif); font-weight:500; font-size:clamp(38px,5.4vw,62px);
   line-height:1.04; letter-spacing:-.02em; margin:20px 0 0;
@@ -589,12 +594,18 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="plan">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Plan de acompañamiento</span>
-      <h1>Tu travesía<br>hacia <span class="lit">la plaza</span></h1>
-      <p class="lede">No es un calendario que se rompe el primer día malo. Es un plan vivo que tu preparador ajusta a tu vida, tema a tema, y que respira contigo.</p>
-
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="hero-copy">
+        <span class="eyebrow">Plan de acompañamiento</span>
+        <h1>Tu travesía hacia <span class="lit">la plaza</span></h1>
+        <p class="lede">No es un calendario que se rompe el primer día malo. Es un plan vivo que tu preparador ajusta a tu vida, tema a tema, y que respira contigo.</p>
+        <div class="hero-stats">
+          <div class="hstat"><div class="n">14<small> / 32</small></div><div class="l">Temas dominados</div></div>
+          <div class="hstat"><div class="n">86<small>%</small></div><div class="l">Fieles al ritmo</div></div>
+          <div class="hstat"><div class="n">23</div><div class="l">Días de constancia</div></div>
+        </div>
+      </div>
       <div class="coach reveal">
         <div class="avatar">
           <svg width="22" height="22" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/><circle cx="20" cy="12" r="1.5" fill="#fff"/></svg>
@@ -604,57 +615,41 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
           <p>«Lucía, he ajustado tu plan a tus noches. Vamos sin prisa pero sin pausa: hoy, el tema 14 y un repaso corto. Yo te digo qué toca; tú solo estudias.»</p>
         </div>
       </div>
-
-      <div class="hero-stats">
-        <div class="hstat"><div class="n">14<small> / 32</small></div><div class="l">Temas dominados</div></div>
-        <div class="hstat"><div class="n">86<small>%</small></div><div class="l">Fieles al ritmo</div></div>
-        <div class="hstat"><div class="n">23</div><div class="l">Días de constancia</div></div>
-      </div>
     </div>
 
-    <!-- Escena del faro -->
-    <div class="scene reveal" id="tourFaro" aria-hidden="true">
-      <svg class="stars" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice">
-        <g fill="#cfe0f5">
-          <circle cx="40" cy="60" r="1" opacity=".5"/><circle cx="120" cy="40" r="1.3" opacity=".7"/>
-          <circle cx="220" cy="70" r="1" opacity=".5"/><circle cx="320" cy="50" r="1.4" opacity=".8"/>
-          <circle cx="360" cy="120" r="1" opacity=".5"/><circle cx="80" cy="140" r="1.1" opacity=".6"/>
-          <circle cx="180" cy="120" r="1" opacity=".45"/><circle cx="280" cy="150" r="1.2" opacity=".6"/>
-          <circle cx="60" cy="220" r="1" opacity=".4"/><circle cx="340" cy="210" r="1" opacity=".5"/>
-        </g>
-      </svg>
-      <div class="sea"></div>
-      <div class="horizon"></div>
-      <svg class="lh" width="130" height="210" viewBox="0 0 130 210" fill="none">
-        <defs>
-          <linearGradient id="lhb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#243a58"/><stop offset=".5" stop-color="#1a2c46"/><stop offset="1" stop-color="#0f1d31"/></linearGradient>
-          <linearGradient id="lht" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CB7C"/><stop offset="1" stop-color="#F0A24B"/></linearGradient>
-        </defs>
-        <!-- torre -->
-        <path d="M44 210 L56 54 H74 L86 210 Z" fill="url(#lhb)" stroke="rgba(155,177,204,.28)" stroke-width="1"/>
-        <!-- franjas -->
-        <path d="M53.2 90 H76.8 L77.8 104 H52.2 Z" fill="#0e1b2e" opacity=".55"/>
-        <path d="M49.4 140 H80.6 L81.7 154 H48.3 Z" fill="#0e1b2e" opacity=".55"/>
-        <path d="M45.8 186 H84.2 L85.2 200 H44.8 Z" fill="#0e1b2e" opacity=".55"/>
-        <!-- galería / plataforma -->
-        <rect x="49" y="49" width="32" height="7" rx="2.5" fill="#2c4061"/>
-        <path d="M51 49 L54 40 H76 L79 49 Z" fill="#1c2e49" stroke="rgba(155,177,204,.25)" stroke-width=".8"/>
-        <!-- linterna (lámpara) -->
-        <rect x="55" y="26" width="20" height="16" rx="2.5" fill="url(#lht)"/>
-        <rect x="59.5" y="29.5" width="11" height="9" rx="1.5" fill="#FFF6E4" opacity=".92"/>
-        <!-- cúpula -->
-        <path d="M54 26 Q65 13 76 26 Z" fill="url(#lht)"/>
-        <path d="M65 13 V7" stroke="#F2B65A" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="65" cy="5.5" r="2.6" fill="#fff"/>
-      </svg>
-      <!-- la luz: nace de la lámpara (beacon) -->
-      <div class="beacon">
-        <div class="beam"></div>
-        <div class="beam b2"></div>
-        <div class="glow"></div>
+    <!-- El Gantt de la Travesía, protagonista -->
+    <div class="gantt-wrap reveal" id="tourGantt">
+      <div class="gantt-title">
+        <span class="eyebrow">El plan completo · semana a semana</span>
+        <h2>Tu Travesía, de hoy hasta el examen</h2>
       </div>
-      <div class="label">Rumbo a <b>El Puerto</b> · 7 de febrero</div>
+      <div class="gantt-controls">
+        <div class="seg" id="gZoom">
+          <button data-view="months" class="on">Meses</button>
+          <button data-view="weeks">Semanas</button>
+        </div>
+        <div class="gantt-actions">
+          <button id="gReplan">↻ Tuve una semana floja</button>
+          <button id="gReset" hidden>Reiniciar plan</button>
+        </div>
+      </div>
+      <div class="gantt-scroll" id="ganttScroll">
+        <div class="gantt" id="ganttRender"><!-- render por JS --></div>
+      </div>
+      <div class="gantt-legend">
+        <span><i style="background:#74c49a"></i>Dominado</span>
+        <span><i style="background:var(--light)"></i>En curso</span>
+        <span><i style="background:var(--surface-2);border:1px dashed var(--hairline-2)"></i>Planificado</span>
+        <span><i style="background:var(--guide)"></i>Repaso / simulacro</span>
+        <span><i style="background:#b9a8ff"></i>Recta final</span>
+        <span style="margin-left:auto;color:var(--ink-faint)">Pasa el cursor (o toca) las barras para el detalle</span>
+      </div>
+      <div class="faro-toast" id="ganttToast"><div class="inner">
+        <svg width="18" height="18" viewBox="0 0 40 40" fill="none" style="flex:0 0 18px;margin-top:2px"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#6BC4D6"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#6BC4D6"/></svg>
+        <span id="ganttToastText"></span>
+      </div></div>
     </div>
+    <div class="gantt-tip" id="ganttTip"></div>
   </div>
 </section>
 
@@ -769,46 +764,6 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
         <span style="text-align:right"><b>El Puerto</b>7 feb · examen</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ GANTT · LA TRAVESÍA SEMANA A SEMANA ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">El plan completo</span>
-      <h2>Tu Travesía, semana a semana</h2>
-      <p>El Gantt de tu preparación: bloques del temario, repaso, simulacros y recta final, repartidos con margen hasta el examen. Sin tareas en rojo — solo el rumbo.</p>
-    </div>
-
-    <div class="gantt-wrap reveal" id="tourGantt">
-      <div class="gantt-controls">
-        <div class="seg" id="gZoom">
-          <button data-view="months" class="on">Meses</button>
-          <button data-view="weeks">Semanas</button>
-        </div>
-        <div class="gantt-actions">
-          <button id="gReplan">↻ Tuve una semana floja</button>
-          <button id="gReset" hidden>Reiniciar plan</button>
-        </div>
-      </div>
-      <div class="gantt-scroll" id="ganttScroll">
-        <div class="gantt" id="ganttRender"><!-- render por JS --></div>
-      </div>
-      <div class="gantt-legend">
-        <span><i style="background:#74c49a"></i>Dominado</span>
-        <span><i style="background:var(--light)"></i>En curso</span>
-        <span><i style="background:var(--surface-2);border:1px dashed var(--hairline-2)"></i>Planificado</span>
-        <span><i style="background:var(--guide)"></i>Repaso / simulacro</span>
-        <span><i style="background:#b9a8ff"></i>Recta final</span>
-        <span style="margin-left:auto;color:var(--ink-faint)">Pasa el cursor (o toca) las barras para el detalle</span>
-      </div>
-      <div class="faro-toast" id="ganttToast"><div class="inner">
-        <svg width="18" height="18" viewBox="0 0 40 40" fill="none" style="flex:0 0 18px;margin-top:2px"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#6BC4D6"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#6BC4D6"/></svg>
-        <span id="ganttToastText"></span>
-      </div></div>
-    </div>
-    <div class="gantt-tip" id="ganttTip"></div>
   </div>
 </section>
 
@@ -1044,12 +999,10 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
 
   /* ---- Tour guiado por la app ---- */
   var steps = [
-    { sel:'#tourFaro', title:'Tu rumbo, siempre a la vista',
-      text:'El faro es tu meta: la plaza. Cada vez que abras Faro sabrás cuánto te queda y que no remas en la oscuridad. Esto lo hacemos juntos.' },
+    { sel:'#tourGantt', title:'Tu travesía, de un vistazo',
+      text:'Aquí tienes tu plan entero hasta el examen: bloques, repaso, simulacros y recta final, repartidos con margen. La línea marca el Hoy. Si un día no puedes, lo recoloco yo — y nunca verás tareas en rojo.' },
     { sel:'#tourHorizons', title:'Corto, medio y largo plazo',
       text:'No te abrumo con todo a la vez. Aquí ves lo de esta semana, el rumbo del mes y la foto completa hasta el examen, sin perder de vista ninguno.' },
-    { sel:'#tourGantt', title:'Tu plan, semana a semana',
-      text:'El Gantt de tu Travesía: bloques, repaso y simulacros repartidos con margen. Si un día la vida se cruza, lo recoloco yo. Nunca verás tareas en rojo.' },
     { sel:'#tourHoy', title:'Una sola decisión',
       text:'Cada día te digo qué toca, sin que tengas que pensarlo. Tú solo pulsas «Empezar el Hoy». La página en blanco se acabó.' },
     { sel:'#tourCheckin', title:'Me importa cómo llegas',
