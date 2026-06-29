@@ -30,7 +30,7 @@ El concepto central, según el encargo: **el preparador no te da una lista infin
 4. **El Hoy** — Una sola decisión, una sola acción primaria (el botón "de la luz"), con la sesión flexible del día (Doc 06 §5.2).
 5. **Check-in emocional** — "¿Cómo llegas hoy?": un gesto que adapta la sesión y responde con la voz de Faro (Doc 05 §4). **Interactivo.**
 6. **¿Voy bien? — el seguimiento honesto** — La respuesta a la pregunta crónica del opositor (Doc 10 F-TRA-3), con cuatro métricas de valor: **dominio por bloque**, **proyección a examen** (gauge de cobertura prevista + confianza calibrada), **repaso espaciado de la semana** (qué vuelve y retención) y **constancia** (heatmap sereno que no castiga los huecos).
-7. **Hitos + Una palabra de Faro** — Línea de tiempo sin culpa (cero rojo de tareas vencidas) y el panel de acompañamiento con control de intensidad (Doc 05 §3.3).
+7. **Una palabra de Faro** — Cierre centrado a todo el ancho: el acompañamiento hecho voz (avance invisible, Doc 05 §5.1) con control de intensidad ("dame más caña" / "cuídame más" / "déjame tranquila", Doc 05 §3.3). Los hitos no se repiten aquí: ya viven en el Gantt (simulacros, recta final, examen).
 
 ## Tour guiado por la app
 

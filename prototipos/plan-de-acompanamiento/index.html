@@ -388,6 +388,16 @@ section{ padding:46px 0; }
   padding:8px 13px; border-radius:999px; border:1px solid var(--hairline-2); background:var(--surface-2); transition:.2s; font-family:var(--sans); }
 .voice .controls button:hover{ color:var(--ink); border-color:var(--light); }
 
+/* "Una palabra de Faro" como cierre centrado a todo el ancho */
+.voice-panel{ padding:42px clamp(24px,5vw,64px); text-align:center;
+  background:radial-gradient(120% 130% at 50% -10%, rgba(242,182,90,.10), transparent 55%), linear-gradient(180deg,var(--surface),var(--surface-2)); }
+.voice-panel h4{ justify-content:center; }
+.voice-panel > .h-sub{ text-align:center; }
+.voice-panel .voice{ align-items:center; max-width:740px; margin:6px auto 0; }
+.voice-panel .voice .q{ font-size:clamp(21px,2.5vw,28px); line-height:1.5; }
+.voice-panel .voice .sign{ justify-content:center; }
+.voice-panel .voice .controls{ justify-content:center; }
+
 @media (max-width:880px){ .cols2{ grid-template-columns:1fr; } }
 
 /* ---------- FOOTER ---------- */
@@ -851,42 +861,8 @@ html[data-theme="light"] .gauge .inner{ background:#fff; }
 
 <!-- ============ HITOS + VOZ DEL FARO ============ -->
 <section>
-  <div class="wrap cols2">
-    <div class="panel reveal">
-      <h4>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--light)" stroke-width="1.8"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="5"/></svg>
-        Tus próximos hitos
-      </h4>
-      <p class="h-sub">Lo logrado y lo que viene. Sin tareas en rojo: solo el camino, paso a paso.</p>
-      <ul class="timeline">
-        <li class="done">
-          <span class="node"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#0B1322" stroke-width="3.5"><path d="M5 12l5 5L19 7"/></svg></span>
-          <span class="when">Logrado</span>
-          <div class="t">Bloque I · Constitución, dominado</div>
-          <div class="d">13 temas con repaso al día. Buen cimiento.</div>
-        </li>
-        <li class="now">
-          <span class="node"></span>
-          <span class="when">Esta semana</span>
-          <div class="t">Cerrar las Cortes Generales</div>
-          <div class="d">Tema 14 + repaso de 9–11. Estás aquí.</div>
-        </li>
-        <li>
-          <span class="node"></span>
-          <span class="when">3 de marzo</span>
-          <div class="t">Tu primer simulacro</div>
-          <div class="d">Un ensayo para fallar barato hoy y acertar el día que cuenta.</div>
-        </li>
-        <li>
-          <span class="node"></span>
-          <span class="when">15 de diciembre</span>
-          <div class="t">Modo recta final</div>
-          <div class="d">Priorizamos lo de máximo retorno + simulacros + calma.</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="panel reveal">
+  <div class="wrap">
+    <div class="panel voice-panel reveal">
       <h4>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--light)" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
         Una palabra de Faro
