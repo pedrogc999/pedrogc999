@@ -20,6 +20,7 @@
   --guide:#6BC4D6; --guide-soft:rgba(107,196,214,.16);
   --ok:#74C49A; --care:#E7B26B; --viol:#9aa9ff;
   --r-sm:12px; --r:16px; --r-lg:22px; --r-xl:30px;
+  --read-size:17px; --read-leading:1.78; --read-measure:70ch;
   --shadow-soft:0 18px 50px -24px rgba(0,0,0,.65);
   --shadow-card:0 24px 70px -34px rgba(0,0,0,.75);
   --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,sans-serif;
@@ -132,13 +133,13 @@ html[data-theme="light"] .theme-toggle .sun{ display:block; }
 .dombar > i{ display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--light),var(--light-warm)); box-shadow:0 0 14px -2px var(--light); }
 
 /* prosa */
-.prose{ max-width:70ch; }
-.prose h2{ font-family:var(--serif); font-weight:600; font-size:25px; letter-spacing:-.01em; margin:46px 0 4px; scroll-margin-top:96px; display:flex; align-items:baseline; gap:12px; }
+.prose{ max-width:var(--read-measure); transition:max-width .3s ease; }
+.prose h2{ font-family:var(--serif); font-weight:600; font-size:25px; letter-spacing:-.01em; margin:46px 0 4px; scroll-margin-top:120px; display:flex; align-items:baseline; gap:12px; }
 .prose h2 .ep{ font-size:14px; font-family:var(--sans); font-weight:700; color:var(--light); }
 .prose h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:30px 0 2px; }
-.prose p{ font-size:17px; line-height:1.75; color:#cdd8ea; margin:16px 0; }
+.prose p{ font-size:var(--read-size); line-height:var(--read-leading); color:#cdd8ea; margin:16px 0; }
 html[data-theme="light"] .prose p{ color:#33415a; }
-.prose .lead{ font-size:18.5px; line-height:1.7; color:var(--ink); }
+.prose .lead{ font-size:calc(var(--read-size) + 1.5px); line-height:var(--read-leading); color:var(--ink); }
 .prose strong{ color:var(--ink); font-weight:600; }
 /* subrayado */
 mark.hl{ background:linear-gradient(transparent 58%, rgba(242,182,90,.42) 58%); color:inherit; border-radius:2px; padding:0 1px;
@@ -269,20 +270,120 @@ html[data-theme="light"] .toast{ background:#fff; }
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
 .reveal.in{ opacity:1; transform:none; }
 
-/* ---------- responsive ---------- */
+/* ---------- modo cálido (descanso visual) ---------- */
+html[data-theme="dark"].read-warm{
+  --deep:#12120D; --deep-2:#1B1A13; --deep-3:#24221A;
+  --ink:#ECE3D1; --ink-soft:#B4AA91; --ink-faint:#776E5A;
+  --hairline:rgba(206,191,158,.12); --hairline-2:rgba(206,191,158,.2);
+  --surface:rgba(27,26,19,.72); --surface-2:rgba(36,34,26,.55);
+  --page-grad:radial-gradient(1100px 640px at 82% -8%, rgba(242,182,90,.10), transparent 60%), linear-gradient(180deg,#13130D,#0F0F09);
+}
+html[data-theme="light"].read-warm{
+  --deep:#F4ECDB; --deep-2:#FBF4E5; --deep-3:#FBF4E5;
+  --ink:#3B3424; --ink-soft:#6C6249; --ink-faint:#9B8F72;
+  --hairline:rgba(120,100,60,.14); --hairline-2:rgba(120,100,60,.2);
+  --surface:rgba(251,244,229,.82); --surface-2:rgba(246,238,219,.66);
+  --page-grad:linear-gradient(180deg,#F6EEDE,#EEE4CF);
+}
+.read-warm .prose p{ color:var(--ink-soft); }
+html[data-theme="dark"].read-warm .prose .lead{ color:#ECE3D1; }
+
+/* ---------- ajustes de lectura (Aa) ---------- */
+.icon-btn{ height:38px; padding:0 12px; display:inline-flex; align-items:center; gap:7px; cursor:pointer; border-radius:11px;
+  border:1px solid var(--hairline-2); background:var(--surface-2); color:var(--ink-soft); transition:.2s; font:600 14px var(--sans); }
+.icon-btn:hover{ color:var(--ink); border-color:var(--light); }
+.icon-btn .aa{ font-family:var(--serif); } .icon-btn .aa small{ font-size:10px; } .icon-btn .aa big{ font-size:17px; }
+.readcfg{ position:fixed; z-index:85; width:300px; padding:18px; border-radius:var(--r-lg); background:var(--deep-2);
+  border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); display:none; }
+html[data-theme="light"] .readcfg{ background:#fff; }
+.readcfg.on{ display:block; }
+.readcfg h5{ font-family:var(--serif); font-weight:600; font-size:16px; margin:0 0 14px; }
+.cfg-row{ margin-bottom:16px; }
+.cfg-row .lbl{ font-size:12.5px; color:var(--ink-faint); font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px; }
+.cfg-step{ display:flex; align-items:center; gap:8px; }
+.cfg-step button{ width:40px; height:38px; border-radius:10px; border:1px solid var(--hairline-2); background:var(--surface-2); color:var(--ink);
+  font-family:var(--serif); cursor:pointer; transition:.15s; display:grid; place-items:center; }
+.cfg-step button:hover{ border-color:var(--light); }
+.cfg-step .val{ flex:1; text-align:center; font-size:13.5px; color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+.cfg-seg{ display:flex; gap:6px; }
+.cfg-seg button{ flex:1; padding:9px 0; border-radius:10px; border:1px solid var(--hairline-2); background:var(--surface-2);
+  color:var(--ink-soft); font:600 12.5px var(--sans); cursor:pointer; transition:.15s; }
+.cfg-seg button.on{ background:var(--light); color:#1a1206; border-color:transparent; }
+.cfg-toggle{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.cfg-toggle .tg-txt{ font-size:13.5px; color:var(--ink); } .cfg-toggle .tg-txt small{ display:block; color:var(--ink-faint); font-size:12px; }
+.switch{ width:46px; height:26px; border-radius:999px; background:var(--surface-2); border:1px solid var(--hairline-2); position:relative; cursor:pointer; transition:.2s; flex:0 0 46px; }
+.switch::after{ content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-faint); transition:.25s; }
+.switch.on{ background:var(--light); border-color:transparent; } .switch.on::after{ left:22px; background:#1a1206; }
+.cfg-reset{ width:100%; margin-top:4px; font:600 12.5px var(--sans); color:var(--ink-faint); background:none; border:none; cursor:pointer; padding:6px; }
+.cfg-reset:hover{ color:var(--ink); }
+
+/* ---------- sumario móvil + bottom sheet ---------- */
 .mobile-toc{ display:none; }
+.sheet-backdrop{ position:fixed; inset:0; z-index:88; background:rgba(7,12,22,.6); backdrop-filter:blur(2px); opacity:0; pointer-events:none; transition:.25s; }
+.sheet-backdrop.on{ opacity:1; pointer-events:auto; }
+.sheet{ position:fixed; left:0; right:0; bottom:0; z-index:89; max-height:78vh; overflow-y:auto;
+  background:var(--deep-2); border-top:1px solid var(--hairline-2); border-radius:22px 22px 0 0; padding:8px 18px 26px;
+  transform:translateY(100%); transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+html[data-theme="light"] .sheet{ background:#fff; }
+.sheet.on{ transform:none; }
+.sheet .grip{ width:42px; height:5px; border-radius:3px; background:var(--hairline-2); margin:10px auto 16px; }
+.sheet h5{ font-family:var(--serif); font-weight:600; font-size:18px; margin:0 0 14px; }
+
+/* ---------- drawer Preguntar a Faro ---------- */
+.ask{ position:fixed; z-index:89; right:24px; bottom:24px; width:380px; max-width:calc(100vw - 32px); border-radius:var(--r-lg);
+  background:var(--deep-2); border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); overflow:hidden;
+  transform:translateY(18px); opacity:0; pointer-events:none; transition:.3s; }
+html[data-theme="light"] .ask{ background:#fff; }
+.ask.on{ transform:none; opacity:1; pointer-events:auto; }
+.ask .ask-h{ display:flex; align-items:center; gap:10px; padding:16px 18px; border-bottom:1px solid var(--hairline); }
+.ask .ask-h .who{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:600; flex:1; }
+.ask .ask-h .who b{ color:var(--light); }
+.ask .ask-x{ cursor:pointer; color:var(--ink-faint); background:none; border:none; padding:4px; } .ask .ask-x:hover{ color:var(--ink); }
+.ask .ask-body{ padding:18px; }
+.ask .ask-sel{ font-size:13px; color:var(--ink-soft); border-left:2px solid var(--guide); padding-left:11px; margin-bottom:14px; font-style:italic; }
+.ask .ask-ans{ font-size:14.5px; line-height:1.6; color:var(--ink); }
+.ask .ask-ans .typing{ color:var(--ink-faint); }
+.ask .ask-chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+.ask .ask-chips button{ font:600 12.5px var(--sans); color:var(--ink-soft); background:var(--surface-2); border:1px solid var(--hairline-2);
+  border-radius:999px; padding:7px 13px; cursor:pointer; transition:.15s; }
+.ask .ask-chips button:hover{ color:var(--ink); border-color:var(--guide); }
+
+/* ---------- notas editables + borrar ---------- */
+.note-item{ position:relative; }
+.note-item .nx{ position:absolute; top:8px; right:8px; width:22px; height:22px; border-radius:7px; display:none; place-items:center;
+  cursor:pointer; color:var(--ink-faint); background:var(--surface); border:1px solid var(--hairline); }
+.note-item:hover .nx{ display:grid; } .note-item .nx:hover{ color:var(--care); }
+.note-item .nn[contenteditable]{ outline:none; min-height:18px; }
+.note-item .nn[contenteditable]:empty::before{ content:"Escribe tu comentario…"; color:var(--ink-faint); }
+.note-item .nn[contenteditable]:focus{ color:var(--ink); }
+
+/* ---------- responsive ---------- */
 @media (max-width:1200px){
   .layout{ grid-template-columns:minmax(0,1fr) 300px; }
   .nav-col{ display:none; }
+  .mobile-toc{ display:flex; align-items:center; gap:10px; position:sticky; top:64px; z-index:48;
+    padding:11px 16px; margin:0 auto; max-width:1480px; backdrop-filter:saturate(140%) blur(14px);
+    background:linear-gradient(180deg,rgba(11,19,34,.9),rgba(11,19,34,.7)); border-bottom:1px solid var(--hairline); }
+  html[data-theme="light"] .mobile-toc{ background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.75)); }
+  .mobile-toc .mt-btn{ flex:1; display:flex; align-items:center; gap:10px; min-width:0; cursor:pointer; text-align:left;
+    background:var(--surface-2); border:1px solid var(--hairline-2); border-radius:12px; padding:10px 13px; color:var(--ink); font:600 14px var(--sans); }
+  .mobile-toc .mt-btn .mt-loc{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mobile-toc .mt-btn .mt-loc small{ display:block; font-size:11px; font-weight:600; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; }
+  .mobile-toc .mt-tool{ flex:0 0 auto; }
+  .readbar{ top:113px; }
 }
 @media (max-width:980px){
-  .layout{ grid-template-columns:1fr; gap:24px; }
+  .layout{ grid-template-columns:1fr; gap:22px; }
   .rail-col{ position:static; max-height:none; }
   .col-sticky{ position:static; max-height:none; }
+  .reading{ order:-1; }
+  .ask{ left:12px; right:12px; bottom:12px; width:auto; }
+  .readcfg{ left:12px !important; right:12px; width:auto; top:auto !important; bottom:12px; }
 }
 @media (max-width:680px){
-  .top nav{ display:none; } .chip-exam .lbl{ display:none; }
-  .layout{ padding:18px 16px 64px; } .tema-hero{ padding:24px; } .prose p{ font-size:16.5px; }
+  .top nav{ display:none; } .chip-exam{ display:none; }
+  .layout{ padding:16px 14px 60px; } .tema-hero{ padding:22px; }
+  .readbar{ top:109px; }
   .tema-nav{ flex-direction:column; }
 }
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; } .reveal{ opacity:1; transform:none; } }
@@ -324,6 +425,7 @@ html[data-theme="light"] .toast{ background:#fff; }
       </span>
       <span class="lbl">El Puerto</span><b>214 días</b>
     </div>
+    <button class="icon-btn" id="readCfgBtn" aria-label="Ajustes de lectura" title="Ajustes de lectura"><span class="aa"><small>A</small><big>A</big></span></button>
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Cambiar tema" tabindex="0">
       <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -331,6 +433,16 @@ html[data-theme="light"] .toast{ background:#fff; }
   </div>
 </header>
 <div class="readbar" id="readbar"></div>
+
+<!-- sumario móvil (tablet/móvil) -->
+<div class="mobile-toc">
+  <button class="mt-btn" id="mtNav">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    <span class="mt-loc"><small>Tema 14 · Las Cortes Generales</small><span id="mtEpi">14.1 · Composición</span></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <button class="icon-btn mt-tool" id="readCfgBtnM" aria-label="Ajustes de lectura"><span class="aa"><small>A</small><big>A</big></span></button>
+</div>
 
 <div class="layout">
   <!-- ============ ÍNDICE (izquierda) ============ -->
@@ -497,6 +609,68 @@ html[data-theme="light"] .toast{ background:#fff; }
   </aside>
 </div>
 
+<!-- ajustes de lectura -->
+<div class="readcfg" id="readcfg">
+  <h5>Lectura cómoda</h5>
+  <div class="cfg-row">
+    <div class="lbl">Tamaño del texto</div>
+    <div class="cfg-step"><button data-size="-" aria-label="Reducir">A−</button><div class="val" id="vSize">Mediano</div><button data-size="+" aria-label="Aumentar">A+</button></div>
+  </div>
+  <div class="cfg-row">
+    <div class="lbl">Interlineado</div>
+    <div class="cfg-step"><button data-lead="-">−</button><div class="val" id="vLead">Normal</div><button data-lead="+">+</button></div>
+  </div>
+  <div class="cfg-row">
+    <div class="lbl">Ancho de lectura</div>
+    <div class="cfg-seg" id="segWidth">
+      <button data-width="60ch">Estrecho</button><button data-width="70ch" class="on">Medio</button><button data-width="82ch">Ancho</button>
+    </div>
+  </div>
+  <div class="cfg-row">
+    <div class="cfg-toggle">
+      <div class="tg-txt">Modo cálido<small>Menos luz azul · descansa la vista</small></div>
+      <div class="switch" id="warmSwitch" role="switch" tabindex="0"></div>
+    </div>
+  </div>
+  <button class="cfg-reset" id="cfgReset">Restablecer</button>
+</div>
+
+<!-- bottom sheet de navegación (móvil/tablet) -->
+<div class="sheet-backdrop" id="backdrop"></div>
+<div class="sheet" id="tocSheet">
+  <div class="grip"></div>
+  <h5>Tema 14 · Las Cortes Generales</h5>
+  <div class="epis" style="margin-left:0; border:none; padding:0; gap:4px">
+    <a class="toc-link" data-go="ep1"><span class="mini-dot"></span>14.1 · Composición y bicameralismo</a>
+    <a class="toc-link" data-go="ep2"><span class="mini-dot"></span>14.2 · El Congreso de los Diputados</a>
+    <a class="toc-link" data-go="ep3"><span class="mini-dot"></span>14.3 · El Senado</a>
+    <a class="toc-link" data-go="ep4"><span class="mini-dot"></span>14.4 · Funciones de las Cortes</a>
+    <a class="toc-link" data-go="ep5"><span class="mini-dot"></span>14.5 · El proceso legislativo</a>
+  </div>
+  <div class="bl-name" style="margin-top:14px">Otros temas del bloque</div>
+  <div class="t-item done"><span class="t-num">13</span><span>El Gobierno</span><span class="t-dom dom-ok"></span></div>
+  <div class="t-item"><span class="t-num">15</span><span>El Poder Judicial</span><span class="t-dom dom-low"></span></div>
+  <div class="t-item"><span class="t-num">16</span><span>El Tribunal Constitucional</span><span class="t-dom dom-low"></span></div>
+</div>
+
+<!-- drawer · Preguntar a Faro -->
+<div class="ask" id="ask">
+  <div class="ask-h">
+    <svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/><circle cx="20" cy="12" r="1.5" fill="#fff"/></svg>
+    <span class="who">Faro · <b>tu preparador</b></span>
+    <button class="ask-x" id="askX" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ask-body">
+    <div class="ask-sel" id="askSel"></div>
+    <div class="ask-ans" id="askAns"></div>
+    <div class="ask-chips">
+      <button data-q="ejemplo">Ponme un ejemplo</button>
+      <button data-q="examen">¿Cómo cae en examen?</button>
+      <button data-q="practicar">Practícame esto</button>
+    </div>
+  </div>
+</div>
+
 <!-- toolbar de selección -->
 <div class="seltool" id="seltool">
   <button class="amber" data-act="hl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Subrayar</button>
@@ -539,13 +713,85 @@ html[data-theme="light"] .toast{ background:#fff; }
   var epiLinks=Array.prototype.slice.call(document.querySelectorAll('.epi-link'));
   var sections=epiLinks.map(function(l){ return document.getElementById(l.getAttribute('data-go')); });
   epiLinks.forEach(function(l){ l.addEventListener('click',function(){ var el=document.getElementById(l.getAttribute('data-go')); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+  var tocLinks=Array.prototype.slice.call(document.querySelectorAll('.toc-link'));
+  var mtEpi=document.getElementById('mtEpi');
   var spy=new IntersectionObserver(function(entries){
     entries.forEach(function(en){ if(en.isIntersecting){
       var id=en.target.id;
       epiLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('data-go')===id); });
+      tocLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('data-go')===id); });
+      var a=document.querySelector('.epi-link[data-go="'+id+'"]');
+      if(mtEpi && a) mtEpi.textContent=(a.textContent||'').trim();
     }});
   },{ rootMargin:'-20% 0px -70% 0px', threshold:0 });
   sections.forEach(function(s){ if(s) spy.observe(s); });
+
+  /* ===== ajustes de lectura ===== */
+  var sizes=[15,16,17,18.5,20], sizeNames=['Pequeño','Cómodo','Mediano','Grande','Muy grande'];
+  var leads=[1.55,1.66,1.78,1.92,2.06], leadNames=['Compacto','Ajustado','Normal','Amplio','Muy amplio'];
+  var cfg={ si:2, li:2, width:'70ch', warm:false };
+  try{ var sv=JSON.parse(localStorage.getItem('faro-read')||'null'); if(sv) cfg=Object.assign(cfg,sv); }catch(e){}
+  var readcfg=document.getElementById('readcfg');
+  function applyCfg(){
+    root.style.setProperty('--read-size', sizes[cfg.si]+'px');
+    root.style.setProperty('--read-leading', leads[cfg.li]);
+    root.style.setProperty('--read-measure', cfg.width);
+    root.classList.toggle('read-warm', !!cfg.warm);
+    document.getElementById('vSize').textContent=sizeNames[cfg.si];
+    document.getElementById('vLead').textContent=leadNames[cfg.li];
+    readcfg.querySelectorAll('#segWidth button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-width')===cfg.width); });
+    document.getElementById('warmSwitch').classList.toggle('on', !!cfg.warm);
+    try{ localStorage.setItem('faro-read', JSON.stringify(cfg)); }catch(e){}
+  }
+  applyCfg();
+  function toggleCfg(btn){
+    var open=!readcfg.classList.contains('on');
+    readcfg.classList.toggle('on', open);
+    if(open && window.innerWidth>980 && btn){ var r=btn.getBoundingClientRect();
+      readcfg.style.top=(r.bottom+8)+'px'; readcfg.style.right=Math.max(12,window.innerWidth-r.right)+'px'; readcfg.style.left='auto'; }
+  }
+  document.getElementById('readCfgBtn').addEventListener('click',function(){ toggleCfg(this); });
+  var rcm=document.getElementById('readCfgBtnM'); if(rcm) rcm.addEventListener('click',function(){ toggleCfg(this); });
+  document.addEventListener('mousedown',function(e){ if(readcfg.classList.contains('on') && !readcfg.contains(e.target) && !e.target.closest('#readCfgBtn') && !e.target.closest('#readCfgBtnM')) readcfg.classList.remove('on'); });
+  readcfg.querySelectorAll('[data-size]').forEach(function(b){ b.addEventListener('click',function(){ cfg.si=Math.max(0,Math.min(sizes.length-1, cfg.si+(b.getAttribute('data-size')==='+'?1:-1))); applyCfg(); }); });
+  readcfg.querySelectorAll('[data-lead]').forEach(function(b){ b.addEventListener('click',function(){ cfg.li=Math.max(0,Math.min(leads.length-1, cfg.li+(b.getAttribute('data-lead')==='+'?1:-1))); applyCfg(); }); });
+  readcfg.querySelectorAll('[data-width]').forEach(function(b){ b.addEventListener('click',function(){ cfg.width=b.getAttribute('data-width'); applyCfg(); }); });
+  function toggleWarm(){ cfg.warm=!cfg.warm; applyCfg(); }
+  document.getElementById('warmSwitch').addEventListener('click',toggleWarm);
+  document.getElementById('warmSwitch').addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleWarm(); } });
+  document.getElementById('cfgReset').addEventListener('click',function(){ cfg={si:2,li:2,width:'70ch',warm:false}; applyCfg(); });
+
+  /* ===== sumario móvil (bottom sheet) ===== */
+  var backdrop=document.getElementById('backdrop'), tocSheet=document.getElementById('tocSheet');
+  function closeSheet(){ tocSheet.classList.remove('on'); backdrop.classList.remove('on'); }
+  var mtNav=document.getElementById('mtNav'); if(mtNav) mtNav.addEventListener('click',function(){ tocSheet.classList.add('on'); backdrop.classList.add('on'); });
+  backdrop.addEventListener('click',closeSheet);
+  tocLinks.forEach(function(l){ l.addEventListener('click',function(){ var el=document.getElementById(l.getAttribute('data-go')); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); closeSheet(); }); });
+
+  /* ===== Preguntar a Faro (drawer) ===== */
+  var ask=document.getElementById('ask'), askSel=document.getElementById('askSel'), askAns=document.getElementById('askAns');
+  function answerFor(text){
+    var t=(text||'').toLowerCase();
+    if(/bicameral|imperfecto|prevalec|veto|senado|congreso/.test(t)) return 'En España las dos cámaras no pesan igual: el <b>Congreso prevalece</b>. Puede levantar el veto del Senado por mayoría absoluta (o simple a los 2 meses, art. 90.2 CE), y solo ante él responde el Gobierno. Por eso el bicameralismo es <b>imperfecto</b>.';
+    if(/hondt|proporcional|escañ|circunscrip|sufragio|diputad/.test(t)) return 'La regla <b>D’Hondt</b> reparte los escaños de cada provincia de forma proporcional a los votos, favoreciendo algo a las listas más votadas. Si quieres, te lo enseño con un ejemplo numérico.';
+    if(/sanci|promulga|\brey\b|boe|publica/.test(t)) return 'Aprobada la ley, el <b>Rey la sanciona</b> en 15 días, la promulga y ordena su <b>publicación en el BOE</b> (art. 91 CE). Es un acto debido: no puede negarse.';
+    return 'Buena duda. En una línea: esto va de cómo se organiza y funciona el poder legislativo. Dime si quieres la versión corta para memorizar, un ejemplo, o cómo suele caer en el examen.';
+  }
+  function openAsk(text){
+    askSel.textContent='«'+(text||'').slice(0,160)+((text||'').length>160?'…':'')+'»';
+    askAns.innerHTML='<span class="typing">Faro está pensando…</span>';
+    ask.classList.add('on');
+    setTimeout(function(){ askAns.innerHTML=answerFor(text); },650);
+  }
+  document.getElementById('askX').addEventListener('click',function(){ ask.classList.remove('on'); });
+  ask.querySelectorAll('.ask-chips button').forEach(function(b){ b.addEventListener('click',function(){
+    var q=b.getAttribute('data-q'); askAns.innerHTML='<span class="typing">Faro está pensando…</span>';
+    setTimeout(function(){ askAns.innerHTML = q==='ejemplo'
+      ? 'Ejemplo: una proposición entra en el Congreso, se debate y aprueba; pasa al Senado, que la veta; el Congreso ratifica su texto por mayoría absoluta y <b>levanta el veto</b>; el Rey la sanciona y va al BOE.'
+      : q==='examen'
+      ? 'En test cae casi siempre así: «¿quién puede levantar el veto del Senado?» → el Congreso. Y el plazo: mayoría absoluta de inmediato, o simple a los 2 meses.'
+      : 'Hecho. Te preparo 5 preguntas sobre esto para el repaso de hoy.'; },550);
+  }); });
 
   /* reveal */
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.1});
@@ -569,12 +815,22 @@ html[data-theme="light"] .toast{ background:#fff; }
     say('Fuente: '+art+'. En la app, abre el texto legal exacto del que nace esta explicación.');
   }); });
 
-  /* notas/subrayados */
-  var notesList=document.getElementById('notesList'), notesEmpty=document.getElementById('notesEmpty');
-  function addNote(text, type){
-    var div=document.createElement('div'); div.className='note-item'+(type==='note'?' note-blue':'');
-    div.innerHTML='<div class="nq">«'+text.slice(0,120)+'»</div>'+(type==='note'?'<div class="nn">Nota tuya · pendiente de repaso.</div>':'');
+  /* notas/subrayados (múltiples, editables, con borrar) */
+  var notesList=document.getElementById('notesList'), notesEmpty=document.getElementById('notesEmpty'), noteSeq=0;
+  function addNote(text, type, mark){
+    noteSeq++; var id='note-'+noteSeq; if(mark) mark.setAttribute('data-note', id);
+    var editable=(type==='note');
+    var div=document.createElement('div'); div.className='note-item'+(type==='note'?' note-blue':''); div.id=id;
+    div.innerHTML='<button class="nx" title="Quitar"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'+
+      '<div class="nq">«'+text.slice(0,140)+(text.length>140?'…':'')+'»</div>'+
+      (editable?'<div class="nn" contenteditable="true" data-ph="1"></div>':'');
     notesList.appendChild(div); notesEmpty.hidden=true;
+    div.querySelector('.nx').addEventListener('click',function(){
+      if(mark && mark.parentNode){ var p=mark.parentNode; while(mark.firstChild) p.insertBefore(mark.firstChild,mark); p.removeChild(mark); }
+      div.remove(); if(!notesList.querySelector('.note-item')) notesEmpty.hidden=false;
+    });
+    if(editable){ var nn=div.querySelector('.nn'); setTimeout(function(){ nn.focus(); },60); }
+    return div;
   }
 
   /* toolbar de selección + subrayado */
@@ -601,19 +857,19 @@ html[data-theme="light"] .toast{ background:#fff; }
   window.addEventListener('scroll',hideTool,{passive:true});
 
   function applyHighlight(cls){
-    if(!savedRange) return '';
-    var txt=savedRange.toString();
+    if(!savedRange) return null;
     var m=document.createElement('mark'); m.className='hl'+(cls?' '+cls:'');
     try{ savedRange.surroundContents(m); }
     catch(e){ var frag=savedRange.extractContents(); m.appendChild(frag); savedRange.insertNode(m); }
-    var sel=window.getSelection(); sel.removeAllRanges();
-    return txt;
+    window.getSelection().removeAllRanges();
+    return m;
   }
   seltool.querySelectorAll('button').forEach(function(b){ b.addEventListener('click',function(){
     var act=b.getAttribute('data-act');
-    if(act==='hl'){ var t=applyHighlight(''); if(t){ addNote(t,'hl'); say('Subrayado guardado. Lo tendré en cuenta en tu repaso.'); } }
-    else if(act==='note'){ var t2=applyHighlight('note'); if(t2){ addNote(t2,'note'); say('Nota guardada. La integro en el repaso espaciado.'); } }
-    else if(act==='ask'){ var s=window.getSelection().toString()||savedRange&&savedRange.toString()||''; say('Buena pregunta sobre «'+s.slice(0,40)+(s.length>40?'…':'')+'». Te lo aclaro y, si quieres, lo convertimos en preguntas.'); var sel=window.getSelection(); sel.removeAllRanges(); }
+    var selText = savedRange ? savedRange.toString() : '';
+    if(act==='hl'){ var m=applyHighlight(''); if(m){ addNote(m.textContent,'hl',m); say('Subrayado guardado. Lo tendré en cuenta en tu repaso.'); } }
+    else if(act==='note'){ var m2=applyHighlight('note'); if(m2){ addNote(m2.textContent,'note',m2); } }
+    else if(act==='ask'){ openAsk(selText); window.getSelection().removeAllRanges(); }
     hideTool();
   }); });
 })();

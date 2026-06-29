@@ -28,7 +28,19 @@ Tres columnas en escritorio (índice · lectura · utilidades); se apilan en tab
 **Utilidades (der.)** — *Lo que más cae*, *Tu dominio aquí* + **Practicar este tema**, *Mis notas y subrayados* (se rellena al subrayar) y *Fuente · corpus* (trazabilidad).
 
 ## Interacciones (vanilla JS)
-Tema claro/oscuro · barra de progreso de lectura · scroll-spy del índice · subrayar/anotar por selección · revelar autoexplicación + autoevaluar · enlaces a la fuente · reportar duda · practicar. Todo con la voz de Faro (Doc 09) y `prefers-reduced-motion` respetado.
+Tema claro/oscuro · barra de progreso de lectura · scroll-spy del índice · revelar autoexplicación + autoevaluar · enlaces a la fuente · reportar duda · practicar. Todo con la voz de Faro (Doc 09) y `prefers-reduced-motion` respetado.
+
+### Subrayados, comentarios y preguntar a la IA
+Selecciona cualquier texto y aparece la barra flotante:
+- **Subrayar** — añade el subrayado y lo guarda en el rail.
+- **Nota** — subraya y abre un **comentario editable** (puedes tener **muchos**, los escribes tú); cada nota se puede **borrar** (y deshace su subrayado).
+- **Preguntar a Faro** — abre un **drawer de IA** con tu fragmento y una respuesta contextual, con atajos ("ponme un ejemplo", "¿cómo cae en examen?", "practícame esto").
+
+### Lectura cómoda (reduce el cansancio visual)
+Botón **"Aa"** en la cabecera → panel con **tamaño de texto**, **interlineado**, **ancho de columna** y **modo cálido** (menos luz azul). Se guarda entre sesiones (Doc 08 §4: "la legibilidad es salud").
+
+### Estudiar bien en móvil y tablet (móvil-first)
+Bajo escritorio el índice lateral se sustituye por un **sumario pegajoso** ("Tema 14 · 14.5 Proceso legislativo") que abre un **bottom-sheet** con epígrafes y temas para navegar con el pulgar; el "Aa" y el drawer de IA se adaptan a la pantalla; la lectura va primero y las utilidades debajo.
 
 ## Fidelidad al Sistema de Diseño
 Noche serena, "la luz" como acento escaso, **cero rojo de alarma** (lo pendiente y los avisos en ámbar templado/teal), tipografía editorial, iconografía lineal, mini faro en la cabecera, responsive y modo claro/oscuro.
