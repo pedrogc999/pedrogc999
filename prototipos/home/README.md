@@ -17,7 +17,7 @@
 5. **Showcase del producto** — cada pantalla real (Plan/Gantt, Temario, Entrenar, Tu Faro) con su **captura** y enlace a la demo en vivo.
 6. **El diferencial emocional** — el Vigía/acompañamiento, con un mini-diálogo (Doc 05). El #1 que nadie más tiene.
 7. **Prueba social** — métricas + testimonios de «plaza conseguida» (boca-oreja de aprobados, Doc 02 §7).
-8. **Precios** — Free generoso, **Plus** (12€/mes · 9€ anual, toggle), y **Preparadores/Academias** (B2B2C). Con la ética del Doc 03: el cuidado emocional siempre gratis, sin vender con miedo.
+8. **Precios** — Free generoso, **Plus** (12€/mes · 9€ anual, toggle) y **Anual** (compromiso a largo plazo, −25%). Con la ética del Doc 03: el cuidado emocional siempre gratis, sin vender con miedo.
 9. **FAQ** — derriba objeciones (¿sirve para mi oposición?, ¿es como una academia?, ¿gratis de verdad?, ¿es terapia?, ¿mis datos?).
 10. **CTA final** + **footer**.
 
