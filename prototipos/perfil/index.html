@@ -20,22 +20,78 @@
   --shadow-soft:0 18px 50px -24px rgba(0,0,0,.65); --shadow-card:0 24px 70px -34px rgba(0,0,0,.75);
   --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,sans-serif;
   --surface:rgba(19,31,53,.72); --surface-2:rgba(27,42,70,.55); --maxw:1080px;
+  --tile:var(--deep-3);
+  --header-grad:linear-gradient(180deg,rgba(11,19,34,.85),rgba(11,19,34,.5));
   --page-grad:radial-gradient(1100px 640px at 82% -8%, rgba(242,182,90,.09), transparent 60%),
               radial-gradient(820px 560px at 6% 8%, rgba(107,196,214,.07), transparent 55%),
               linear-gradient(180deg,#0B1322 0%,#0A1120 100%);
 }
+/* PAPEL (claro) */
 html[data-theme="light"]{
-  --deep:#F4F6FA; --deep-2:#FFFFFF; --deep-3:#FFFFFF;
+  --deep:#F4F6FA; --deep-2:#FFFFFF; --deep-3:#FFFFFF; --tile:#EDF1F6;
   --hairline:rgba(26,34,51,.10); --hairline-2:rgba(26,34,51,.16);
   --ink:#1A2233; --ink-soft:#56657F; --ink-faint:#8593A8;
   --light:#D98A2B; --light-warm:#C97A1F; --light-glow:rgba(217,138,43,.22);
   --guide:#3E97AB; --guide-soft:rgba(62,151,171,.12);
   --ok:#2F9D6B; --ok-soft:rgba(47,157,107,.12); --care:#B97E2B; --care-soft:rgba(185,126,43,.12); --viol:#6f7ee0;
   --surface:rgba(255,255,255,.80); --surface-2:rgba(255,255,255,.64);
+  --header-grad:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.55));
   --shadow-soft:0 18px 44px -26px rgba(26,40,70,.30); --shadow-card:0 26px 60px -34px rgba(26,40,70,.34);
   --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(217,138,43,.10), transparent 58%),
               radial-gradient(760px 520px at 6% 8%, rgba(62,151,171,.09), transparent 55%),
               linear-gradient(180deg,#F7F9FC 0%,#EEF2F8 100%);
+}
+/* SEPIA (claro cálido, menos luz azul) */
+html[data-theme="sepia"]{
+  --deep:#F3EADB; --deep-2:#FBF5E9; --deep-3:#FBF5E9; --tile:#ECE0C9;
+  --hairline:rgba(120,100,60,.14); --hairline-2:rgba(120,100,60,.22);
+  --ink:#3C3424; --ink-soft:#6E634B; --ink-faint:#9C8E72;
+  --light:#C2842C; --light-warm:#AE7220; --light-glow:rgba(194,132,44,.22);
+  --guide:#7C9168; --guide-soft:rgba(124,145,104,.16);
+  --ok:#5E8A52; --ok-soft:rgba(94,138,82,.14); --care:#B07B2A; --care-soft:rgba(176,123,42,.14); --viol:#8a7fb0;
+  --surface:rgba(251,245,233,.82); --surface-2:rgba(246,238,219,.66);
+  --header-grad:linear-gradient(180deg,rgba(243,234,219,.9),rgba(243,234,219,.55));
+  --shadow-soft:0 18px 44px -26px rgba(90,70,30,.22); --shadow-card:0 26px 60px -34px rgba(90,70,30,.26);
+  --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(194,132,44,.12), transparent 58%), linear-gradient(180deg,#F6EEDE 0%,#EFE4CF 100%);
+}
+/* PIZARRA (oscuro pizarra) */
+html[data-theme="pizarra"]{
+  --deep:#181E22; --deep-2:#212A2F; --deep-3:#2A343A;
+  --hairline:rgba(180,198,200,.12); --hairline-2:rgba(180,198,200,.2);
+  --ink:#E8EDEC; --ink-soft:#A6B2B2; --ink-faint:#6F7B7B;
+  --light:#E9C46A; --light-warm:#DDB456; --light-glow:rgba(233,196,106,.3);
+  --guide:#7CBAC4; --guide-soft:rgba(124,186,196,.16);
+  --ok:#7BC09A; --ok-soft:rgba(123,192,154,.14); --care:#E2B36B; --care-soft:rgba(226,179,107,.15); --viol:#9aa9ff;
+  --surface:rgba(33,42,47,.72); --surface-2:rgba(42,52,58,.55);
+  --header-grad:linear-gradient(180deg,rgba(24,30,34,.85),rgba(24,30,34,.5));
+  --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(233,196,106,.07), transparent 58%), linear-gradient(180deg,#191F23 0%,#13181B 100%);
+}
+/* BRUMA (claro azulado, niebla) */
+html[data-theme="bruma"]{
+  --deep:#E7ECF2; --deep-2:#FBFCFE; --deep-3:#FBFCFE; --tile:#E6ECF3;
+  --hairline:rgba(40,55,75,.10); --hairline-2:rgba(40,55,75,.16);
+  --ink:#293340; --ink-soft:#5A6675; --ink-faint:#8B96A4;
+  --light:#CE8A3A; --light-warm:#BC7A2C; --light-glow:rgba(206,138,58,.2);
+  --guide:#5C93A6; --guide-soft:rgba(92,147,166,.14);
+  --ok:#3A9C73; --ok-soft:rgba(58,156,115,.13); --care:#B07F35; --care-soft:rgba(176,127,53,.13); --viol:#6f7ee0;
+  --surface:rgba(255,255,255,.78); --surface-2:rgba(247,250,253,.62);
+  --header-grad:linear-gradient(180deg,rgba(247,250,253,.9),rgba(247,250,253,.55));
+  --shadow-soft:0 18px 44px -26px rgba(40,55,80,.26); --shadow-card:0 26px 60px -34px rgba(40,55,80,.3);
+  --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(92,147,166,.12), transparent 58%), linear-gradient(180deg,#EEF2F7 0%,#E4EAF1 100%);
+}
+/* BOSQUE (oscuro verde noche) */
+html[data-theme="bosque"]{
+  --deep:#0E1A14; --deep-2:#16271D; --deep-3:#1E3327;
+  --hairline:rgba(160,200,170,.12); --hairline-2:rgba(160,200,170,.2);
+  --ink:#E6F0E8; --ink-soft:#A2B8A8; --ink-faint:#6E8474;
+  --light:#F2B65A; --light-warm:#F0A24B; --light-glow:rgba(242,182,90,.32);
+  --guide:#6FC2A0; --guide-soft:rgba(111,194,160,.16);
+  --ok:#74C49A; --ok-soft:rgba(116,196,154,.16); --care:#E7B26B; --care-soft:rgba(231,178,107,.15); --viol:#9aa9ff;
+  --surface:rgba(22,39,29,.72); --surface-2:rgba(30,51,39,.55);
+  --header-grad:linear-gradient(180deg,rgba(14,26,20,.85),rgba(14,26,20,.5));
+  --page-grad:radial-gradient(1000px 600px at 82% -6%, rgba(242,182,90,.08), transparent 58%),
+              radial-gradient(760px 520px at 6% 8%, rgba(111,194,160,.08), transparent 55%),
+              linear-gradient(180deg,#0F1B14 0%,#0A140E 100%);
 }
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
@@ -46,8 +102,7 @@ a{ color:inherit; text-decoration:none; }
 .eyebrow::before{ content:""; width:20px; height:1px; background:var(--light); opacity:.7; }
 
 /* HEADER */
-header.top{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(16px); background:linear-gradient(180deg,rgba(11,19,34,.85),rgba(11,19,34,.5)); border-bottom:1px solid var(--hairline); }
-html[data-theme="light"] header.top{ background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.55)); }
+header.top{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(16px); background:var(--header-grad); border-bottom:1px solid var(--hairline); }
 .top-in{ max-width:var(--maxw); margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:18px; height:64px; }
 .brand{ display:flex; align-items:center; gap:11px; font-weight:600; } .brand .mark{ width:32px; height:32px; }
 .brand b{ font-family:var(--serif); font-size:19px; font-weight:600; } .brand span{ color:var(--light); }
@@ -63,7 +118,7 @@ html[data-theme="light"] header.top{ background:linear-gradient(180deg,rgba(255,
   background:linear-gradient(180deg,var(--light),var(--light-warm)); border:2px solid transparent; box-shadow:0 0 0 2px var(--light-glow); }
 .theme-toggle{ width:38px; height:38px; display:grid; place-items:center; cursor:pointer; border-radius:11px; border:1px solid var(--hairline-2); background:var(--surface-2); color:var(--ink-soft); transition:.2s; }
 .theme-toggle:hover{ color:var(--ink); border-color:var(--light); }
-.theme-toggle .sun{ display:none; } html[data-theme="light"] .theme-toggle .moon{ display:none; } html[data-theme="light"] .theme-toggle .sun{ display:block; }
+.theme-toggle .sun{ display:none; } html.is-light .theme-toggle .moon{ display:none; } html.is-light .theme-toggle .sun{ display:block; }
 
 section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 /* HERO PERFIL */
@@ -121,12 +176,10 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .ttblock{ font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin:16px 0 9px; }
 .ttblock:first-child{ margin-top:2px; }
 .ttrow{ display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:12px; border:1px solid var(--hairline); background:var(--surface-2); margin-bottom:8px; transition:.18s; }
-.ttn{ width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:grid; place-items:center; font-weight:700; font-size:12.5px; background:var(--deep-3); color:var(--ink-soft); border:1px solid var(--hairline); }
-html[data-theme="light"] .ttn{ background:var(--surface); }
+.ttn{ width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:grid; place-items:center; font-weight:700; font-size:12.5px; background:var(--tile); color:var(--ink-soft); border:1px solid var(--hairline); }
 .ttt{ flex:1; min-width:0; font-size:14px; font-weight:500; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .tt-select{ font:600 12.5px var(--sans); color:var(--ink); background-color:var(--deep-2); border:1px solid var(--hairline-2); border-radius:9px; padding:7px 28px 7px 11px; cursor:pointer; flex:0 0 auto;
   appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%239DB0CC' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 9px center; }
-html[data-theme="light"] .tt-select{ background-color:#fff; }
 .ttrow.domino{ border-color:rgba(116,196,154,.3); background:var(--ok-soft); } .ttrow.domino .ttn{ background:var(--ok-soft); color:var(--ok); border-color:transparent; }
 .ttrow.enfasis{ border-color:rgba(242,182,90,.38); background:rgba(242,182,90,.09); } .ttrow.enfasis .ttn{ background:linear-gradient(180deg,var(--light),var(--light-warm)); color:#1a1206; border:none; }
 .ttrow.saltar{ opacity:.5; } .ttrow.saltar .ttt{ text-decoration:line-through; }
@@ -176,9 +229,51 @@ html[data-theme="light"] .tt-select{ background-color:#fff; }
 .sacred{ margin-top:16px; padding:14px 16px; border-radius:13px; background:var(--guide-soft); border:1px solid var(--hairline); font-size:13.5px; color:var(--ink); font-family:var(--serif); display:flex; gap:11px; align-items:flex-start; }
 .sacred svg{ color:var(--guide); flex:0 0 auto; margin-top:2px; }
 
+/* selector de apariencia */
+.skins{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.skin{ position:relative; border:1px solid var(--hairline-2); border-radius:14px; padding:12px; cursor:pointer; transition:.18s; background:var(--surface-2); }
+.skin:hover{ border-color:var(--light); transform:translateY(-2px); }
+.skin.on{ border-color:var(--light); box-shadow:0 0 0 1px var(--light) inset; }
+.skin .sw{ height:42px; border-radius:9px; border:1px solid var(--hairline); display:flex; overflow:hidden; }
+.skin .sw i{ flex:1; }
+.skin .nm{ font-size:13px; font-weight:600; margin-top:10px; display:flex; align-items:center; gap:6px; color:var(--ink); }
+.skin .nm .ck{ margin-left:auto; color:var(--light); opacity:0; display:flex; } .skin.on .nm .ck{ opacity:1; }
+@media (max-width:560px){ .skins{ grid-template-columns:repeat(2,1fr); } }
+
+/* estrellas + valoración */
+.stars{ display:flex; gap:5px; }
+.stars button{ background:none; border:none; cursor:pointer; color:var(--ink-faint); padding:2px; transition:.12s; }
+.stars button svg{ width:32px; height:32px; display:block; } .stars button.on{ color:var(--light); } .stars button:hover{ transform:scale(1.12); }
+.ratecomment{ width:100%; margin-top:14px; background:var(--surface-2); border:1px solid var(--hairline); border-radius:12px; padding:12px 14px; color:var(--ink); font:400 14px var(--sans); resize:vertical; min-height:62px; outline:none; }
+.ratecomment:focus{ border-color:var(--light); }
+.rate-send{ margin-top:12px; display:inline-flex; align-items:center; gap:8px; font:600 14px var(--sans); color:#1a1206; background:linear-gradient(180deg,var(--light),var(--light-warm)); border:none; border-radius:11px; padding:11px 18px; cursor:pointer; transition:.2s; }
+.rate-send:hover{ transform:translateY(-2px); }
+
+/* verificación 2 pasos */
+.twofa-methods{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:6px; }
+.twofa-methods button{ text-align:left; border:1px solid var(--hairline-2); background:var(--surface-2); border-radius:13px; padding:14px; cursor:pointer; transition:.18s; }
+.twofa-methods button:hover{ border-color:var(--light); }
+.twofa-methods button.on{ border-color:var(--light); background:rgba(242,182,90,.10); box-shadow:0 0 0 1px var(--light) inset; }
+.twofa-methods .mt{ font-size:14px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:9px; }
+.twofa-methods .md{ font-size:12.5px; color:var(--ink-faint); margin-top:5px; }
+.twofa-methods[hidden]{ display:none; }
+
+/* derechos rgpd */
+.rights{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
+.right{ display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:var(--ink-soft); padding:11px 12px; border-radius:11px; border:1px solid var(--hairline); background:var(--surface-2); }
+.right svg{ color:var(--guide); flex:0 0 auto; margin-top:1px; }
+.right b{ color:var(--ink); display:block; font-size:13px; margin-bottom:2px; }
+@media (max-width:560px){ .rights,.twofa-methods{ grid-template-columns:1fr; } }
+
+/* link row */
+.linkrow{ display:flex; align-items:center; gap:13px; padding:15px 16px; border-radius:13px; border:1px solid var(--hairline); background:var(--surface-2); cursor:pointer; transition:.18s; }
+.linkrow:hover{ border-color:var(--light); transform:translateY(-1px); }
+.linkrow .lic{ width:40px; height:40px; flex:0 0 40px; border-radius:12px; display:grid; place-items:center; background:rgba(242,182,90,.13); color:var(--light); }
+.linkrow .lm{ flex:1; } .linkrow .lt{ font-size:15px; font-weight:600; } .linkrow .ls{ font-size:12.5px; color:var(--ink-faint); margin-top:2px; }
+.linkrow .arr{ color:var(--ink-faint); }
+
 /* toast */
 .toast{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); z-index:90; opacity:0; pointer-events:none; display:flex; gap:11px; align-items:flex-start; max-width:440px; padding:14px 18px; border-radius:14px; background:var(--deep-2); border:1px solid var(--hairline-2); box-shadow:var(--shadow-card); transition:opacity .3s, transform .3s; }
-html[data-theme="light"] .toast{ background:#fff; }
 .toast.on{ opacity:1; transform:translateX(-50%); pointer-events:auto; } .toast svg{ flex:0 0 18px; margin-top:1px; } .toast .tt{ font-size:14px; color:var(--ink); font-family:var(--serif); line-height:1.45; }
 
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
@@ -245,6 +340,34 @@ html[data-theme="light"] .toast{ background:#fff; }
         <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6"/></svg></div><div><div class="fl">Cuerpo</div><div class="fv">Administrativo del Estado (C1)</div></div><button class="fedit" data-edit="cuerpo">Cambiar</button></div>
         <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><div><div class="fl">Fecha de examen</div><div class="fv">7 de febrero de 2026</div></div><button class="fedit" data-edit="fecha">Cambiar</button></div>
         <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div><div><div class="fl">Punto de partida</div><div class="fv">Con base · 14 temas dominados</div></div><button class="fedit" data-edit="nivel">Ajustar</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUS DATOS + SEGURIDAD -->
+<section>
+  <div class="wrap">
+    <div class="grid2">
+      <div class="card reveal">
+        <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>Tus datos</h3><span class="editable-note">editable</span></div>
+        <p class="desc">Tu cuenta y tu suscripción. Lo justo, claro y editable.</p>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div><div><div class="fl">Nombre</div><div class="fv">Lucía Martín García</div></div><button class="fedit" data-edit="nombre">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h6M15 9h2"/></svg></div><div><div class="fl">DNI</div><div class="fv">12.345.678-Z</div></div><button class="fedit" data-edit="dni">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><div class="fl">Correo</div><div class="fv">lucia.mg@correo.es</div></div><button class="fedit" data-edit="email">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div><div><div class="fl">Teléfono</div><div class="fv">+34 6•• ••• ••9</div></div><button class="fedit" data-edit="tel">Cambiar</button></div>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></div><div><div class="fl">Oposición contratada</div><div class="fv">Plan Anual · Administrativo del Estado · renueva el 12 mar</div></div><button class="fedit" data-edit="plan">Gestionar</button></div>
+      </div>
+
+      <div class="card reveal">
+        <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Seguridad</h3>
+        <p class="desc">Protege tu cuenta. Tus datos emocionales merecen un candado de más.</p>
+        <div class="switchrow"><div class="txt">Verificación en 2 pasos<small>Un segundo paso al iniciar sesión.</small></div><div class="switch on" id="twofaSwitch" data-key="twofa" role="switch" tabindex="0"></div></div>
+        <div class="twofa-methods" id="twofa">
+          <button data-m="email" class="on"><div class="mt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Por email</div><div class="md">Te envío un código de un solo uso a tu correo.</div></button>
+          <button data-m="auth"><div class="mt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6M12 17h.01"/></svg>Google Authenticator</div><div class="md">Códigos en tu app, sin depender del correo.</div></button>
+        </div>
+        <div class="field" style="margin-top:8px"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><div class="fl">Contraseña</div><div class="fv">Actualizada hace 2 meses</div></div><button class="fedit" data-edit="pass">Cambiar</button></div>
       </div>
     </div>
   </div>
@@ -332,12 +455,53 @@ html[data-theme="light"] .toast{ background:#fff; }
   </div>
 </section>
 
+<!-- APARIENCIA -->
+<section>
+  <div class="wrap">
+    <div class="card reveal">
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.5-1-1.8-1-3a2 2 0 0 1 2-2h1a4 4 0 0 0 4-4 9 9 0 0 0-8-9z"/></svg>Cómo se ve Faro</h3>
+      <p class="desc">Elige el ambiente que más descanse tu vista. Se aplica al instante y se recuerda.</p>
+      <div class="skins" id="skins">
+        <button class="skin" data-skin="dark"><div class="sw"><i style="background:#0B1322"></i><i style="background:#16223A"></i><i style="background:#F2B65A"></i><i style="background:#6BC4D6"></i></div><div class="nm">Faro <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+        <button class="skin" data-skin="light"><div class="sw"><i style="background:#F4F6FA"></i><i style="background:#FFFFFF"></i><i style="background:#D98A2B"></i><i style="background:#3E97AB"></i></div><div class="nm">Papel <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+        <button class="skin" data-skin="sepia"><div class="sw"><i style="background:#F3EADB"></i><i style="background:#FBF5E9"></i><i style="background:#C2842C"></i><i style="background:#7C9168"></i></div><div class="nm">Sepia <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+        <button class="skin" data-skin="pizarra"><div class="sw"><i style="background:#181E22"></i><i style="background:#2A343A"></i><i style="background:#E9C46A"></i><i style="background:#7CBAC4"></i></div><div class="nm">Pizarra <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+        <button class="skin" data-skin="bruma"><div class="sw"><i style="background:#E7ECF2"></i><i style="background:#FBFCFE"></i><i style="background:#CE8A3A"></i><i style="background:#5C93A6"></i></div><div class="nm">Bruma <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+        <button class="skin" data-skin="bosque"><div class="sw"><i style="background:#0E1A14"></i><i style="background:#1E3327"></i><i style="background:#F2B65A"></i><i style="background:#6FC2A0"></i></div><div class="nm">Bosque <span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></span></div></button>
+      </div>
+      <div class="linkrow" id="guideRow" style="margin-top:18px">
+        <div class="lic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h8M8 11h6"/></svg></div>
+        <div class="lm"><div class="lt">La guía de Faro</div><div class="ls">Cómo funciona tu preparador, paso a paso. Sin tecnicismos.</div></div>
+        <div class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRIVACIDAD -->
 <section style="padding-bottom:60px">
   <div class="wrap">
     <div class="card reveal">
-      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Tus datos son tuyos</h3>
-      <p class="desc">Sin letra pequeña. Lo que me confías lo uso solo para enseñarte y cuidarte mejor; nunca se vende.</p>
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privacidad, consentimiento y tus derechos</h3>
+      <p class="desc">Sin letra pequeña. Lo que me confías lo uso solo para enseñarte y cuidarte mejor; nunca se vende. Tú decides para qué.</p>
+
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:4px 0 4px">Consentimiento</div>
+      <div class="switchrow"><div class="txt">Usar mis datos de estudio para personalizar mi plan<small>Necesario para que Faro te conozca y adapte.</small></div><div class="switch on" data-key="c-plan" role="switch" tabindex="0"></div></div>
+      <div class="switchrow"><div class="txt">Usar mis check-ins emocionales (el Vigía)<small>Para adaptar el día a tu ánimo. Datos sensibles, aislados.</small></div><div class="switch on" data-key="c-vigia" role="switch" tabindex="0"></div></div>
+      <div class="switchrow"><div class="txt">Mejorar Faro con datos anónimos<small>Agregados y sin identificarte. Opcional.</small></div><div class="switch" data-key="c-mejora" role="switch" tabindex="0"></div></div>
+      <div class="switchrow"><div class="txt">Novedades y consejos por email<small>Cero spam. Puedes salir cuando quieras.</small></div><div class="switch" data-key="c-news" role="switch" tabindex="0"></div></div>
+
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:18px 0 8px">Tus derechos (RGPD)</div>
+      <div class="rights">
+        <div class="right" data-right="acceso"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><div><b>Acceso</b>Ver qué datos tengo de ti.</div></div>
+        <div class="right" data-right="rectificacion"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><div><b>Rectificación</b>Corregir lo que esté mal.</div></div>
+        <div class="right" data-right="supresion"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg><div><b>Supresión</b>Borrar tus datos («derecho al olvido»).</div></div>
+        <div class="right" data-right="portabilidad"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4M4 21h16"/></svg><div><b>Portabilidad</b>Llevarte tus datos a otro sitio.</div></div>
+        <div class="right" data-right="oposicion"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg><div><b>Oposición</b>Negarte a ciertos usos.</div></div>
+        <div class="right" data-right="limitacion"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12h6"/></svg><div><b>Limitación</b>Pausar el tratamiento.</div></div>
+      </div>
+
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:18px 0 6px">Acciones rápidas</div>
       <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="pm"><div class="pt">Ver todo lo que sé de ti</div><div class="ps">Cada dato, de dónde sale y para qué lo uso.</div></div><button data-priv="ver">Ver</button></div>
       <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4M4 21h16"/></svg></div><div class="pm"><div class="pt">Exportar mis datos</div><div class="ps">Llévate una copia cuando quieras.</div></div><button data-priv="export">Exportar</button></div>
       <div class="privrow"><div class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg></div><div class="pm"><div class="pt">Borrar mi cuenta y mis datos</div><div class="ps">Sin preguntas. Se borra de verdad.</div></div><button class="danger" data-priv="borrar">Borrar</button></div>
@@ -349,15 +513,42 @@ html[data-theme="light"] .toast{ background:#fff; }
   </div>
 </section>
 
+<!-- ¿QUÉ TE PARECE FARO? -->
+<section style="padding-bottom:64px">
+  <div class="wrap">
+    <div class="card amber reveal">
+      <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg>¿Qué te parece Faro?</h3>
+      <p class="desc">Tu opinión me ayuda a cuidarte mejor. Sé sincera: lo leo de verdad.</p>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Valoración">
+        <button data-v="1" aria-label="1 estrella"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></button>
+        <button data-v="2" aria-label="2 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></button>
+        <button data-v="3" aria-label="3 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></button>
+        <button data-v="4" aria-label="4 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></button>
+        <button data-v="5" aria-label="5 estrellas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg></button>
+      </div>
+      <textarea class="ratecomment" id="ratecomment" placeholder="¿Qué te ayuda más? ¿Qué cambiarías? Cuéntame…"></textarea>
+      <div><button class="rate-send" id="rateSend"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Enviar a Faro</button></div>
+    </div>
+  </div>
+</section>
+
 <div class="toast" id="toast"><svg viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#6BC4D6"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#6BC4D6"/></svg><div class="tt" id="toastText"></div></div>
 
 <script>
 (function(){
   var root=document.documentElement, tt=document.getElementById('themeToggle');
-  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} }
-  try{ var s=localStorage.getItem('faro-theme'); if(s) setTheme(s); }catch(e){}
-  function flip(){ setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); }
+  var LIGHTFAM={light:1,sepia:1,bruma:1};
+  function setTheme(t){ root.setAttribute('data-theme',t); root.classList.toggle('is-light', !!LIGHTFAM[t]);
+    var sk=document.getElementById('skins'); if(sk) sk.querySelectorAll('.skin').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-skin')===t); });
+    try{ localStorage.setItem('faro-theme',t); }catch(e){} }
+  try{ setTheme(localStorage.getItem('faro-theme')||'dark'); }catch(e){ setTheme('dark'); }
+  function flip(){ setTheme(root.classList.contains('is-light')?'dark':'light'); }
   tt.addEventListener('click',flip); tt.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } });
+  /* selector de apariencia (6 temas) */
+  var skins=document.getElementById('skins');
+  if(skins){ skins.addEventListener('click',function(e){ var b=e.target.closest('.skin'); if(!b) return; var t=b.getAttribute('data-skin'); setTheme(t);
+    var N={dark:'Faro',light:'Papel',sepia:'Sepia',pizarra:'Pizarra',bruma:'Bruma',bosque:'Bosque'};
+    say('Tema '+N[t]+' aplicado. Estudia con la luz que más te descanse.'); }); }
 
   var toast=document.getElementById('toast'), toastText=document.getElementById('toastText'), toastT;
   function say(m){ toastText.textContent=m; toast.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(function(){ toast.classList.remove('on'); },3800); }
@@ -460,6 +651,12 @@ html[data-theme="light"] .toast{ background:#fff; }
       if(k==='vigia') say(on?'Vale. Sigo atenta a tu ánimo para adaptar el día.':'Hecho. Dejo de leer tu estado; tú me dices cómo vas.');
       else if(k==='notif') say(on?'Te avisaré con tacto, lo justo.':'Sin recordatorios. Cuando quieras volver, aquí estoy.');
       else if(k==='descanso') say(on?'Respetaré tus noches y fines de semana.':'De acuerdo, podré escribirte también en esos ratos.');
+      else if(k==='twofa'){ var tw=document.getElementById('twofa'); if(tw) tw.hidden=!on; say(on?'Verificación en 2 pasos activada. Tu cuenta, más segura.':'Verificación en 2 pasos desactivada.'); }
+      else if(k==='c-plan') say(on?'Gracias. Así puedo conocerte y adaptar tu plan.':'Sin esto no puedo personalizar; el plan sería genérico.');
+      else if(k==='c-vigia') say(on?'Atenderé a tu ánimo, con datos aislados y seguros.':'No leeré tu estado emocional.');
+      else if(k==='c-mejora') say(on?'Gracias por ayudar a mejorar Faro, siempre en anónimo.':'Hecho: no uso tus datos para mejorar el producto.');
+      else if(k==='c-news') say(on?'Te escribiré novedades de vez en cuando, sin spam.':'Sin novedades por email.');
+      else say('Preferencia guardada.');
     }
     sw.addEventListener('click',toggle);
     sw.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
@@ -472,6 +669,36 @@ html[data-theme="light"] .toast{ background:#fff; }
     var i=b.getAttribute('data-i');
     say(i==='cana'?'Entendido: te aprieto más. Vamos a por todas.':i==='cuidame'?'Cuidarte primero. Vamos a tu ritmo, sin culpa.':i==='tranqui'?'Solo por hoy bajo el volumen. Mañana retomamos suave.':'Equilibrio: te empujo cuando puedes y te sostengo cuando no.');
   });
+
+  /* verificación 2 pasos · método */
+  var twofa=document.getElementById('twofa');
+  if(twofa){ twofa.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    twofa.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on',x===b); });
+    say(b.getAttribute('data-m')==='auth'?'Vincularé Google Authenticator: escaneas un QR y listo, códigos en tu móvil.':'Hecho: te enviaré un código de un solo uso por email al entrar.');
+  }); }
+
+  /* guía de Faro */
+  var guideRow=document.getElementById('guideRow');
+  if(guideRow) guideRow.addEventListener('click',function(){ say('Abriría la guía de Faro: cómo planifico, cómo te cuido y cómo protejo tus datos. Sin tecnicismos.'); });
+
+  /* derechos RGPD */
+  document.querySelectorAll('.right').forEach(function(r){ r.addEventListener('click',function(){
+    var R={acceso:'acceso',rectificacion:'rectificación',supresion:'supresión',portabilidad:'portabilidad',oposicion:'oposición',limitacion:'limitación'};
+    say('Derecho de '+(R[r.getAttribute('data-right')]||'')+': te guío para ejercerlo en un paso, sin trabas.');
+  }); });
+
+  /* valoración con estrellas */
+  var stars=document.getElementById('stars'), rateVal=0;
+  function paintStars(v){ stars.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', +x.getAttribute('data-v')<=v); }); }
+  if(stars){
+    stars.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; rateVal=+b.getAttribute('data-v'); paintStars(rateVal); });
+    stars.addEventListener('mouseover',function(e){ var b=e.target.closest('button'); if(b) paintStars(+b.getAttribute('data-v')); });
+    stars.addEventListener('mouseleave',function(){ paintStars(rateVal); });
+    document.getElementById('rateSend').addEventListener('click',function(){
+      if(!rateVal){ say('Pon al menos una estrella y te leo con gusto.'); return; }
+      say(rateVal>=4?'¡Gracias de verdad! Me alegra ayudarte. Sigo a tu lado.':'Gracias por la sinceridad. Lo tengo en cuenta para cuidarte mejor.');
+    });
+  }
 
   /* privacidad */
   document.querySelectorAll('[data-priv]').forEach(function(b){ b.addEventListener('click',function(){
