@@ -252,24 +252,34 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
 @media (max-width:760px){ .slide{ grid-template-columns:1fr; gap:22px; padding:24px; } .slide-art{ order:-1; height:250px; } .car-tab .cl{ font-size:13px; } }
 
 /* arts · maquetas fieles */
-/* GANTT */
-.m-gantt{ display:grid; grid-template-columns:62px 1fr; column-gap:8px; width:92%; max-width:440px; }
+/* GANTT (réplica del aplicativo, con re-planificación en bucle) */
+.m-gantt{ position:relative; display:grid; grid-template-columns:66px 1fr; column-gap:9px; width:94%; max-width:460px; }
 .m-gantt .mg-labels{ display:flex; flex-direction:column; }
-.m-gantt .mg-labels .h{ height:20px; } .m-gantt .mg-labels .l{ height:24px; display:flex; align-items:center; font-size:9.5px; color:var(--ink-soft); white-space:nowrap; }
+.m-gantt .mg-labels .h{ height:22px; } .m-gantt .mg-labels .l{ height:26px; display:flex; align-items:center; gap:6px; font-size:10px; color:var(--ink-soft); white-space:nowrap; }
+.m-gantt .mg-labels .l .d{ width:7px; height:7px; border-radius:2px; flex:0 0 7px; }
 .m-gantt .mg-area{ position:relative; }
-.m-gantt .mg-months{ height:20px; display:grid; grid-template-columns:repeat(8,1fr); }
-.m-gantt .mg-months span{ font-size:8px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); border-left:1px solid var(--hairline); padding-left:3px; display:flex; align-items:center; }
-.m-gantt .mg-grid{ position:absolute; left:0; right:0; top:20px; bottom:0; background:repeating-linear-gradient(to right,var(--hairline) 0 1px,transparent 1px 12.5%); opacity:.5; }
-.m-gantt .mg-rows{ position:relative; height:144px; }
-.m-gantt .mg-bar{ position:absolute; height:13px; border-radius:5px; display:flex; align-items:center; padding:0 6px; font-size:8px; font-weight:700; overflow:hidden; white-space:nowrap; }
+.m-gantt .mg-months{ height:22px; display:grid; grid-template-columns:repeat(8,1fr); }
+.m-gantt .mg-months span{ font-size:8.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); border-left:1px solid var(--hairline); padding-left:4px; display:flex; align-items:center; }
+.m-gantt .mg-grid{ position:absolute; left:0; right:0; top:22px; bottom:0; background:repeating-linear-gradient(to right,var(--hairline) 0 1px,transparent 1px 12.5%); opacity:.55; }
+.m-gantt .mg-rows{ position:relative; height:156px; }
+.m-gantt .mg-bar{ position:absolute; height:15px; border-radius:5px; display:flex; align-items:center; padding:0 7px; font-size:8.5px; font-weight:700; overflow:hidden; white-space:nowrap; box-shadow:0 4px 12px -6px rgba(0,0,0,.5); }
 .mg-bar.done{ background:rgba(116,196,154,.2); border:1px solid rgba(116,196,154,.4); color:#9fe0bd; }
 .mg-bar.curr{ background:linear-gradient(90deg,var(--light),var(--light-warm)); color:#1a1206; }
 .mg-bar.plan{ background:var(--surface-2); border:1px dashed var(--hairline-2); color:var(--ink-soft); }
 .mg-bar.final{ background:rgba(154,169,255,.25); border:1px solid rgba(154,169,255,.45); color:#cdd4ff; }
-.m-gantt .mg-rep{ position:absolute; height:6px; border-radius:3px; background:repeating-linear-gradient(90deg,var(--guide) 0 6px,transparent 6px 11px); opacity:.6; }
-.m-gantt .mg-dia{ position:absolute; width:10px; height:10px; transform:rotate(45deg); border-radius:2px; background:var(--guide); }
-.m-gantt .mg-now{ position:absolute; top:20px; bottom:0; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 8px var(--light-glow); z-index:2; }
-.m-gantt .mg-now::before{ content:"Hoy"; position:absolute; top:-1px; left:50%; transform:translateX(-50%); font-size:8px; font-weight:700; color:#1a1206; background:var(--light); padding:1px 5px; border-radius:4px; }
+.m-gantt .mg-rep{ position:absolute; height:7px; border-radius:3px; background:repeating-linear-gradient(90deg,var(--guide) 0 7px,transparent 7px 13px); opacity:.6; }
+.m-gantt .mg-dia{ position:absolute; width:11px; height:11px; transform:rotate(45deg); border-radius:2px; background:var(--guide); box-shadow:0 0 0 3px var(--guide-soft); }
+.m-gantt .mg-now{ position:absolute; top:16px; bottom:0; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 9px var(--light-glow); z-index:2; }
+.m-gantt .mg-now::before{ content:"Hoy"; position:absolute; top:-2px; left:50%; transform:translateX(-50%); font-size:8.5px; font-weight:700; color:#1a1206; background:var(--light); padding:1px 6px; border-radius:5px; }
+/* barras animadas (re-planificación: el examen no se mueve, el plan se recoloca) */
+.mgA-ii{ left:12%; top:30px; animation:gII 8s ease-in-out infinite; }
+.mgA-iii{ top:56px; animation:gIII 8s ease-in-out infinite; }
+.mgA-fin{ top:130px; animation:gFIN 8s ease-in-out infinite; }
+@keyframes gII{ 0%,40%{ width:32%; } 52%,86%{ width:41%; } 96%,100%{ width:32%; } }
+@keyframes gIII{ 0%,40%{ left:46%; width:30%; } 52%,86%{ left:55%; width:30%; } 96%,100%{ left:46%; width:30%; } }
+@keyframes gFIN{ 0%,40%{ left:78%; width:20%; } 52%,86%{ left:83%; width:15%; } 96%,100%{ left:78%; width:20%; } }
+.mg-replan{ position:absolute; top:-20px; right:0; font-size:9.5px; font-weight:600; color:var(--guide); background:var(--guide-soft); border:1px solid var(--hairline); padding:4px 10px; border-radius:999px; animation:gBADGE 8s ease-in-out infinite; }
+@keyframes gBADGE{ 0%,46%{ opacity:0; transform:translateY(4px);} 56%,84%{ opacity:1; transform:none;} 94%,100%{ opacity:0;} }
 /* TEMARIO + BOE */
 .m-tem{ display:grid; grid-template-columns:auto auto 1fr; align-items:center; gap:9px; width:96%; max-width:450px; }
 .m-boe .doc{ width:84px; border:1px solid var(--hairline-2); border-radius:9px; background:var(--surface-2); padding:9px; }
@@ -425,17 +435,25 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
             <a class="lnk" href="../plan-de-acompanamiento/index.html">Ver el plan en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
           <div class="slide-art"><div class="m-gantt">
-            <div class="mg-labels"><div class="h"></div><div class="l">Bloque I</div><div class="l">Bloque II</div><div class="l">Bloque III</div><div class="l">Repaso</div><div class="l">Simulacros</div><div class="l">Recta final</div></div>
+            <span class="mg-replan">↻ Una semana floja · recolocado</span>
+            <div class="mg-labels"><div class="h"></div>
+              <div class="l"><span class="d" style="background:#74c49a"></span>Bloque I</div>
+              <div class="l"><span class="d" style="background:var(--light)"></span>Bloque II</div>
+              <div class="l"><span class="d" style="background:#9aa9ff"></span>Bloque III</div>
+              <div class="l"><span class="d" style="background:var(--guide)"></span>Repaso</div>
+              <div class="l"><span class="d" style="background:var(--guide)"></span>Simulacros</div>
+              <div class="l"><span class="d" style="background:#b9a8ff"></span>Recta final</div>
+            </div>
             <div class="mg-area">
               <div class="mg-months"><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span></div>
               <div class="mg-grid"></div>
               <div class="mg-rows">
-                <div class="mg-bar done" style="top:5px;left:0;width:24%">Dominado</div>
-                <div class="mg-bar curr" style="top:29px;left:12%;width:34%">En curso</div>
-                <div class="mg-bar plan" style="top:53px;left:44%;width:30%">Planificado</div>
-                <div class="mg-rep" style="top:81px;left:8%;width:84%"></div>
-                <div class="mg-dia" style="top:99px;left:30%"></div><div class="mg-dia" style="top:99px;left:56%"></div><div class="mg-dia" style="top:99px;left:80%"></div>
-                <div class="mg-bar final" style="top:125px;left:78%;width:20%">Recta f.</div>
+                <div class="mg-bar done" style="top:6px;left:0;width:24%">Dominado</div>
+                <div class="mg-bar curr mgA-ii">En curso</div>
+                <div class="mg-bar plan mgA-iii">Planificado</div>
+                <div class="mg-rep" style="top:87px;left:8%;width:84%"></div>
+                <div class="mg-dia" style="top:106px;left:30%"></div><div class="mg-dia" style="top:106px;left:56%"></div><div class="mg-dia" style="top:106px;left:80%"></div>
+                <div class="mg-bar final mgA-fin">Recta f.</div>
                 <div class="mg-now" style="left:14%"></div>
               </div>
             </div>
