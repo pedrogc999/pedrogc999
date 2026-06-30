@@ -197,6 +197,8 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .inv-row .iv-pdf:hover{ background:var(--surface-2); }
 .inv-row .iv-state{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:var(--ok); }
 .inv-row .iv-state i{ width:6px; height:6px; border-radius:50%; background:var(--ok); }
+.inv-note{ font-size:12.5px; color:var(--ink-faint); margin:12px 2px 0; line-height:1.5; }
+.biz-fields[hidden]{ display:none; }
 .sub-cancel{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-top:20px; padding-top:18px; border-top:1px solid var(--hairline); }
 .sub-cancel p{ font-size:13px; color:var(--ink-soft); line-height:1.5; max-width:560px; margin:0; }
 .sub-cancel button{ font:600 13.5px var(--sans); color:var(--ink-soft); background:none; border:1px solid var(--hairline-2); padding:10px 16px; border-radius:10px; cursor:pointer; white-space:nowrap; }
@@ -480,7 +482,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
           <h4>Plan Anual</h4>
           <div class="pn-sub">Administrativo del Estado (C1) · acceso completo · se renueva el <b>12 mar 2026</b></div>
         </div>
-        <div class="pn-price"><b>108&nbsp;€</b><span>9&nbsp;€/mes · facturado al año</span></div>
+        <div class="pn-price"><b>108&nbsp;€</b><span>9&nbsp;€/mes · facturado al año</span><span>IVA incluido</span></div>
       </div>
 
       <div class="plan-care">
@@ -520,6 +522,18 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
         <button class="fedit" data-edit="pago">Actualizar</button>
       </div>
 
+      <div class="subhead">Datos de facturación</div>
+      <div class="field" style="padding-top:0">
+        <div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h6M15 9h2"/></svg></div>
+        <div><div class="fl">A nombre de</div><div class="fv">Lucía Martín García · NIF 12.345.678-Z</div></div>
+        <button class="fedit" data-edit="fiscal">Editar</button>
+      </div>
+      <div class="switchrow"><div class="txt">Quiero la factura a nombre de empresa o autónomo<small>Para deducirla. Añade razón social, CIF/NIF y dirección fiscal.</small></div><div class="switch" id="bizSwitch" data-key="biz" role="switch" tabindex="0"></div></div>
+      <div class="biz-fields" id="bizFields" hidden>
+        <div class="field"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div><div><div class="fl">Razón social · CIF</div><div class="fv">—</div></div><button class="fedit" data-edit="fiscal">Añadir</button></div>
+        <div class="field" style="border-bottom:none"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><div class="fl">Dirección fiscal</div><div class="fv">—</div></div><button class="fedit" data-edit="fiscal">Añadir</button></div>
+      </div>
+
       <div class="subhead">Tus facturas</div>
       <div class="inv-table" id="invTable">
         <div class="inv-row head"><span>Fecha</span><span>Concepto</span><span>Importe</span><span></span></div>
@@ -527,6 +541,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
         <div class="inv-row"><span class="iv-date">12 mar 2024</span><span class="iv-desc">Plan Anual · Administrativo del Estado <span class="iv-state"><i></i>Pagada</span></span><span class="iv-amt">108,00&nbsp;€</span><button class="iv-pdf" data-inv="FARO-2024-0312"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>PDF</button></div>
         <div class="inv-row"><span class="iv-date">10 feb 2024</span><span class="iv-desc">Plan Plus · primer mes <span class="iv-state"><i></i>Pagada</span></span><span class="iv-amt">12,00&nbsp;€</span><button class="iv-pdf" data-inv="FARO-2024-0210"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>PDF</button></div>
       </div>
+      <p class="inv-note">Cada factura te llega por email en cuanto se emite, y aquí la tienes siempre. Si necesitas otra anterior, pídemela.</p>
 
       <div class="sub-cancel">
         <p><b>¿Necesitas parar?</b> Puedes <b>pausar</b> tu plan y guardar tu progreso, o cancelarlo cuando quieras. Si cancelas, conservas el acceso hasta el 12 mar y no se cobra nada más. Tu Travesía te espera intacta cuando vuelvas.</p>
@@ -752,6 +767,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
     var ed=b.getAttribute('data-edit');
     if(ed==='plan'){ var s=document.getElementById('suscripcion'); if(s){ var y=s.getBoundingClientRect().top+window.pageYOffset-78; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); } say('Aquí gestionas tu plan: cambiarlo, ver tus facturas o pausarlo. Sin trabas.'); return; }
     if(ed==='pago'){ say('Abriría el pago seguro para actualizar tu tarjeta. No guardamos el número, lo custodia la pasarela.'); return; }
+    if(ed==='fiscal'){ say('Aquí editas los datos de tus facturas (nombre, NIF y, si quieres, empresa). Se aplican a la próxima factura.'); return; }
     say('En la app abriría el ajuste. Si cambias la fecha o tus horas, recalculo tu Travesía al instante.');
   }); });
 
@@ -870,6 +886,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
       else if(k==='notif') say(on?'Te avisaré con tacto, lo justo.':'Sin recordatorios. Cuando quieras volver, aquí estoy.');
       else if(k==='descanso') say(on?'Respetaré tus noches y fines de semana.':'De acuerdo, podré escribirte también en esos ratos.');
       else if(k==='twofa'){ var tw=document.getElementById('twofa'); if(tw) tw.hidden=!on; say(on?'Verificación en 2 pasos activada. Tu cuenta, más segura.':'Verificación en 2 pasos desactivada.'); }
+      else if(k==='biz'){ var bf=document.getElementById('bizFields'); if(bf) bf.hidden=!on; say(on?'Emitiré tus facturas con los datos de tu empresa o actividad, listas para deducir.':'Vale, vuelvo a facturarte como particular.'); }
       else if(k==='c-plan') say(on?'Gracias. Así puedo conocerte y adaptar tu plan.':'Sin esto no puedo personalizar; el plan sería genérico.');
       else if(k==='c-vigia') say(on?'Atenderé a tu ánimo, con datos aislados y seguros.':'No leeré tu estado emocional.');
       else if(k==='c-mejora') say(on?'Gracias por ayudar a mejorar Faro, siempre en anónimo.':'Hecho: no uso tus datos para mejorar el producto.');
