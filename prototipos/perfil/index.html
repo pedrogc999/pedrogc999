@@ -154,6 +154,55 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 .field .fedit{ margin-left:auto; font-size:13px; color:var(--light); font-weight:600; cursor:pointer; background:none; border:none; padding:6px 10px; border-radius:8px; }
 .field .fedit:hover{ background:var(--surface-2); }
 
+/* suscripción y facturas */
+.plan-now{ display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap; padding:18px; border-radius:16px;
+  background:radial-gradient(120% 140% at 85% -20%, rgba(242,182,90,.10), transparent 55%), var(--surface-2); border:1px solid var(--hairline); }
+.plan-now .pn-main{ min-width:200px; flex:1; }
+.plan-now .pn-badge{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ok); background:var(--ok-soft); border:1px solid var(--hairline); padding:4px 10px; border-radius:999px; }
+.plan-now h4{ margin:11px 0 4px; font-family:var(--serif); font-weight:500; font-size:22px; color:var(--ink); letter-spacing:-.01em; }
+.plan-now .pn-sub{ font-size:13.5px; color:var(--ink-soft); }
+.plan-now .pn-price{ text-align:right; min-width:120px; }
+.plan-now .pn-price b{ font-size:27px; font-family:var(--serif); font-weight:500; color:var(--ink); }
+.plan-now .pn-price span{ display:block; font-size:12px; color:var(--ink-faint); margin-top:2px; }
+.plan-care{ display:flex; align-items:flex-start; gap:10px; margin-top:14px; font-size:13px; color:var(--ink-soft); line-height:1.5;
+  background:var(--guide-soft); border:1px solid var(--hairline); border-radius:12px; padding:12px 14px; }
+.plan-care svg{ color:var(--guide); flex:0 0 18px; margin-top:1px; }
+.plan-care b{ color:var(--ink); }
+
+.subhead{ font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); margin:26px 0 12px; }
+.plan-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.plan-tile{ position:relative; text-align:left; border:1px solid var(--hairline); border-radius:14px; background:var(--surface-2); padding:16px; cursor:pointer; transition:.18s; }
+.plan-tile:hover{ border-color:var(--light); transform:translateY(-2px); }
+.plan-tile.on{ border-color:var(--light); box-shadow:0 0 0 1px var(--light), 0 14px 30px -22px var(--light-glow); }
+.plan-tile .pt-name{ font-weight:700; font-size:15px; color:var(--ink); }
+.plan-tile .pt-price{ font-family:var(--serif); font-size:22px; color:var(--ink); margin:6px 0 2px; }
+.plan-tile .pt-price small{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); font-weight:600; }
+.plan-tile .pt-note{ font-size:12px; color:var(--ink-soft); line-height:1.45; margin-top:6px; }
+.plan-tile .pt-cur{ position:absolute; top:12px; right:12px; font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--light); }
+.plan-tile .pt-save{ display:inline-block; margin-top:8px; font-size:11px; font-weight:700; color:var(--ok); background:var(--ok-soft); border-radius:7px; padding:2px 8px; }
+.plan-apply{ display:flex; align-items:center; gap:12px; margin-top:14px; flex-wrap:wrap; }
+.plan-apply button{ font:600 14px var(--sans); color:#1a1206; background:linear-gradient(180deg,var(--light),var(--light-warm)); border:none; padding:11px 20px; border-radius:11px; cursor:pointer; }
+.plan-apply button[disabled]{ opacity:.45; cursor:default; filter:grayscale(.3); }
+.plan-apply .pa-note{ font-size:12.5px; color:var(--ink-faint); }
+
+.inv-table{ border:1px solid var(--hairline); border-radius:14px; overflow:hidden; }
+.inv-row{ display:grid; grid-template-columns:1.1fr 1.7fr .9fr auto; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--hairline); font-size:13.5px; }
+.inv-row:last-child{ border-bottom:none; }
+.inv-row.head{ background:var(--surface-2); font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); }
+.inv-row .iv-date{ color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+.inv-row .iv-desc{ color:var(--ink); font-weight:600; }
+.inv-row .iv-amt{ color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums; }
+.inv-row .iv-pdf{ display:inline-flex; align-items:center; gap:6px; justify-self:end; font-size:12.5px; font-weight:600; color:var(--light); background:none; border:none; cursor:pointer; padding:6px 10px; border-radius:8px; }
+.inv-row .iv-pdf:hover{ background:var(--surface-2); }
+.inv-row .iv-state{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:var(--ok); }
+.inv-row .iv-state i{ width:6px; height:6px; border-radius:50%; background:var(--ok); }
+.sub-cancel{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-top:20px; padding-top:18px; border-top:1px solid var(--hairline); }
+.sub-cancel p{ font-size:13px; color:var(--ink-soft); line-height:1.5; max-width:560px; margin:0; }
+.sub-cancel button{ font:600 13.5px var(--sans); color:var(--ink-soft); background:none; border:1px solid var(--hairline-2); padding:10px 16px; border-radius:10px; cursor:pointer; white-space:nowrap; }
+.sub-cancel button:hover{ color:var(--ink); border-color:var(--ink-faint); }
+@media (max-width:680px){ .plan-tiles{ grid-template-columns:1fr; } .inv-row{ grid-template-columns:1fr auto; row-gap:4px; } .inv-row .iv-desc{ grid-column:1/3; } }
+
 /* disponibilidad semanal */
 .avail{ display:grid; grid-template-columns:auto repeat(7,1fr); gap:7px; }
 .avail .corner{ }
@@ -341,6 +390,7 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
         <div class="menu-head"><div class="ma">L</div><div><div class="mn">Lucía Martín</div><div class="me">lucia.mg@correo.es</div></div></div>
         <a class="menu-item" data-go="top"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>Tu Faro</a>
         <a class="menu-item" data-go="cuenta"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Datos y seguridad</a>
+        <a class="menu-item" data-go="suscripcion"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripción y facturas</a>
         <a class="menu-item" data-go="apariencia"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.5-1-1.8-1-3a2 2 0 0 1 2-2h1a4 4 0 0 0 4-4 9 9 0 0 0-8-9z"/></svg>Apariencia</a>
         <a class="menu-item" data-go="buzon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13l3.5 7v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-6z"/></svg>Buzón de sugerencias</a>
         <a class="menu-item" data-go="valoracion"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.9 6.1 20.3l1.7-6.6L2.6 8.8l6.8-.5z"/></svg>Valorar Faro</a>
@@ -412,6 +462,75 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
           <button data-m="auth"><div class="mt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6M12 17h.01"/></svg>Google Authenticator</div><div class="md">Códigos en tu app, sin depender del correo.</div></button>
         </div>
         <div class="field" style="margin-top:8px"><div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><div class="fl">Contraseña</div><div class="fv">Actualizada hace 2 meses</div></div><button class="fedit" data-edit="pass">Cambiar</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSCRIPCIÓN Y FACTURAS -->
+<section id="suscripcion">
+  <div class="wrap">
+    <div class="card reveal">
+      <div class="row-h"><h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripción y facturas</h3><span class="editable-note">claro y sin letra pequeña</span></div>
+      <p class="desc">Qué tienes contratado, cuánto pagas y cuándo. Sin sorpresas, sin trabas para irte.</p>
+
+      <div class="plan-now">
+        <div class="pn-main">
+          <span class="pn-badge"><i style="width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block"></i>Activa</span>
+          <h4>Plan Anual</h4>
+          <div class="pn-sub">Administrativo del Estado (C1) · acceso completo · se renueva el <b>12 mar 2026</b></div>
+        </div>
+        <div class="pn-price"><b>108&nbsp;€</b><span>9&nbsp;€/mes · facturado al año</span></div>
+      </div>
+
+      <div class="plan-care">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7z"/></svg>
+        <div>El <b>acompañamiento emocional de Faro es gratis para siempre</b>, también si pausas o cancelas tu plan. Aquí no se cobra por cuidarte, y nunca te subiremos el precio sin avisarte con tiempo.</div>
+      </div>
+
+      <div class="subhead">Cambiar de plan</div>
+      <div class="plan-tiles" id="planTiles">
+        <button class="plan-tile" data-plan="free">
+          <div class="pt-name">Free</div>
+          <div class="pt-price">0&nbsp;€</div>
+          <div class="pt-note">Acompañamiento, un poco de temario y test de prueba. Tuyo siempre, sin caducidad.</div>
+        </button>
+        <button class="plan-tile" data-plan="plus">
+          <div class="pt-name">Plus</div>
+          <div class="pt-price">12&nbsp;€<small> /mes</small></div>
+          <div class="pt-note">Todo el temario, test y simulacros ilimitados y tu plan vivo. Mes a mes, sin permanencia.</div>
+        </button>
+        <button class="plan-tile on" data-plan="anual">
+          <span class="pt-cur">Tu plan</span>
+          <div class="pt-name">Anual</div>
+          <div class="pt-price">9&nbsp;€<small> /mes</small></div>
+          <div class="pt-note">Todo lo de Plus con el mejor precio para el largo plazo de tu oposición.</div>
+          <span class="pt-save">Ahorras 36&nbsp;€/año</span>
+        </button>
+      </div>
+      <div class="plan-apply">
+        <button id="planApply" disabled>Cambiar de plan</button>
+        <span class="pa-note" id="planApplyNote">Estás en tu plan actual. El cambio se aplica al renovar, sin perder lo pagado.</span>
+      </div>
+
+      <div class="subhead">Método de pago</div>
+      <div class="field" style="border-bottom:none;padding-top:0">
+        <div class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div><div class="fl">Tarjeta</div><div class="fv">Visa ···· 4242 · caduca 06/27</div></div>
+        <button class="fedit" data-edit="pago">Actualizar</button>
+      </div>
+
+      <div class="subhead">Tus facturas</div>
+      <div class="inv-table" id="invTable">
+        <div class="inv-row head"><span>Fecha</span><span>Concepto</span><span>Importe</span><span></span></div>
+        <div class="inv-row"><span class="iv-date">12 mar 2025</span><span class="iv-desc">Plan Anual · Administrativo del Estado <span class="iv-state"><i></i>Pagada</span></span><span class="iv-amt">108,00&nbsp;€</span><button class="iv-pdf" data-inv="FARO-2025-0312"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>PDF</button></div>
+        <div class="inv-row"><span class="iv-date">12 mar 2024</span><span class="iv-desc">Plan Anual · Administrativo del Estado <span class="iv-state"><i></i>Pagada</span></span><span class="iv-amt">108,00&nbsp;€</span><button class="iv-pdf" data-inv="FARO-2024-0312"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>PDF</button></div>
+        <div class="inv-row"><span class="iv-date">10 feb 2024</span><span class="iv-desc">Plan Plus · primer mes <span class="iv-state"><i></i>Pagada</span></span><span class="iv-amt">12,00&nbsp;€</span><button class="iv-pdf" data-inv="FARO-2024-0210"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>PDF</button></div>
+      </div>
+
+      <div class="sub-cancel">
+        <p><b>¿Necesitas parar?</b> Puedes <b>pausar</b> tu plan y guardar tu progreso, o cancelarlo cuando quieras. Si cancelas, conservas el acceso hasta el 12 mar y no se cobra nada más. Tu Travesía te espera intacta cuando vuelvas.</p>
+        <button id="subPause">Pausar o cancelar</button>
       </div>
     </div>
   </div>
@@ -630,8 +749,39 @@ section{ padding:14px 0; } .wrap > .eyebrow{ margin-top:34px; }
 
   /* campos editables */
   document.querySelectorAll('.fedit').forEach(function(b){ b.addEventListener('click',function(){
+    var ed=b.getAttribute('data-edit');
+    if(ed==='plan'){ var s=document.getElementById('suscripcion'); if(s){ var y=s.getBoundingClientRect().top+window.pageYOffset-78; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); } say('Aquí gestionas tu plan: cambiarlo, ver tus facturas o pausarlo. Sin trabas.'); return; }
+    if(ed==='pago'){ say('Abriría el pago seguro para actualizar tu tarjeta. No guardamos el número, lo custodia la pasarela.'); return; }
     say('En la app abriría el ajuste. Si cambias la fecha o tus horas, recalculo tu Travesía al instante.');
   }); });
+
+  /* suscripción y facturas */
+  var planTiles=document.getElementById('planTiles');
+  if(planTiles){
+    var CURRENT='anual', PNAMES={free:'Free',plus:'Plus',anual:'Anual'};
+    var applyBtn=document.getElementById('planApply'), applyNote=document.getElementById('planApplyNote');
+    planTiles.querySelectorAll('.plan-tile').forEach(function(t){ t.addEventListener('click',function(){
+      planTiles.querySelectorAll('.plan-tile').forEach(function(x){ x.classList.toggle('on',x===t); });
+      var p=t.getAttribute('data-plan');
+      if(p===CURRENT){ applyBtn.disabled=true; applyNote.textContent='Estás en tu plan actual. El cambio se aplica al renovar, sin perder lo pagado.'; }
+      else { applyBtn.disabled=false;
+        applyNote.textContent = p==='free'
+          ? 'Bajarías a Free el 12 mar; hasta entonces conservas todo el acceso que ya pagaste.'
+          : 'Cambiarías a '+PNAMES[p]+'. Solo pagas la diferencia, prorrateada. Sin permanencia.';
+      }
+    }); });
+    applyBtn.addEventListener('click',function(){ if(applyBtn.disabled) return;
+      var sel=planTiles.querySelector('.plan-tile.on'), p=sel?sel.getAttribute('data-plan'):'';
+      say('Cambio a '+PNAMES[p]+' registrado en el prototipo. En la app lo confirmarías en el pago seguro, sin sustos.');
+    });
+  }
+  document.querySelectorAll('.iv-pdf').forEach(function(b){ b.addEventListener('click',function(){
+    say('Descargaría tu factura '+b.getAttribute('data-inv')+' en PDF, con tu DNI y todos los datos fiscales.');
+  }); });
+  var subPause=document.getElementById('subPause');
+  if(subPause){ subPause.addEventListener('click',function(){
+    say('Te ofrecería pausar (guardando tu progreso) antes que cancelar. Y si decides irte, te vas: sin penalización y sin preguntas incómodas.');
+  }); }
 
   /* disponibilidad semanal · horas por casilla, tope 40 h */
   var DAYS=['L','M','X','J','V','S','D'], SLOTS=['Mañana','Tarde','Noche'];
