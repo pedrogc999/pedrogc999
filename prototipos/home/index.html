@@ -251,23 +251,22 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
 .carousel.paused .slide-art *{ animation-play-state:paused !important; }
 @media (max-width:760px){ .slide{ grid-template-columns:1fr; gap:22px; padding:24px; } .slide-art{ order:-1; height:250px; } .car-tab .cl{ font-size:13px; } }
 
-/* arts · PANTALLAS REALES EN VIVO (la propia app dentro del carrusel) */
-.slide-art.live{ display:block; padding:0; }
-.slide-art.live iframe{ position:absolute; top:0; left:0; border:0; transform-origin:top left; pointer-events:none; opacity:0; transition:opacity .5s ease; background:var(--deep-2); }
-.slide-art.live.ready iframe{ opacity:1; }
+/* arts · PANTALLAS REALES de la app (capturas que se ven en cualquier visor) */
+.slide-art.shot{ display:block; padding:0; background:var(--deep-2); }
+.slide-art.shot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; display:block; padding:14px; }
+.slide-art.shot.fit img{ padding:26px 22px; }
+.slide-art.shot .kb{ position:absolute; inset:0; animation:kenburns 22s ease-in-out infinite alternate; will-change:transform; }
+@keyframes kenburns{ from{ transform:scale(1); } to{ transform:scale(1.04) translateY(-1%); } }
 .slide-art .live-mask{ position:absolute; inset:0; z-index:2; pointer-events:none;
-  box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -34px 30px -28px rgba(0,0,0,.55); border-radius:inherit; }
-html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -34px 30px -28px rgba(20,30,55,.12); }
+  box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -40px 36px -30px rgba(0,0,0,.6); border-radius:inherit; }
+html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -40px 36px -30px rgba(20,30,55,.18); }
 .slide-art .live-badge{ position:absolute; z-index:3; top:11px; left:11px; display:flex; align-items:center; gap:6px;
   font:600 10px var(--sans); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
   background:color-mix(in srgb, var(--surface) 82%, transparent); border:1px solid var(--hairline);
   padding:5px 10px; border-radius:999px; backdrop-filter:blur(5px); }
 .slide-art .live-badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--ok); animation:livedot 2.6s ease-out infinite; }
 @keyframes livedot{ 0%{ box-shadow:0 0 0 0 rgba(116,196,154,.55);} 70%,100%{ box-shadow:0 0 0 7px rgba(116,196,154,0);} }
-.slide-art .live-load{ position:absolute; inset:0; z-index:1; display:grid; place-items:center; gap:10px; color:var(--ink-faint); font:600 12px var(--sans); }
-.slide-art .live-load .sp{ width:22px; height:22px; border-radius:50%; border:2px solid var(--hairline-2); border-top-color:var(--light); animation:livespin .8s linear infinite; }
-@keyframes livespin{ to{ transform:rotate(360deg); } }
-.slide-art.ready .live-load{ display:none; }
+@media (prefers-reduced-motion: reduce){ .slide-art.shot .kb{ animation:none; } }
 
 .reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
@@ -390,7 +389,7 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
             <p>Tu Travesía se calcula con tu temario, tu fecha y tus horas reales. ¿Una semana floja? Se reorganiza sola, sin tareas en rojo ni culpa.</p>
             <a class="lnk" href="../plan-de-acompanamiento/index.html">Ver el plan en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art live" data-live="../plan-de-acompanamiento/index.html" data-prep="#planToggle [data-pane='gantt']" data-to="#tourGantt" data-scale="0.5" data-pad="18" data-title="Gantt vivo de Faro"></div>
+          <div class="slide-art shot"><span class="kb"><img src="media/gantt.png" alt="El Gantt vivo de Faro: bloques dominados, en curso y planificados, repaso, simulacros y recta final, con la carga semanal." loading="lazy"></span><div class="live-mask"></div><div class="live-badge"><span class="dot"></span>Pantalla real de Faro</div></div>
         </div>
         <!-- 1 · Temario -->
         <div class="slide" data-i="1">
@@ -400,7 +399,7 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
             <p>Cada artículo con su texto legal y su explicación en cristiano. Subraya, anota y mira el tema entero en modo esquema. Trazable a la fuente.</p>
             <a class="lnk" href="../temario/indice.html">Ver el temario en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art live" data-live="../temario/index.html" data-to="#reading" data-scale="0.5" data-pad="14" data-title="Temario real de Faro"></div>
+          <div class="slide-art shot"><span class="kb"><img src="media/temario.png" alt="La lectura del temario en Faro: el texto legal del artículo y, debajo, la explicación de Faro en cristiano." loading="lazy"></span><div class="live-mask"></div><div class="live-badge"><span class="dot"></span>Pantalla real de Faro</div></div>
         </div>
         <!-- 2 · Test -->
         <div class="slide" data-i="2">
@@ -410,7 +409,7 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
             <p>Cada pregunta con el porqué de la respuesta y enlace a la fuente. Faro te dice no solo la nota, sino dónde fallas y por qué.</p>
             <a class="lnk" href="../entrenar/index.html">Entrenar en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art live" data-live="../entrenar/index.html" data-to="#quiz" data-scale="0.52" data-pad="14" data-title="Test real de Faro"></div>
+          <div class="slide-art shot"><span class="kb"><img src="media/test.png" alt="Un test real de Faro: la pregunta y sus opciones, tal y como las ves al entrenar." loading="lazy"></span><div class="live-mask"></div><div class="live-badge"><span class="dot"></span>Pantalla real de Faro</div></div>
         </div>
         <!-- 3 · Acompañamiento -->
         <div class="slide" data-i="3">
@@ -420,7 +419,7 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
             <p>Faro lee tu estado con cada check-in y responde como un preparador con formación en psicología: te empuja, te frena o te sostiene. Sin culpa.</p>
             <a class="lnk" href="../perfil/index.html">Cómo te cuida <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art live" data-live="../plan-de-acompanamiento/index.html" data-to=".coach" data-scale="0.5" data-pad="22" data-title="El acompañamiento de Faro"></div>
+          <div class="slide-art shot fit"><span class="kb"><img src="media/acompanamiento.png" alt="La voz del preparador en Faro: «Lucía, he ajustado tu plan a tus noches. Vamos sin prisa pero sin pausa.»" loading="lazy"></span><div class="live-mask"></div><div class="live-badge"><span class="dot"></span>Pantalla real de Faro</div></div>
         </div>
       </div>
     </div>
@@ -652,7 +651,7 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
 <script>
 (function(){
   var root=document.documentElement, tt=document.getElementById('themeToggle');
-  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} syncLiveTheme(); }
+  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} }
   try{ var s=localStorage.getItem('faro-theme'); if(s) setTheme(s); }catch(e){}
   tt.addEventListener('click',function(){ setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
   tt.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tt.click(); } });
@@ -672,56 +671,13 @@ html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(-
   /* faq */
   document.querySelectorAll('.qitem .qq').forEach(function(q){ q.addEventListener('click',function(){ q.parentNode.classList.toggle('open'); }); });
 
-  /* carrusel con las PANTALLAS REALES en vivo (iframes de la propia app) */
-  var liveArts=[].slice.call(document.querySelectorAll('.slide-art.live'));
-  function refWidth(){ for(var i=0;i<liveArts.length;i++){ if(liveArts[i].clientWidth>0) return liveArts[i].clientWidth; } return 520; }
-  function frameScale(el){ return parseFloat(el.getAttribute('data-scale')||'0.5'); }
-  function sizeLive(el){ var sc=frameScale(el), f=el._f; if(!f) return;
-    var w=refWidth(), h=el.clientHeight||300;
-    f.style.width=Math.round(w/sc)+'px'; f.style.height=Math.round(h/sc)+'px'; f.style.transform='scale('+sc+')';
-  }
-  function syncLiveTheme(){ if(!liveArts) return; var t=root.getAttribute('data-theme')||'dark';
-    liveArts.forEach(function(el){ try{ if(el._f&&el._f.contentDocument) el._f.contentDocument.documentElement.setAttribute('data-theme',t); }catch(e){} });
-  }
-  function placeLive(el){
-    sizeLive(el); var f=el._f; if(!f) return;
-    try{
-      var win=f.contentWindow, d=win.document;
-      d.documentElement.setAttribute('data-theme', root.getAttribute('data-theme')||'dark');
-      d.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
-      var prep=el.getAttribute('data-prep'); if(prep){ var b=d.querySelector(prep); if(b) b.click(); }
-      setTimeout(function(){
-        try{
-          d.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
-          var sel=el.getAttribute('data-to'), t=sel? d.querySelector(sel):null;
-          var pad=parseFloat(el.getAttribute('data-pad')||'18');
-          var y=t? (t.getBoundingClientRect().top + win.scrollY - pad) : 0;
-          win.scrollTo(0, Math.max(0,y));
-        }catch(e){}
-      }, 520);
-    }catch(e){}
-  }
-  liveArts.forEach(function(el){
-    var f=document.createElement('iframe');
-    f.setAttribute('scrolling','no'); f.setAttribute('tabindex','-1'); f.setAttribute('aria-hidden','true');
-    f.title=el.getAttribute('data-title')||'Faro';
-    el._f=f;
-    var ld=document.createElement('div'); ld.className='live-load'; ld.innerHTML='<span class="sp"></span>Cargando la app real…';
-    var mask=document.createElement('div'); mask.className='live-mask';
-    var badge=document.createElement('div'); badge.className='live-badge'; badge.innerHTML='<span class="dot"></span>App real · en vivo';
-    el.appendChild(f); el.appendChild(ld); el.appendChild(mask); el.appendChild(badge);
-    f.addEventListener('load',function(){ el.classList.add('ready'); placeLive(el); });
-    f.src=el.getAttribute('data-live');
-  });
-  var rT; window.addEventListener('resize',function(){ clearTimeout(rT); rT=setTimeout(function(){ liveArts.forEach(function(el){ if(el.classList.contains('ready')) placeLive(el); }); },180); });
-
+  /* carrusel con las PANTALLAS REALES de la app (capturas, visibles en cualquier visor) */
   var carousel=document.getElementById('carousel');
   if(carousel){
     var slides=carousel.querySelectorAll('.slide'), tabs=carousel.querySelectorAll('.car-tab'), N=slides.length, ci=0, ctimer;
     function show(i){ ci=(i+N)%N;
       slides.forEach(function(s,k){ s.classList.toggle('active',k===ci); });
       tabs.forEach(function(t,k){ t.classList.toggle('on',k===ci); });
-      var art=slides[ci].querySelector('.slide-art.live'); if(art&&art.classList.contains('ready')) placeLive(art);
     }
     function startC(){ clearInterval(ctimer); ctimer=setInterval(function(){ show(ci+1); },7000); }
     tabs.forEach(function(t){ t.addEventListener('click',function(){ show(+t.getAttribute('data-i')); startC(); }); });
