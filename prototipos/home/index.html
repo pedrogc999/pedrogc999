@@ -251,67 +251,23 @@ html[data-theme="light"] .slide-art{ background:radial-gradient(120% 130% at 80%
 .carousel.paused .slide-art *{ animation-play-state:paused !important; }
 @media (max-width:760px){ .slide{ grid-template-columns:1fr; gap:22px; padding:24px; } .slide-art{ order:-1; height:250px; } .car-tab .cl{ font-size:13px; } }
 
-/* arts · maquetas fieles */
-/* GANTT (réplica del aplicativo, con re-planificación en bucle) */
-.m-gantt{ position:relative; display:grid; grid-template-columns:66px 1fr; column-gap:9px; width:94%; max-width:460px; }
-.m-gantt .mg-labels{ display:flex; flex-direction:column; }
-.m-gantt .mg-labels .h{ height:22px; } .m-gantt .mg-labels .l{ height:26px; display:flex; align-items:center; gap:6px; font-size:10px; color:var(--ink-soft); white-space:nowrap; }
-.m-gantt .mg-labels .l .d{ width:7px; height:7px; border-radius:2px; flex:0 0 7px; }
-.m-gantt .mg-area{ position:relative; }
-.m-gantt .mg-months{ height:22px; display:grid; grid-template-columns:repeat(8,1fr); }
-.m-gantt .mg-months span{ font-size:8.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); border-left:1px solid var(--hairline); padding-left:4px; display:flex; align-items:center; }
-.m-gantt .mg-grid{ position:absolute; left:0; right:0; top:22px; bottom:0; background:repeating-linear-gradient(to right,var(--hairline) 0 1px,transparent 1px 12.5%); opacity:.55; }
-.m-gantt .mg-rows{ position:relative; height:156px; }
-.m-gantt .mg-bar{ position:absolute; height:15px; border-radius:5px; display:flex; align-items:center; padding:0 7px; font-size:8.5px; font-weight:700; overflow:hidden; white-space:nowrap; box-shadow:0 4px 12px -6px rgba(0,0,0,.5); }
-.mg-bar.done{ background:rgba(116,196,154,.2); border:1px solid rgba(116,196,154,.4); color:#9fe0bd; }
-.mg-bar.curr{ background:linear-gradient(90deg,var(--light),var(--light-warm)); color:#1a1206; }
-.mg-bar.plan{ background:var(--surface-2); border:1px dashed var(--hairline-2); color:var(--ink-soft); }
-.mg-bar.final{ background:rgba(154,169,255,.25); border:1px solid rgba(154,169,255,.45); color:#cdd4ff; }
-.m-gantt .mg-rep{ position:absolute; height:7px; border-radius:3px; background:repeating-linear-gradient(90deg,var(--guide) 0 7px,transparent 7px 13px); opacity:.6; }
-.m-gantt .mg-dia{ position:absolute; width:11px; height:11px; transform:rotate(45deg); border-radius:2px; background:var(--guide); box-shadow:0 0 0 3px var(--guide-soft); }
-.m-gantt .mg-now{ position:absolute; top:16px; bottom:0; width:2px; background:linear-gradient(180deg,var(--light),transparent); box-shadow:0 0 9px var(--light-glow); z-index:2; }
-.m-gantt .mg-now::before{ content:"Hoy"; position:absolute; top:-2px; left:50%; transform:translateX(-50%); font-size:8.5px; font-weight:700; color:#1a1206; background:var(--light); padding:1px 6px; border-radius:5px; }
-/* barras animadas (re-planificación: el examen no se mueve, el plan se recoloca) */
-.mgA-ii{ left:12%; top:30px; animation:gII 8s ease-in-out infinite; }
-.mgA-iii{ top:56px; animation:gIII 8s ease-in-out infinite; }
-.mgA-fin{ top:130px; animation:gFIN 8s ease-in-out infinite; }
-@keyframes gII{ 0%,40%{ width:32%; } 52%,86%{ width:41%; } 96%,100%{ width:32%; } }
-@keyframes gIII{ 0%,40%{ left:46%; width:30%; } 52%,86%{ left:55%; width:30%; } 96%,100%{ left:46%; width:30%; } }
-@keyframes gFIN{ 0%,40%{ left:78%; width:20%; } 52%,86%{ left:83%; width:15%; } 96%,100%{ left:78%; width:20%; } }
-.mg-replan{ position:absolute; top:-20px; right:0; font-size:9.5px; font-weight:600; color:var(--guide); background:var(--guide-soft); border:1px solid var(--hairline); padding:4px 10px; border-radius:999px; animation:gBADGE 8s ease-in-out infinite; }
-@keyframes gBADGE{ 0%,46%{ opacity:0; transform:translateY(4px);} 56%,84%{ opacity:1; transform:none;} 94%,100%{ opacity:0;} }
-/* TEMARIO + BOE */
-.m-tem{ display:grid; grid-template-columns:auto auto 1fr; align-items:center; gap:9px; width:96%; max-width:450px; }
-.m-boe .doc{ width:84px; border:1px solid var(--hairline-2); border-radius:9px; background:var(--surface-2); padding:9px; }
-.m-boe .seal{ display:inline-block; font-size:8px; font-weight:800; letter-spacing:.06em; color:#c0506a; background:rgba(192,80,106,.12); border:1px solid rgba(192,80,106,.3); border-radius:4px; padding:1px 5px; }
-.m-boe .dl{ height:4px; border-radius:2px; background:var(--hairline-2); margin-top:6px; } .m-boe .dl.s{ width:65%; }
-.m-boe .cap{ font-size:8.5px; text-align:center; color:var(--ink-faint); margin-top:7px; }
-.m-arrow{ color:var(--ink-faint); display:flex; align-items:center; }
-.m-blocks{ display:flex; flex-direction:column; gap:7px; min-width:0; }
-.m-block{ border:1px solid var(--hairline); border-radius:9px; background:var(--surface-2); padding:7px 9px; }
-.m-block .bt{ font-size:9.5px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.m-block .temas{ display:flex; gap:3px; margin-top:5px; }
-.m-block .t{ width:15px; height:15px; border-radius:4px; background:var(--deep-3); font-size:7px; font-weight:700; display:grid; place-items:center; color:var(--ink-soft); }
-html[data-theme="light"] .m-block .t{ background:#eef1f6; }
-.m-block .t.dom{ background:rgba(116,196,154,.25); color:var(--ok); } .m-block .t.cur{ background:linear-gradient(180deg,var(--light),var(--light-warm)); color:#1a1206; }
-/* TEST */
-.m-test{ width:90%; max-width:400px; }
-.m-test .mt-q{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:10px; line-height:1.35; }
-.m-test .mt-o{ font-size:12px; color:var(--ink-soft); padding:9px 11px; border-radius:9px; border:1px solid var(--hairline-2); background:var(--surface-2); margin-bottom:7px; display:flex; align-items:center; gap:8px; }
-.m-test .mt-o .kk{ width:18px; height:18px; border-radius:5px; background:var(--deep-3); font-size:9px; font-weight:700; display:grid; place-items:center; color:var(--ink-faint); flex:0 0 18px; }
-html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
-.m-test .mt-o.ok{ border-color:var(--ok); background:var(--ok-soft); color:var(--ink); }
-.m-test .mt-o.ok .kk{ background:var(--ok); color:#0b1322; } .m-test .mt-o.ok .ck{ margin-left:auto; color:var(--ok); }
-.m-test .mt-fb{ font-size:11px; color:var(--guide); background:var(--guide-soft); border-radius:9px; padding:9px 11px; margin-top:4px; line-height:1.4; }
-.m-test .mt-fb b{ color:var(--ink); }
-/* ACOMPAÑAMIENTO */
-.m-aco{ width:92%; max-width:410px; display:flex; flex-direction:column; gap:9px; }
-.m-aco .who{ display:flex; align-items:center; gap:7px; font-size:10px; color:var(--ink-faint); font-weight:600; text-transform:uppercase; letter-spacing:.05em; }
-.m-aco .who b{ color:var(--light); }
-.aco-b{ font-family:var(--serif); font-size:13px; line-height:1.45; color:var(--ink); background:var(--surface-2); border:1px solid var(--hairline); border-radius:14px; border-bottom-left-radius:4px; padding:11px 13px; }
-.aco-b .tag{ display:block; font-family:var(--sans); font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
-.aco-b.hard .tag{ color:var(--care); } .aco-b.motiv .tag{ color:var(--ok); }
-.aco-b .hl{ color:var(--light); }
+/* arts · PANTALLAS REALES EN VIVO (la propia app dentro del carrusel) */
+.slide-art.live{ display:block; padding:0; }
+.slide-art.live iframe{ position:absolute; top:0; left:0; border:0; transform-origin:top left; pointer-events:none; opacity:0; transition:opacity .5s ease; background:var(--deep-2); }
+.slide-art.live.ready iframe{ opacity:1; }
+.slide-art .live-mask{ position:absolute; inset:0; z-index:2; pointer-events:none;
+  box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -34px 30px -28px rgba(0,0,0,.55); border-radius:inherit; }
+html[data-theme="light"] .slide-art .live-mask{ box-shadow:inset 0 0 0 1px var(--hairline), inset 0 -34px 30px -28px rgba(20,30,55,.12); }
+.slide-art .live-badge{ position:absolute; z-index:3; top:11px; left:11px; display:flex; align-items:center; gap:6px;
+  font:600 10px var(--sans); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
+  background:color-mix(in srgb, var(--surface) 82%, transparent); border:1px solid var(--hairline);
+  padding:5px 10px; border-radius:999px; backdrop-filter:blur(5px); }
+.slide-art .live-badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--ok); animation:livedot 2.6s ease-out infinite; }
+@keyframes livedot{ 0%{ box-shadow:0 0 0 0 rgba(116,196,154,.55);} 70%,100%{ box-shadow:0 0 0 7px rgba(116,196,154,0);} }
+.slide-art .live-load{ position:absolute; inset:0; z-index:1; display:grid; place-items:center; gap:10px; color:var(--ink-faint); font:600 12px var(--sans); }
+.slide-art .live-load .sp{ width:22px; height:22px; border-radius:50%; border:2px solid var(--hairline-2); border-top-color:var(--light); animation:livespin .8s linear infinite; }
+@keyframes livespin{ to{ transform:rotate(360deg); } }
+.slide-art.ready .live-load{ display:none; }
 
 .reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); } .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1; transform:none; } }
@@ -434,30 +390,7 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
             <p>Tu Travesía se calcula con tu temario, tu fecha y tus horas reales. ¿Una semana floja? Se reorganiza sola, sin tareas en rojo ni culpa.</p>
             <a class="lnk" href="../plan-de-acompanamiento/index.html">Ver el plan en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="m-gantt">
-            <span class="mg-replan">↻ Una semana floja · recolocado</span>
-            <div class="mg-labels"><div class="h"></div>
-              <div class="l"><span class="d" style="background:#74c49a"></span>Bloque I</div>
-              <div class="l"><span class="d" style="background:var(--light)"></span>Bloque II</div>
-              <div class="l"><span class="d" style="background:#9aa9ff"></span>Bloque III</div>
-              <div class="l"><span class="d" style="background:var(--guide)"></span>Repaso</div>
-              <div class="l"><span class="d" style="background:var(--guide)"></span>Simulacros</div>
-              <div class="l"><span class="d" style="background:#b9a8ff"></span>Recta final</div>
-            </div>
-            <div class="mg-area">
-              <div class="mg-months"><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span></div>
-              <div class="mg-grid"></div>
-              <div class="mg-rows">
-                <div class="mg-bar done" style="top:6px;left:0;width:24%">Dominado</div>
-                <div class="mg-bar curr mgA-ii">En curso</div>
-                <div class="mg-bar plan mgA-iii">Planificado</div>
-                <div class="mg-rep" style="top:87px;left:8%;width:84%"></div>
-                <div class="mg-dia" style="top:106px;left:30%"></div><div class="mg-dia" style="top:106px;left:56%"></div><div class="mg-dia" style="top:106px;left:80%"></div>
-                <div class="mg-bar final mgA-fin">Recta f.</div>
-                <div class="mg-now" style="left:14%"></div>
-              </div>
-            </div>
-          </div></div>
+          <div class="slide-art live" data-live="../plan-de-acompanamiento/index.html" data-prep="#planToggle [data-pane='gantt']" data-to="#tourGantt" data-scale="0.5" data-pad="18" data-title="Gantt vivo de Faro"></div>
         </div>
         <!-- 1 · Temario -->
         <div class="slide" data-i="1">
@@ -467,15 +400,7 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
             <p>Cada artículo con su texto legal y su explicación en cristiano. Subraya, anota y mira el tema entero en modo esquema. Trazable a la fuente.</p>
             <a class="lnk" href="../temario/indice.html">Ver el temario en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="m-tem">
-            <div class="m-boe"><div class="doc"><span class="seal">BOE</span><div class="dl"></div><div class="dl s"></div><div class="dl"></div><div class="dl s"></div></div><div class="cap">Tu convocatoria</div></div>
-            <div class="m-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-            <div class="m-blocks">
-              <div class="m-block"><div class="bt">Bloque I · La Constitución</div><div class="temas"><span class="t dom">1</span><span class="t dom">2</span><span class="t dom">3</span><span class="t cur">14</span><span class="t">15</span></div></div>
-              <div class="m-block"><div class="bt">Bloque II · Administración</div><div class="temas"><span class="t">15</span><span class="t">16</span><span class="t">17</span><span class="t">18</span></div></div>
-              <div class="m-block"><div class="bt">Bloque III · Unión Europea</div><div class="temas"><span class="t">23</span><span class="t">24</span><span class="t">25</span></div></div>
-            </div>
-          </div></div>
+          <div class="slide-art live" data-live="../temario/index.html" data-to="#reading" data-scale="0.5" data-pad="14" data-title="Temario real de Faro"></div>
         </div>
         <!-- 2 · Test -->
         <div class="slide" data-i="2">
@@ -485,13 +410,7 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
             <p>Cada pregunta con el porqué de la respuesta y enlace a la fuente. Faro te dice no solo la nota, sino dónde fallas y por qué.</p>
             <a class="lnk" href="../entrenar/index.html">Entrenar en vivo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="m-test">
-            <div class="mt-q">¿Quién puede levantar el veto del Senado?</div>
-            <div class="mt-o"><span class="kk">A</span>El Senado, es definitivo</div>
-            <div class="mt-o ok"><span class="kk">B</span>El Congreso<svg class="ck" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <div class="mt-o"><span class="kk">C</span>El Tribunal Constitucional</div>
-            <div class="mt-fb"><b>El porqué:</b> por mayoría absoluta, o simple a los 2 meses (art. 90 CE).</div>
-          </div></div>
+          <div class="slide-art live" data-live="../entrenar/index.html" data-to="#quiz" data-scale="0.52" data-pad="14" data-title="Test real de Faro"></div>
         </div>
         <!-- 3 · Acompañamiento -->
         <div class="slide" data-i="3">
@@ -501,11 +420,7 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
             <p>Faro lee tu estado con cada check-in y responde como un preparador con formación en psicología: te empuja, te frena o te sostiene. Sin culpa.</p>
             <a class="lnk" href="../perfil/index.html">Cómo te cuida <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
-          <div class="slide-art"><div class="m-aco">
-            <div class="who"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M16 30h8l-1.4-13h-5.2L16 30z" fill="#F2B65A"/><rect x="17.3" y="9.5" width="5.4" height="5" rx="1.4" fill="#F2B65A"/></svg>Faro · <b>tu preparador</b></div>
-            <div class="aco-b hard"><span class="tag">🫶 Para un día duro</span>«Estos días no pudiste, y no pasa nada. Lo he recolocado. Seguimos, a tu ritmo.»</div>
-            <div class="aco-b motiv"><span class="tag">✨ Para seguir</span>«Hace 3 meses no controlabas esto. <span class="hl">Hoy dominas 14 temas.</span> Eso lo has construido tú.»</div>
-          </div></div>
+          <div class="slide-art live" data-live="../plan-de-acompanamiento/index.html" data-to=".coach" data-scale="0.5" data-pad="22" data-title="El acompañamiento de Faro"></div>
         </div>
       </div>
     </div>
@@ -737,7 +652,7 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
 <script>
 (function(){
   var root=document.documentElement, tt=document.getElementById('themeToggle');
-  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} }
+  function setTheme(t){ root.setAttribute('data-theme',t); try{ localStorage.setItem('faro-theme',t); }catch(e){} syncLiveTheme(); }
   try{ var s=localStorage.getItem('faro-theme'); if(s) setTheme(s); }catch(e){}
   tt.addEventListener('click',function(){ setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
   tt.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tt.click(); } });
@@ -757,15 +672,58 @@ html[data-theme="light"] .m-test .mt-o .kk{ background:#eef1f6; }
   /* faq */
   document.querySelectorAll('.qitem .qq').forEach(function(q){ q.addEventListener('click',function(){ q.parentNode.classList.toggle('open'); }); });
 
-  /* carrusel con motion graphics */
+  /* carrusel con las PANTALLAS REALES en vivo (iframes de la propia app) */
+  var liveArts=[].slice.call(document.querySelectorAll('.slide-art.live'));
+  function refWidth(){ for(var i=0;i<liveArts.length;i++){ if(liveArts[i].clientWidth>0) return liveArts[i].clientWidth; } return 520; }
+  function frameScale(el){ return parseFloat(el.getAttribute('data-scale')||'0.5'); }
+  function sizeLive(el){ var sc=frameScale(el), f=el._f; if(!f) return;
+    var w=refWidth(), h=el.clientHeight||300;
+    f.style.width=Math.round(w/sc)+'px'; f.style.height=Math.round(h/sc)+'px'; f.style.transform='scale('+sc+')';
+  }
+  function syncLiveTheme(){ if(!liveArts) return; var t=root.getAttribute('data-theme')||'dark';
+    liveArts.forEach(function(el){ try{ if(el._f&&el._f.contentDocument) el._f.contentDocument.documentElement.setAttribute('data-theme',t); }catch(e){} });
+  }
+  function placeLive(el){
+    sizeLive(el); var f=el._f; if(!f) return;
+    try{
+      var win=f.contentWindow, d=win.document;
+      d.documentElement.setAttribute('data-theme', root.getAttribute('data-theme')||'dark');
+      d.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+      var prep=el.getAttribute('data-prep'); if(prep){ var b=d.querySelector(prep); if(b) b.click(); }
+      setTimeout(function(){
+        try{
+          d.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+          var sel=el.getAttribute('data-to'), t=sel? d.querySelector(sel):null;
+          var pad=parseFloat(el.getAttribute('data-pad')||'18');
+          var y=t? (t.getBoundingClientRect().top + win.scrollY - pad) : 0;
+          win.scrollTo(0, Math.max(0,y));
+        }catch(e){}
+      }, 520);
+    }catch(e){}
+  }
+  liveArts.forEach(function(el){
+    var f=document.createElement('iframe');
+    f.setAttribute('scrolling','no'); f.setAttribute('tabindex','-1'); f.setAttribute('aria-hidden','true');
+    f.title=el.getAttribute('data-title')||'Faro';
+    el._f=f;
+    var ld=document.createElement('div'); ld.className='live-load'; ld.innerHTML='<span class="sp"></span>Cargando la app real…';
+    var mask=document.createElement('div'); mask.className='live-mask';
+    var badge=document.createElement('div'); badge.className='live-badge'; badge.innerHTML='<span class="dot"></span>App real · en vivo';
+    el.appendChild(f); el.appendChild(ld); el.appendChild(mask); el.appendChild(badge);
+    f.addEventListener('load',function(){ el.classList.add('ready'); placeLive(el); });
+    f.src=el.getAttribute('data-live');
+  });
+  var rT; window.addEventListener('resize',function(){ clearTimeout(rT); rT=setTimeout(function(){ liveArts.forEach(function(el){ if(el.classList.contains('ready')) placeLive(el); }); },180); });
+
   var carousel=document.getElementById('carousel');
   if(carousel){
     var slides=carousel.querySelectorAll('.slide'), tabs=carousel.querySelectorAll('.car-tab'), N=slides.length, ci=0, ctimer;
     function show(i){ ci=(i+N)%N;
       slides.forEach(function(s,k){ s.classList.toggle('active',k===ci); });
       tabs.forEach(function(t,k){ t.classList.toggle('on',k===ci); });
+      var art=slides[ci].querySelector('.slide-art.live'); if(art&&art.classList.contains('ready')) placeLive(art);
     }
-    function startC(){ clearInterval(ctimer); ctimer=setInterval(function(){ show(ci+1); },6000); }
+    function startC(){ clearInterval(ctimer); ctimer=setInterval(function(){ show(ci+1); },7000); }
     tabs.forEach(function(t){ t.addEventListener('click',function(){ show(+t.getAttribute('data-i')); startC(); }); });
     carousel.addEventListener('mouseenter',function(){ clearInterval(ctimer); carousel.classList.add('paused'); });
     carousel.addEventListener('mouseleave',function(){ carousel.classList.remove('paused'); startC(); });
